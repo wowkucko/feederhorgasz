@@ -1,0 +1,50 @@
+{
+    "locations": [
+ 
+        {
+            "title": "Kerek-tó",
+            "latitude": 47.800618,
+            "longitude": 18.806419
+        },
+        {
+            "title": "Gyermelyi Horgásztó",
+            "latitude": 47.613148,
+            "longitude": 18.650200
+        },
+        {
+            "title": "Sárisáp Horgásztó",
+            "latitude": 47.659132,
+            "longitude": 18.681973
+        },
+        {
+            "title": "Forrás-tó",
+            "latitude": 47.806652,
+            "longitude": 18.775527
+        },
+        {
+            "title": "Bottyán-tó",
+            "latitude": 47.769099,
+            "longitude": 18.712249
+        },
+        {
+            "title": "Lóga-tó",
+            "latitude": 47.723736,
+            "longitude": 18.747053
+        },
+        {
+            "title": "Háziréti-tó",
+            "latitude": 47.610738,
+            "longitude": 18.951953
+        },
+        {
+            "title": "Joker horgásztó",
+            "latitude": 47.648020,
+            "longitude": 20.331439
+        },
+        {
+            "title": "Kána-tó",
+            "latitude": 47.445910,
+            "longitude": 19.002932
+        }
+    ]
+}

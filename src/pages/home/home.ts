@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { TerkepPage } from './../terkep/terkep';
+
+
 
 @Component({
   selector: 'page-home',
@@ -7,8 +10,19 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  
+  
+  constructor(public navParams: NavParams,public navCtrl: NavController) {
+   
+    console.log('Passed params', navParams.data);
   }
+  ionViewDidLoad() {
+    
+    
+  }
+  terkepnyit(){
+    this.navCtrl.push(TerkepPage);
+   }
+  
 
 }

@@ -1,17 +1,50 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only>
+          <ion-icon name="person"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <h2>Görbüljön {{navParams.data.facebooknev}}!</h2>
+  <ion-card>
+      <ion-card-header>
+        Közeli helyek
+      </ion-card-header>
+    
+      <ion-list>
+        <button ion-item (click)="terkepnyit()">
+          <ion-icon name="cart" item-start></ion-icon>
+          Horgásztó
+        </button>
+    
+        <button ion-item>
+          <ion-icon name="medical" item-start></ion-icon>
+          Horgászbolt
+        </button>
+    
+        <button ion-item>
+          <ion-icon name="cafe" item-start></ion-icon>
+          Szervíz
+        </button>
+
+    
+      </ion-list>
+    </ion-card>
+  <ion-card>
+      <img src="http://www.newcaledonia.travel/sites/default/files/2016-08/bateau_peche_au_large_nouvelle_caledonie_456x325_2.jpeg"/>
+      <ion-card-content>
+        <ion-card-title>
+          Nine Inch Nails Live
+          </ion-card-title>
+        <p>
+          The most popular industrial group ever, and largely
+          responsible for bringing the music to a mass audience.
+        </p>
+      </ion-card-content>
+    </ion-card>
 </ion-content>
