@@ -28,11 +28,23 @@
         "@ionic-native/status-bar": "4.3.0",
         "@ionic/storage": "2.0.1",
         "angularfire2": "^4.0.0-rc.2",
+        "cordova-android": "^6.2.3",
+        "cordova-plugin-browsertab": "^0.2.0",
+        "cordova-plugin-buildinfo": "^2.0.1",
         "cordova-plugin-camera": "^2.4.1",
+        "cordova-plugin-compat": "^1.1.0",
+        "cordova-plugin-customurlscheme": "^4.3.0",
+        "cordova-plugin-device": "^1.1.4",
         "cordova-plugin-geolocation": "^2.4.3",
+        "cordova-plugin-inappbrowser": "^1.7.1",
         "cordova-plugin-network-information": "^1.3.3",
+        "cordova-plugin-splashscreen": "^4.0.3",
+        "cordova-plugin-statusbar": "^2.2.2",
+        "cordova-plugin-whitelist": "^1.3.1",
+        "cordova-universal-links-plugin": "^1.2.1",
         "firebase": "^3.9.0",
         "ionic-angular": "3.7.1",
+        "ionic-plugin-keyboard": "^2.2.1",
         "ionicons": "3.0.0",
         "rxjs": "5.4.3",
         "sw-toolbox": "3.6.0",
@@ -47,7 +59,25 @@
         "plugins": {
             "cordova-plugin-network-information": {},
             "cordova-plugin-geolocation": {},
-            "cordova-plugin-camera": {}
-        }
+            "cordova-plugin-camera": {},
+            "cordova-plugin-device": {},
+            "cordova-plugin-splashscreen": {},
+            "cordova-plugin-statusbar": {},
+            "cordova-plugin-whitelist": {},
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-buildinfo": {},
+            "cordova-universal-links-plugin": {},
+            "cordova-plugin-browsertab": {},
+            "cordova-plugin-inappbrowser": {},
+            "cordova-plugin-customurlscheme": {
+                "URL_SCHEME": "com.feederhorgasz",
+                "ANDROID_SCHEME": " ",
+                "ANDROID_HOST": " ",
+                "ANDROID_PATHPREFIX": "/"
+            }
+        },
+        "platforms": [
+            "android"
+        ]
     }
 }

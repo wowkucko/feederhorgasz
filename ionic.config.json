@@ -1,6 +1,6 @@
 {
   "name": "feederhorgasz",
-  "app_id": "",
+  "app_id": "edcd3e9a",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
