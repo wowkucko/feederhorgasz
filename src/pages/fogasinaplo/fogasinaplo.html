@@ -7,12 +7,37 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>fogasinaplo</ion-title>
+    <ion-title>Fogások</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+    <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="myDate"></ion-datetime>
+      </ion-item>
+  Kifogott mennyiség: 4 db, összsúly: 30 kg
+    <ion-fab top right edge>
+        <button ion-fab  (click)="openFeltoltes()"><ion-icon name="add"></ion-icon></button>
+      </ion-fab>
+      <h2>Idővonal</h2>
+    <ion-card>
+      
+        <img src="https://www.szavannahorgaszto.hu/wp-content/gallery/non-stop-horgaszto-kepek/rekord-ponty/rekord-ponty-1.jpg"/>
+        <ion-card-content>
+          <ion-card-title>
+              2017.10.11 08:30 - Ponty
+            </ion-card-title>
+          <p>
+            Helyszín:
+            Súly:
+            Hossz:
+            Csali:
+            Etetőanyag:
+            Egyéb:
+          </p>
+        </ion-card-content>
+      </ion-card>
 </ion-content>

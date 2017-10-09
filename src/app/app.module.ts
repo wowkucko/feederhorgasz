@@ -13,6 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { UdvozoljukPage } from './../pages/udvozoljuk/udvozoljuk';
 import { SignupPage } from './../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
+import { FogasfeltoltesPage } from '../pages/fogasfeltoltes/fogasfeltoltes';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
@@ -21,7 +22,7 @@ import { GoogleCsatlakozasProvider } from '../providers/google-csatlakozas/googl
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { HelyekProvider } from '../providers/helyek/helyek';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import {Camera } from '@ionic-native/camera';
 
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",
@@ -44,6 +45,7 @@ var config = {
     FogasinaploPage,
     TerkepPage,
     TerkeplistaPage,
+    FogasfeltoltesPage
 
   ],
   imports: [
@@ -65,6 +67,7 @@ var config = {
     FogasinaploPage,
     TerkepPage,
     TerkeplistaPage,
+    FogasfeltoltesPage
   ],
   providers: [
     StatusBar,
@@ -74,7 +77,8 @@ var config = {
     GoogleMapsProvider,
     HelyekProvider,
     Geolocation,
-    Network
+    Network,
+    Camera
   ]
 })
 export class AppModule {

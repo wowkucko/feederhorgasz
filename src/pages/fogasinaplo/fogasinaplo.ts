@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
+import { FogasfeltoltesPage } from '../fogasfeltoltes/fogasfeltoltes';
+
+
 
 /**
  * Generated class for the FogasinaploPage page.
@@ -15,11 +18,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FogasinaploPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private modal: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FogasinaploPage');
   }
+  openFeltoltes(){
+    const feltolt=this.modal.create(FogasfeltoltesPage);
+    feltolt.present();
+  }
+
+ 
 
 }
