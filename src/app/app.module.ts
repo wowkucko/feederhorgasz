@@ -17,6 +17,7 @@ import { FogasfeltoltesPage } from '../pages/fogasfeltoltes/fogasfeltoltes';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { GoogleCsatlakozasProvider } from '../providers/google-csatlakozas/google-csatlakozas';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
@@ -53,6 +54,7 @@ var config = {
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config),
   ],
   bootstrap: [IonicApp],

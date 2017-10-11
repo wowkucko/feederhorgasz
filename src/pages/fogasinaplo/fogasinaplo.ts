@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
 import { FogasfeltoltesPage } from '../fogasfeltoltes/fogasfeltoltes';
-
-
+import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
  * Generated class for the FogasinaploPage page.
@@ -17,16 +16,26 @@ import { FogasfeltoltesPage } from '../fogasfeltoltes/fogasfeltoltes';
   templateUrl: 'fogasinaplo.html',
 })
 export class FogasinaploPage {
+  fogasadatok = []
+  
 
-  constructor(private modal: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+
+
+  constructor(private modal: ModalController, public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
     
+    
+    this.firebasedb.list("/fogasok/").subscribe(_data => {
+      this.fogasadatok = _data;
+    })
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FogasinaploPage');
+    
   }
   openFeltoltes(){
-    const feltolt=this.modal.create(FogasfeltoltesPage);
+    let facebookadatok= this.navParams.get('data');
+    
+    const feltolt=this.modal.create(FogasfeltoltesPage,facebookadatok);
     feltolt.present();
   }
 

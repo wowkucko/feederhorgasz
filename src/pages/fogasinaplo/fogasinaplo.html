@@ -7,35 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Fogások</ion-title>
+    <ion-title>fogasinaplo</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <ion-item>
-        <ion-label>Dátum</ion-label>
-        <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="myDate"></ion-datetime>
-      </ion-item>
-  Kifogott mennyiség: 4 db, összsúly: 30 kg
+  <ion-list>
+    <ion-item *ngFor="let item of fogasadatok; let i = index">
+      <ion-label>Date</ion-label>
+      <ion-select>
+        <ion-option value="{{item.datum}}"></ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  
+  Kifogott mennyiség {{navParams.data.facebooknev}} : 4 db, összsúly: 30 kg
     <ion-fab top right edge>
         <button ion-fab (click)="openFeltoltes()"><ion-icon name="add"></ion-icon></button>
       </ion-fab>
       <h2>Idővonal</h2>
-    <ion-card>
+    <ion-card *ngFor="let item of fogasadatok; let i = index">
       
-        <img src="https://www.szavannahorgaszto.hu/wp-content/gallery/non-stop-horgaszto-kepek/rekord-ponty/rekord-ponty-1.jpg"/>
+        <img src="{{item.keplink}}"/>
         <ion-card-content>
           <ion-card-title>
-              2017.10.11 08:30 - Ponty
+              {{item.datum}} - Ponty
             </ion-card-title>
           <p>
-            Helyszín:
-            Súly:
-            Hossz:
-            Csali:
-            Etetőanyag:
+
             Egyéb:
           </p>
         </ion-card-content>
