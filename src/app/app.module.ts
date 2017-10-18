@@ -23,7 +23,7 @@ import { GoogleCsatlakozasProvider } from '../providers/google-csatlakozas/googl
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { HelyekProvider } from '../providers/helyek/helyek';
 import { Geolocation } from '@ionic-native/geolocation';
-import {Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",

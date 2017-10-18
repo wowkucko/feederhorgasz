@@ -35,16 +35,15 @@
     
       </ion-list>
     </ion-card>
-  <ion-card>
-      <img src="http://www.newcaledonia.travel/sites/default/files/2016-08/bateau_peche_au_large_nouvelle_caledonie_456x325_2.jpeg"/>
-      <ion-card-content>
-        <ion-card-title>
-          Nine Inch Nails Live
-          </ion-card-title>
-        <p>
-          The most popular industrial group ever, and largely
-          responsible for bringing the music to a mass audience.
-        </p>
-      </ion-card-content>
-    </ion-card>
+    <ion-content class="home">
+      <ion-card ion-item *ngFor="let item of items"> 
+          <img src="{{item.better_featured_image.source_url}}" />
+          <ion-card-content>
+             <ion-card-title>
+                 {{item.title.rendered}}
+             </ion-card-title>
+    
+             <div class="text" [innerHTML]="item.excerpt.rendered"></div>
+          </ion-card-content>
+      </ion-card>
 </ion-content>
