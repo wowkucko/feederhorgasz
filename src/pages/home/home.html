@@ -31,9 +31,6 @@
           <ion-icon name="cafe" item-start></ion-icon>
           Szervíz
         </button>
-
-<<<<<<< HEAD
-
     </ion-list>
   </ion-card>
   <ion-card ion-item *ngFor="let item of items" (click)="itemKlikk(item)">
@@ -71,20 +68,4 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
-=======
-    
-      </ion-list>
-    </ion-card>
-    <ion-content class="home">
-      <ion-card ion-item *ngFor="let item of items"> 
-          <img src="{{item.better_featured_image.source_url}}" />
-          <ion-card-content>
-             <ion-card-title>
-                 {{item.title.rendered}}
-             </ion-card-title>
-    
-             <div class="text" [innerHTML]="item.excerpt.rendered"></div>
-          </ion-card-content>
-      </ion-card>
-</ion-content>
->>>>>>> d7588cb64d142e4cf88e77952b3129d6b18d3eaa
+
