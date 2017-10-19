@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { getNgModulePathFromCorrespondingPage } from '@ionic/app-scripts/dist/deep-linking/util';
+>>>>>>> d7588cb64d142e4cf88e77952b3129d6b18d3eaa
 import { dateSortValue } from 'ionic-angular/umd/util/datetime-util';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
@@ -35,6 +39,10 @@ export class FogasfeltoltesPage {
     console.log('Passed params', navParams.data);
     this.mypicref = firebase.storage().ref('/');
     moment.locale('hu'); 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d7588cb64d142e4cf88e77952b3129d6b18d3eaa
   }
 
   ionViewDidLoad() {
