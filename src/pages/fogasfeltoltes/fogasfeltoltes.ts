@@ -1,9 +1,11 @@
+import { dateSortValue } from 'ionic-angular/umd/util/datetime-util';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { storage } from 'firebase';
 import firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
+import * as moment from 'moment';
 
 /**
  * Generated class for the FogasfeltoltesPage page.
@@ -18,18 +20,21 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'fogasfeltoltes.html',
 })
 export class FogasfeltoltesPage {
+  
   picdata: any
   picurl: any
   mypicref: any
   fogasDatuma
   fogasHalfaj   
-  fogasSuly
+  fogasSuly: number
   fogasEgyeb
   kepmegjelenit
+  useremail
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
     console.log('Passed params', navParams.data);
     this.mypicref = firebase.storage().ref('/');
+    moment.locale('hu'); 
   }
 
   ionViewDidLoad() {
@@ -72,11 +77,12 @@ export class FogasfeltoltesPage {
   
       this.firebasedb.list("/fogasok/")
       .push({
-        datum:this.fogasDatuma,
+        datum:this.fogasDatuma.moment().format('LL'),
         //halfaj:this.fogasHalfaj,
         suly:this.fogasSuly,
         egyeb:this.fogasEgyeb,
-        keplink: savedPic.downloadURL
+        keplink: savedPic.downloadURL,
+        useremail:this.navParams.get("facebookemail")
       });
   }
   uid() {

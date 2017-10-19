@@ -7,6 +7,7 @@ import { Network } from '@ionic-native/network';
 import { TudastarPage } from '../pages/tudastar/tudastar';
 import { FogasinaploPage } from '../pages/fogasinaplo/fogasinaplo';
 import { TerkepPage } from '../pages/terkep/terkep';
+import { ItemPage } from '../pages/item/item';
 import { TerkeplistaPage } from '../pages/terkeplista/terkeplista';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -46,7 +47,8 @@ var config = {
     FogasinaploPage,
     TerkepPage,
     TerkeplistaPage,
-    FogasfeltoltesPage
+    FogasfeltoltesPage,
+    ItemPage
 
   ],
   imports: [
@@ -55,7 +57,7 @@ var config = {
     HttpModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(config)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,7 +71,8 @@ var config = {
     FogasinaploPage,
     TerkepPage,
     TerkeplistaPage,
-    FogasfeltoltesPage
+    FogasfeltoltesPage,
+    ItemPage
   ],
   providers: [
     StatusBar,
