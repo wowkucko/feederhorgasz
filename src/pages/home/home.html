@@ -1,12 +1,20 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-    <ion-buttons end>
+  <ion-toolbar color="primary">
+    <ion-buttons start>
       <button ion-button icon-only>
-          <ion-icon name="person"></ion-icon>
-        </button>
+        <ion-icon name="navigate"></ion-icon>
+      </button>
     </ion-buttons>
-  </ion-navbar>
+
+    <ion-title>Header</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="idojarasMegnyit()">
+        <ion-icon name="cloudy-night"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>

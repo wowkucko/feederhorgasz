@@ -1,3 +1,4 @@
+import { IdojarasPage } from './../idojaras/idojaras';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { TerkepPage } from './../terkep/terkep';
@@ -36,6 +37,9 @@ export class HomePage {
 
   terkepnyit(){
     this.navCtrl.push(TerkepPage);
+   }
+   idojarasMegnyit(){
+     this.navCtrl.push(IdojarasPage);
    }
   itemKlikk(item){
 

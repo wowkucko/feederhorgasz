@@ -1,3 +1,5 @@
+import { IdojarasPage } from '../pages/idojaras/idojaras';
+import { BeallitasokPage } from '../pages/beallitasok/beallitasok';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -25,6 +27,8 @@ import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { HelyekProvider } from '../providers/helyek/helyek';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
+import { IdojarasProvider } from '../providers/idojaras/idojaras';
+import { IonicStorageModule } from '@ionic/storage';
 
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",
@@ -48,7 +52,9 @@ var config = {
     TerkepPage,
     TerkeplistaPage,
     FogasfeltoltesPage,
-    ItemPage
+    ItemPage,
+    BeallitasokPage,
+    IdojarasPage
 
   ],
   imports: [
@@ -57,7 +63,8 @@ var config = {
     HttpModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(config)
+    AngularFireModule.initializeApp(config),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -72,7 +79,9 @@ var config = {
     TerkepPage,
     TerkeplistaPage,
     FogasfeltoltesPage,
-    ItemPage
+    ItemPage,
+    BeallitasokPage,
+    IdojarasPage
   ],
   providers: [
     StatusBar,
@@ -83,7 +92,8 @@ var config = {
     HelyekProvider,
     Geolocation,
     Network,
-    Camera
+    Camera,
+    IdojarasProvider
   ]
 })
 export class AppModule {

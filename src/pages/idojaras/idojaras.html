@@ -1,0 +1,51 @@
+<!--
+  Generated template for the IdojarasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>idojaras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-grid *ngIf="idojaras">
+  <ion-row>
+     <ion-col width-50 offset-25>
+       <h2 class="hely">{{idojaras.display_location.city}}</h2>
+       <div class="ikon"><img src="{{idojaras.icon_url}}"></div>
+       <h3 class="leiras">{{idojaras.weather}}</h3>
+        <h1 class="homerseklet">{{idojaras.temp_c}}&deg;</h1>
+     </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col width-100>
+      <ion-list>
+          <ion-item>
+              <strong>UV: </strong> {{idojaras.UV}}
+        </ion-item>
+        <ion-item>
+              <strong>Hőérzet: </strong> {{idojaras.feelslike_c}}&deg;C
+        </ion-item>
+        <ion-item>
+          <strong>Páratartalom: </strong> {{idojaras.relative_humidity}}
+        </ion-item>
+        <ion-item>
+          <strong>Harmatpont: </strong> {{idojaras.dewpoint_c}}&deg;C
+        </ion-item>
+        <ion-item>
+          <strong>Szél: </strong> {{idojaras.wind_kph}} km/h
+        </ion-item>
+        <ion-item>
+          <strong>Légnyomás: </strong> {{idojaras.pressure_mb}} hPa
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
