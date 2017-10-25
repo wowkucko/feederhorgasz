@@ -12,15 +12,22 @@ import 'rxjs/add/operator/map';
 export class IdojarasProvider {
   apiKey='dc05eb73c35c0016';
   url;
+  url2;
 
 
   constructor(public http: Http) {
     console.log('Hello IdojarasProvider Provider');
     this.url='http://api.wunderground.com/api/'+this.apiKey+'/conditions/lang:HU/q';
+    this.url2='http://api.wunderground.com/api/'+this.apiKey+'/forecast/lang:HU/q';
   }
 
-  getIdojaras(city){
-    return this.http.get(this.url+'/'+city+'.json')
+  getIdojaras(city, country){
+    return this.http.get(this.url+'/'+country+'/'+city+'.json')
+    .map(res=>res.json());
+  }
+
+  getIdojaraselorejelzes(city, country){
+    return this.http.get(this.url2+'/'+country+'/'+city+'.json')
     .map(res=>res.json());
   }
 

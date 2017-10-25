@@ -17,8 +17,10 @@ import { Storage } from '@ionic/storage';
 })
 export class IdojarasPage {
   idojaras:any;
+  elorejelzes:any;
   hely:{
-    city:string
+    city:string,
+    country:string
   }
 
   constructor(
@@ -36,19 +38,27 @@ export class IdojarasPage {
         this.hely=JSON.parse(val);
       } else{
         this.hely={
-          city:'Budapest'
+          city:'Budapest',
+          country:'HU'
         }
       }
-      this.idojarasProvider.getIdojaras(this.hely.city).subscribe(idojaras=>{
+      this.idojarasProvider.getIdojaras(this.hely.city,this.hely.country).subscribe(idojaras=>{
         this.idojaras=idojaras.current_observation;
-  
       });
+
+      this.idojarasProvider.getIdojaraselorejelzes(this.hely.city,this.hely.country).subscribe(idojaraselorejelzes=>{
+        this.elorejelzes=idojaraselorejelzes.forecast.simpleforecast.forecastday;
+        console.log(this.elorejelzes)
+        
+      });
+
     });
 
  
 
   }
   ionViewDidLoad() {
+    
   }
 
 }

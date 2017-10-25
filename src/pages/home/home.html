@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons start>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="presentActionSheet()">
         <ion-icon name="navigate"></ion-icon>
       </button>
     </ion-buttons>
@@ -18,29 +18,6 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Görbüljön {{navParams.data.facebooknev}}!</h2>
-  <ion-card>
-    <ion-card-header>
-      Közeli helyek
-    </ion-card-header>
-
-    <ion-list>
-      <button ion-item (click)="terkepnyit()">
-          <ion-icon name="cart" item-start></ion-icon>
-          Horgásztó
-        </button>
-
-      <button ion-item>
-          <ion-icon name="medical" item-start></ion-icon>
-          Horgászbolt
-        </button>
-
-      <button ion-item>
-          <ion-icon name="cafe" item-start></ion-icon>
-          Szervíz
-        </button>
-    </ion-list>
-  </ion-card>
   <ion-card ion-item *ngFor="let item of items" (click)="itemKlikk(item)">
     <ion-card-content>
       <ion-item>

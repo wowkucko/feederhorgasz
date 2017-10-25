@@ -48,4 +48,16 @@
     </ion-col>
   </ion-row>
 </ion-grid>
+<ion-list *ngFor="let nap of elorejelzes">
+    <ion-item>
+      <ion-avatar item-start>
+          <img src="{{nap.icon_url}}"/>
+      </ion-avatar>
+      <h1>{{nap.date.weekday}}</h1>
+      <h3>{{nap.conditions}}</h3>
+      <p>A hőmérséklet a nap folyamán {{nap.low.celsius}} és {{nap.high.celsius}} °C között alakul, átlagosan {{nap.avewind.kph}} km/h {{nap.avewind.dir}} széllel. </p>
+    </ion-item>
+  </ion-list>
+További részletek:
+
 </ion-content>
