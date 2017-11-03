@@ -25,6 +25,8 @@ export class FogasfeltoltesPage {
   mypicref: any
   fogasDatuma
   fogasHalfaj   
+  fogasCsali
+  fogasHelyszin
   fogasSuly: number
   fogasEgyeb
   kepmegjelenit

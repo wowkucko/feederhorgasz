@@ -17,6 +17,7 @@
 
 
 <ion-content padding>
+  Kép csatolása
   <button ion-button (click)="fotoKeszit()">Fotózás</button>
   <button ion-button (click)="fotoValaszt()">Választ</button>
   <img src="{{ kepmegjelenit }}" />
@@ -24,7 +25,7 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>Start Time</ion-label>
+      <ion-label>Fogás dátuma</ion-label>
       <ion-datetime displayFormat="YYYY-MM-DD HH:mm" pickerFormat="YYYY-MM-DDTHH:mm" [(ngModel)]="fogasDatuma"></ion-datetime>
     </ion-item>
   </ion-list>
@@ -35,9 +36,16 @@
       <ion-label fixed>Súly</ion-label>
       <ion-input [(ngModel)]="fogasSuly" type="text"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label fixed>Egyéb</ion-label>
+      </ion-item>
+      <ion-label fixed>Helyszín</ion-label>
+      <ion-select [(ngModel)]="fogasHelyszin"></ion-select>
+      <ion-item>
+    </ion-item>
+    <ion-label fixed>Használt csali</ion-label>
+    <ion-select [(ngModel)]="fogasCsali"></ion-select>
+    <ion-item>
+      <ion-label fixed>Egyéb megjegyzés</ion-label>
       <ion-input [(ngModel)]="fogasEgyeb" type="text"></ion-input>
     </ion-item>
   </ion-list>

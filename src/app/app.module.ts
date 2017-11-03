@@ -1,3 +1,7 @@
+import { EtetoanyagfeltoltesPage } from './../pages/etetoanyagfeltoltes/etetoanyagfeltoltes';
+import { TofeltoltesPage } from '../pages/tofeltoltes/tofeltoltes';
+import { CsalifeltoltesPage } from '../pages/csalifeltoltes/csalifeltoltes';
+import { ProfilePage } from '../pages/profile/profile';
 import { IdojarasPage } from '../pages/idojaras/idojaras';
 import { BeallitasokPage } from '../pages/beallitasok/beallitasok';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -54,7 +58,11 @@ var config = {
     FogasfeltoltesPage,
     ItemPage,
     BeallitasokPage,
-    IdojarasPage
+    IdojarasPage,
+    ProfilePage,
+    CsalifeltoltesPage,
+    TofeltoltesPage,
+    EtetoanyagfeltoltesPage
 
   ],
   imports: [
@@ -81,7 +89,11 @@ var config = {
     FogasfeltoltesPage,
     ItemPage,
     BeallitasokPage,
-    IdojarasPage
+    IdojarasPage,
+    ProfilePage,
+    CsalifeltoltesPage,
+    TofeltoltesPage,
+    EtetoanyagfeltoltesPage
   ],
   providers: [
     StatusBar,
