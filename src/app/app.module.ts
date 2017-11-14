@@ -1,3 +1,5 @@
+import { ToreszletekPage } from '../pages/toreszletek/toreszletek';
+import { TolistazasPage } from '../pages/tolistazas/tolistazas';
 import { EtetoanyagfeltoltesPage } from './../pages/etetoanyagfeltoltes/etetoanyagfeltoltes';
 import { TofeltoltesPage } from '../pages/tofeltoltes/tofeltoltes';
 import { CsalifeltoltesPage } from '../pages/csalifeltoltes/csalifeltoltes';
@@ -62,7 +64,9 @@ var config = {
     ProfilePage,
     CsalifeltoltesPage,
     TofeltoltesPage,
-    EtetoanyagfeltoltesPage
+    EtetoanyagfeltoltesPage,
+    TolistazasPage,
+    ToreszletekPage
 
   ],
   imports: [
@@ -93,7 +97,9 @@ var config = {
     ProfilePage,
     CsalifeltoltesPage,
     TofeltoltesPage,
-    EtetoanyagfeltoltesPage
+    EtetoanyagfeltoltesPage,
+    TolistazasPage,
+    ToreszletekPage
   ],
   providers: [
     StatusBar,

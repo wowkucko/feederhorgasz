@@ -1,3 +1,4 @@
+import { BeallitasokPage } from '../beallitasok/beallitasok';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { TofeltoltesPage } from '../tofeltoltes/tofeltoltes';
@@ -26,6 +27,9 @@ export class ProfilePage {
   openToFeltoltes(){
     const tofeltolt=this.modal.create(TofeltoltesPage);
     tofeltolt.present();
+  }
+  openBeallitasok(){
+    this.navCtrl.push(BeallitasokPage);
   }
 
 }

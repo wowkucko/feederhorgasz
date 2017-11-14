@@ -14,8 +14,6 @@
 
 
 <ion-content padding>
-  Kép csatolása
-  <button ion-button (click)="tokepValaszt()">Választ</button>
 
 
   <ion-list>
@@ -26,6 +24,14 @@
     <ion-item>
       <ion-label fixed>Cím</ion-label>
       <ion-input [(ngModel)]="cim" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>Telefonszám</ion-label>
+        <ion-input [(ngModel)]="tel" type="text"></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-label fixed>Megye</ion-label>
+      <ion-input [(ngModel)]="megye" type="text"></ion-input>
     </ion-item>
       <ion-label fixed>Vízterület</ion-label>
       <ion-input [(ngModel)]="vizterulet" type="text"></ion-input>

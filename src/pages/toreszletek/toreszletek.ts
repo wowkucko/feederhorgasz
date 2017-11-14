@@ -1,9 +1,8 @@
-import { TolistazasPage } from '../tolistazas/tolistazas';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the TudastarPage page.
+ * Generated class for the ToreszletekPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,19 +10,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-tudastar',
-  templateUrl: 'tudastar.html',
+  selector: 'page-toreszletek',
+  templateUrl: 'toreszletek.html',
 })
-export class TudastarPage {
+export class ToreszletekPage {
+  public toreszletek={};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.toreszletek=this.navParams.get("toreszletek");
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TudastarPage');
-  }
-  openTolistazas(){
-    this.navCtrl.push(TolistazasPage);
+    console.log('ionViewDidLoad ToreszletekPage');
   }
 
 }
