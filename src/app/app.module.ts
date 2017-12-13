@@ -1,5 +1,6 @@
 import { ToreszletekPage } from '../pages/toreszletek/toreszletek';
 import { TolistazasPage } from '../pages/tolistazas/tolistazas';
+import { IdomeroPage } from '../pages/idomero/idomero';
 import { EtetoanyagfeltoltesPage } from './../pages/etetoanyagfeltoltes/etetoanyagfeltoltes';
 import { TofeltoltesPage } from '../pages/tofeltoltes/tofeltoltes';
 import { CsalifeltoltesPage } from '../pages/csalifeltoltes/csalifeltoltes';
@@ -66,7 +67,8 @@ var config = {
     TofeltoltesPage,
     EtetoanyagfeltoltesPage,
     TolistazasPage,
-    ToreszletekPage
+    ToreszletekPage,
+    IdomeroPage
 
   ],
   imports: [
@@ -99,7 +101,8 @@ var config = {
     TofeltoltesPage,
     EtetoanyagfeltoltesPage,
     TolistazasPage,
-    ToreszletekPage
+    ToreszletekPage,
+    IdomeroPage
   ],
   providers: [
     StatusBar,

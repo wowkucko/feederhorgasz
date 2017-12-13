@@ -15,6 +15,28 @@
 
 <ion-content padding>
   <h2>{{hiradatok.title.rendered}}</h2>
-  <img src="{{hiradatok.better_featured_image.source_url}}"/>
+  <img src="{{hiradatok.better_featured_image.source_url}}" />
   <div class="text" [innerHTML]="hiradatok.content.rendered"></div>
+
+  <h2>Kommentek</h2>
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Bejegyzés</ion-label>
+      <ion-input [(ngModel)]="bejegyzesszovege" type="text" ></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button color="light" (click)="kommentelkuld()">Beküld</button>
+  <ng-container *ngFor="let item of kommentek; let i = index">
+    <ion-list>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{item.kommenteloavatar}}">
+        </ion-avatar>
+        <h2>{{item.kommenteloneve}}</h2>
+        <h3>{{item.kommentido}}</h3>
+        <p>{{item.bejegyzesszovege}}</p>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 </ion-content>

@@ -5,6 +5,7 @@ import { TerkepPage } from './../terkep/terkep';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ItemPage } from './../item/item';
+import { IdomeroPage } from './../idomero/idomero';
 
 @Component({
   selector: 'page-home',
@@ -41,11 +42,13 @@ export class HomePage {
    idojarasMegnyit(){
      this.navCtrl.push(IdojarasPage);
    }
+   idomeroMegnyit(){
+     this.navCtrl.push(IdomeroPage);
+   }
+
   itemKlikk(item){
 
-    this.navCtrl.push(ItemPage,{
-      hiradatok:item
-    });
+    this.navCtrl.push(ItemPage,{hiradatok:item,facebookadatok:this.navParams.data});
   }
 
   presentActionSheet() {

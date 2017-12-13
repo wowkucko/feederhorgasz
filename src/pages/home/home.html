@@ -18,6 +18,7 @@
 </ion-header>
 
 <ion-content padding>
+    <button ion-button (click)="idomeroMegnyit()">Mérő</button>
   <ion-card ion-item *ngFor="let item of items" (click)="itemKlikk(item)">
     <ion-card-content>
       <ion-item>
@@ -28,6 +29,7 @@
       <img src="{{item.better_featured_image.source_url}}"/>
 
       <ion-card-content>
+
         <div class="text" [innerHTML]="item.excerpt.rendered"></div>
       </ion-card-content>
 
@@ -35,13 +37,13 @@
         <ion-col>
           <button ion-button icon-left clear small>
               <ion-icon name="thumbs-up"></ion-icon>
-              <div>12 Likes</div>
+              <div>Megosztás</div>
             </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
               <ion-icon name="text"></ion-icon>
-              <div>4 Comments</div>
+              <div>4 komment</div>
             </button>
         </ion-col>
         <ion-col center text-center>
