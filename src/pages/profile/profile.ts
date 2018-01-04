@@ -1,3 +1,4 @@
+import { CsalifeltoltesPage } from '../csalifeltoltes/csalifeltoltes';
 import { BeallitasokPage } from '../beallitasok/beallitasok';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
@@ -30,6 +31,11 @@ export class ProfilePage {
   }
   openBeallitasok(){
     this.navCtrl.push(BeallitasokPage);
+  }
+
+  openCsaliFeltoltes(){
+    const csalifeltolt=this.modal.create(CsalifeltoltesPage);
+    csalifeltolt.present();
   }
 
 }

@@ -1,0 +1,64 @@
+<!--
+  Generated template for the CsalilistazasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="csalik">
+            <ion-segment-button value="Bojli">
+              Bojli
+            </ion-segment-button>
+            <ion-segment-button value="Pellet">
+              Pellet
+            </ion-segment-button>
+            <ion-segment-button value="Mu">
+                Mű
+              </ion-segment-button>
+              <ion-segment-button value="Elo">
+                  Élő
+                </ion-segment-button>
+          </ion-segment>
+      </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  
+  
+  <div [ngSwitch]="csalik">
+    <ion-list *ngSwitchCase="'Bojli'">
+        
+        <ng-container *ngFor="let item of bojlicsalik; let i = index">
+            <ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="{{item.keplink}}">
+        </ion-thumbnail>
+        <h2>{{item.nev}}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="briefcase"></ion-icon>
+            Dobozba
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      </ng-container>
+      
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'Pellet'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+      
+    </ion-list>
+  </div>
+</ion-content>

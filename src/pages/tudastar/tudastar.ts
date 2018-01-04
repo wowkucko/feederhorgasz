@@ -1,3 +1,4 @@
+import { CsalilistazasPage } from '../csalilistazas/csalilistazas';
 import { TolistazasPage } from '../tolistazas/tolistazas';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -24,6 +25,9 @@ export class TudastarPage {
   }
   openTolistazas(){
     this.navCtrl.push(TolistazasPage);
+  }
+  openCsalik(){
+    this.navCtrl.push(CsalilistazasPage);
   }
 
 }

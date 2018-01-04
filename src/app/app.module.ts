@@ -1,6 +1,6 @@
+import { CsalilistazasPage } from '../pages/csalilistazas/csalilistazas';
 import { ToreszletekPage } from '../pages/toreszletek/toreszletek';
 import { TolistazasPage } from '../pages/tolistazas/tolistazas';
-import { IdomeroPage } from '../pages/idomero/idomero';
 import { EtetoanyagfeltoltesPage } from './../pages/etetoanyagfeltoltes/etetoanyagfeltoltes';
 import { TofeltoltesPage } from '../pages/tofeltoltes/tofeltoltes';
 import { CsalifeltoltesPage } from '../pages/csalifeltoltes/csalifeltoltes';
@@ -36,6 +36,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
 import { IdojarasProvider } from '../providers/idojaras/idojaras';
 import { IonicStorageModule } from '@ionic/storage';
+import { IdomeroPage } from '../pages/idomero/idomero';
 
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",
@@ -68,7 +69,10 @@ var config = {
     EtetoanyagfeltoltesPage,
     TolistazasPage,
     ToreszletekPage,
-    IdomeroPage
+    IdomeroPage,
+    CsalifeltoltesPage,
+    CsalilistazasPage
+
 
   ],
   imports: [
@@ -102,7 +106,11 @@ var config = {
     EtetoanyagfeltoltesPage,
     TolistazasPage,
     ToreszletekPage,
-    IdomeroPage
+    IdomeroPage,
+    CsalifeltoltesPage,
+    CsalilistazasPage
+    
+  
   ],
   providers: [
     StatusBar,

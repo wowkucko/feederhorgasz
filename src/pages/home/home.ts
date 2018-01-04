@@ -5,7 +5,8 @@ import { TerkepPage } from './../terkep/terkep';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ItemPage } from './../item/item';
-import { IdomeroPage } from './../idomero/idomero';
+import { IdomeroPage } from './../idomero/idomero'
+
 
 @Component({
   selector: 'page-home',
