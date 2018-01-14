@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>fogasinaplo</ion-title>
+    <ion-title>Fogási napló</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,18 +18,17 @@
     <ion-fab top right edge>
         <button ion-fab (click)="openFeltoltes()"><ion-icon name="add"></ion-icon></button>
       </ion-fab>
-      <h2>Idővonal</h2>
       <ng-container *ngFor="let item of fogasadatok; let i = index">
     <ion-card >
       
         <img [src]="item.keplink"/>
         <ion-card-content>
           <ion-card-title>
-              {{item.datum}} - Ponty
+              {{item.datum}} - {{item.halfaj}}
             </ion-card-title>
           <p>
 
-            <button ion-button>Részletek</button>>
+            <button ion-button>Részletek</button> {{item.helyszin}}
 
           </p>
           

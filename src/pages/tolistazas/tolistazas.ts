@@ -59,7 +59,7 @@ export class TolistazasPage {
   }
   toreszletNyit(item) {
     this.navCtrl.push(ToreszletekPage, {
-      toreszletek: item
+      toreszletek: item,facebookadatok: this.navParams.data
     });
   }
 

@@ -1,5 +1,5 @@
 <!--
-  Generated template for the ToreszletekPage page.
+  Generated template for the CsalireszletekPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,22 +7,23 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{toreszletek.nev}}</ion-title>
+    <ion-title>csalireszletek</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+
 <ion-content padding>
   <ng-container *ngIf="ladabol;else nemlada">
-    <div *ngFor="let toreszletek of toreszletek; let i = index">
-    <h2>{{toreszletek.nev}}</h2>
-    <h3>{{toreszletek.$key}} </h3>
+    <div *ngFor="let csalireszletek of csalireszletek; let i = index">
+    <h2>{{csalireszletek.nev}}</h2>
+    <h3>{{csalireszletek.$key}} </h3>
     
     </div>
   </ng-container>
   <ng-template #nemlada>
-    <h2>{{toreszletek.nev}}</h2>
-    <h3>{{toreszletek.$key}} </h3>
+    <h2>{{csalireszletek.nev}}</h2>
+    <h3>{{csalireszletek.$key}} </h3>
   </ng-template>
     <button ion-fab (click)="PushTolada()">Ládába</button>
 </ion-content>

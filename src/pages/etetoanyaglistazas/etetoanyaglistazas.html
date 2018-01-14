@@ -1,0 +1,88 @@
+<!--
+  Generated template for the EtetoanyaglistazasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+      <ion-segment [(ngModel)]="etetoanyagok">
+          <ion-segment-button value="Methodmix">
+           Mixek
+          </ion-segment-button>
+          <ion-segment-button value="MethodPellet">
+            Pelletek
+          </ion-segment-button>
+          <ion-segment-button value="Aroma">
+              Aromák
+            </ion-segment-button>
+            <ion-segment-button value="Adalek">
+                Adalékok
+              </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <div [ngSwitch]="etetoanyagok">
+    <ion-list *ngSwitchCase="'Methodmix'">
+        
+        <ng-container *ngFor="let item of methodmix; let i = index">
+            
+      <ion-item (click)="openEtetoanyagreszletek(item)">
+        <ion-thumbnail item-start>
+          <img src="{{item.keplink}}">
+        </ion-thumbnail>
+        <h2>{{item.nev}}</h2>
+      </ion-item>
+   
+      </ng-container>
+      
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'Methodpellet'">
+      
+      <ng-container *ngFor="let item of methodpellet; let i = index">
+          
+    <ion-item (click)="openEtetoanyagreszletek(item)">
+      <ion-thumbnail item-start>
+        <img src="{{item.keplink}}">
+      </ion-thumbnail>
+      <h2>{{item.nev}}</h2>
+    </ion-item>
+ 
+    </ng-container>
+    
+  </ion-list>
+  <ion-list *ngSwitchCase="'Aroma'">
+    
+    <ng-container *ngFor="let item of aroma; let i = index">
+        
+  <ion-item (click)="openEtetoanyagreszletek(item)">
+    <ion-thumbnail item-start>
+      <img src="{{item.keplink}}">
+    </ion-thumbnail>
+    <h2>{{item.nev}}</h2>
+  </ion-item>
+  <ion-list *ngSwitchCase="'Adalek'">
+    
+    <ng-container *ngFor="let item of adalek; let i = index">
+        
+  <ion-item (click)="openEtetoanyagreszletek(item)">
+    <ion-thumbnail item-start>
+      <img src="{{item.keplink}}">
+    </ion-thumbnail>
+    <h2>{{item.nev}}</h2>
+  </ion-item>
+
+  </ng-container>
+  
+</ion-list>
+
+  </ng-container>
+  
+</ion-list>
+  </div>
+</ion-content>

@@ -14,5 +14,56 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Etetőanyag neve</ion-label>
+      <ion-input [(ngModel)]="nev" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>Márka</ion-label>
+        <ion-select [(ngModel)]="marka">
+          <ion-option value="Haldorádó">Haldorádó</ion-option>
+          <ion-option value="SBS">SBS</ion-option>
+          <ion-option value="Stég">Stég</ion-option>
+          <ion-option value="Feedermánia">Feedermánia</ion-option>
+        </ion-select>
+      </ion-item>
+    <ion-item>
+      <ion-label fixed>Típus</ion-label>
+      <ion-select [(ngModel)]="tipus">
+        <ion-option value="mix">Method mix</ion-option>
+        <ion-option value="pellet">Pellet</ion-option>
+        <ion-option value="aroma">Aroma, Dip</ion-option>
+        <ion-option value="adalek">Adalékanyag</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>Állag</ion-label>
+        <ion-select [(ngModel)]="allag">
+          <ion-option value="Finomszemcsés">Finomszemcsés</ion-option>
+          <ion-option value="Dúrva">Dúrva</ion-option>
+          <ion-option value="Közepes">Közepes</ion-option>
+        </ion-select>
+      </ion-item>
 
+    <ion-item>
+      <ion-label fixed>Szín</ion-label>
+      <ion-select [(ngModel)]="szin">
+        <ion-option value="Piros">Piros</ion-option>
+        <ion-option value="Sárga">Sárga</ion-option>
+      </ion-select>
+    </ion-item>
+      <ion-item>
+        <ion-label fixed>Leírás</ion-label>
+        <ion-input [(ngModel)]="leiras" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Kiszerelés</ion-label>
+        <ion-input [(ngModel)]="kiszereles" type="text"></ion-input>
+      </ion-item>
+  </ion-list>
+
+
+
+  <button ion-button (click)="etetoanyagfeltolt()">feltolt</button>
 </ion-content>

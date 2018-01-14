@@ -1,6 +1,9 @@
+import { MyetetoPage } from './../myeteto/myeteto';
+import { MycsaliPage } from '../mycsali/mycsali';
+import { MytoPage } from '../myto/myto';
 import { dateSortValue } from 'ionic-angular/umd/util/datetime-util';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController} from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { storage } from 'firebase';
 import firebase from 'firebase';
@@ -27,13 +30,20 @@ export class FogasfeltoltesPage {
   fogasHalfaj   
   fogasCsali
   fogasHelyszin
+  fogasEtetoanyag1
   fogasSuly: number
   fogasEgyeb
   kepmegjelenit
   useremail
+  callback = data => {
+    this.fogasCsali = data.csalineve;
+    this.fogasHelyszin=data.toneve;
+    this.fogasEtetoanyag1=data.etetoanyagneve;
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
     console.log('Passed params', navParams.data);
+    
     this.mypicref = firebase.storage().ref('/');
  
   }
@@ -70,6 +80,25 @@ export class FogasfeltoltesPage {
       
     })
   }
+  valasztasLadabolcsali(){
+    this.navCtrl.push(MycsaliPage, {
+      callback: this.callback,facebookadatok:this.navParams.data
+    }
+  );
+}
+valasztasLadabolhelyszin(){
+  this.navCtrl.push(MytoPage, {
+    callback: this.callback,facebookadatok:this.navParams.data
+  }
+);
+}
+valasztasLadaboletetoanyag(){
+  this.navCtrl.push(MyetetoPage, {
+    callback: this.callback,facebookadatok:this.navParams.data
+  }
+);
+}
+  
 
 
   async adatfeltolt() {
@@ -82,8 +111,11 @@ export class FogasfeltoltesPage {
         //halfaj:this.fogasHalfaj,
         suly:this.fogasSuly,
         egyeb:this.fogasEgyeb,
+        hasznaltcsali:this.fogasCsali,
         keplink: savedPic.downloadURL,
-        useremail:this.navParams.get("facebookemail")
+        useremail:this.navParams.get("facebookemail"),
+        helyszin:this.fogasHelyszin,
+        etetoanyag1:this.fogasEtetoanyag1
       });
   }
   uid() {
@@ -93,5 +125,6 @@ export class FogasfeltoltesPage {
       return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     }); return uuid;
   }
+
 
 }

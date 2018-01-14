@@ -37,14 +37,40 @@
       <ion-input [(ngModel)]="fogasSuly" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      </ion-item>
-      <ion-label fixed>Helyszín</ion-label>
-      <ion-select [(ngModel)]="fogasHelyszin"></ion-select>
-      <ion-item>
     </ion-item>
-    <ion-label fixed>Használt csali</ion-label>
-    <ion-select [(ngModel)]="fogasCsali"></ion-select>
     <ion-item>
+
+
+      <ion-label fixed>Helyszín</ion-label>
+      <ion-input [(ngModel)]="fogasHelyszin" type="text"></ion-input>
+      <button ion-button clear item-end (click)="valasztasLadabolhelyszin()">
+                <ion-icon name="add-circle">Választás ládából</ion-icon>
+              </button>
+    </ion-item>
+    <ion-item>
+
+
+      <ion-label fixed>Használt csali</ion-label>
+      <ion-input [(ngModel)]="fogasCsali" type="text"></ion-input>
+      <button ion-button clear item-end (click)="valasztasLadabolcsali()">
+        <ion-icon name="add-circle">Választás ládából</ion-icon>
+      </button>
+    </ion-item>
+    <ion-item>
+
+
+      <ion-label fixed>Etetőanyag 1</ion-label>
+      <ion-input [(ngModel)]="fogasEtetoanyag1" type="text"></ion-input>
+      <button ion-button clear item-end (click)="valasztasLadaboletetoanyag()">
+              <ion-icon name="add-circle">Választás ládából</ion-icon>
+            </button>
+    </ion-item>
+
+    <ion-item>
+
+
+
+
       <ion-label fixed>Egyéb megjegyzés</ion-label>
       <ion-input [(ngModel)]="fogasEgyeb" type="text"></ion-input>
     </ion-item>

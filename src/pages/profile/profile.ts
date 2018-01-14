@@ -1,8 +1,10 @@
+import { EtetoanyagfeltoltesPage } from '../etetoanyagfeltoltes/etetoanyagfeltoltes';
 import { CsalifeltoltesPage } from '../csalifeltoltes/csalifeltoltes';
 import { BeallitasokPage } from '../beallitasok/beallitasok';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { TofeltoltesPage } from '../tofeltoltes/tofeltoltes';
+import { LadaPage } from '../lada/lada';
 
 
 /**
@@ -36,6 +38,14 @@ export class ProfilePage {
   openCsaliFeltoltes(){
     const csalifeltolt=this.modal.create(CsalifeltoltesPage);
     csalifeltolt.present();
+  }
+  openLada(){
+    this.navCtrl.push(LadaPage,this.navParams.data);
+  }
+
+  openEtetoanyagFeltoltes(){
+    const etetoanyagfeltolt=this.modal.create(EtetoanyagfeltoltesPage);
+    etetoanyagfeltolt.present();
   }
 
 }

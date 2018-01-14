@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
+
 /**
- * Generated class for the ToreszletekPage page.
+ * Generated class for the EtetoanyagreszletekPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,44 +11,45 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
-  selector: 'page-toreszletek',
-  templateUrl: 'toreszletek.html',
+  selector: 'page-etetoanyagreszletek',
+  templateUrl: 'etetoanyagreszletek.html',
 })
-export class ToreszletekPage {
-  public toreszletek={};
+export class EtetoanyagreszletekPage {
+  public etetoanyagreszletek={}
   public facebookadatok={}
   ladabol:boolean
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
-    if(this.navParams.get("mycsalireszletek")!=null)
+    if(this.navParams.get("myetetoanyagreszletek")!=null)
     {
       
       
-      this.firebasedb.list("/tavak/").subscribe(_data => {
+      this.firebasedb.list("/etetoanyagok/").subscribe(_data => {
         
-        this.toreszletek = _data.filter(item => item.$key == this.navParams.get("mytoreszletek").id);
+        this.etetoanyagreszletek = _data.filter(item => item.$key == this.navParams.get("etetoanyagreszletek").id);
         this.ladabol=true;
   
       })
     }
     else{
-      this.toreszletek=this.navParams.get("toreszletek");
+      this.etetoanyagreszletek=this.navParams.get("etetoanyagreszletek");
       this.facebookadatok=this.navParams.get("facebookadatok");
       this.ladabol=false;
       
     }
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ToreszletekPage');
+    console.log('ionViewDidLoad EtetoanyagreszletekPage');
   }
-
   PushTolada(){
-    this.firebasedb.list("/mytavak/")
+    console.log("pusholok")
+    this.firebasedb.list("/myetetoanyag/")
     .push({
-      id:this.navParams.get("toreszletek").$key,
+      id:this.navParams.get("etetoanyagreszletek").$key,
       useremail:this.navParams.get("facebookadatok").facebookemail,
-      toneve:this.navParams.get("toreszletek").nev
+      etetoanyagneve:this.navParams.get("etetoanyagreszletek").nev
     });
   }
 

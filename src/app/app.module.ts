@@ -1,3 +1,10 @@
+import { EtetoanyagreszletekPage } from '../pages/etetoanyagreszletek/etetoanyagreszletek';
+import { EtetoanyaglistazasPage } from '../pages/etetoanyaglistazas/etetoanyaglistazas';
+import { LadaPage } from '../pages/lada/lada';
+import { MyetetoPage } from '../pages/myeteto/myeteto';
+import { MycsaliPage } from '../pages/mycsali/mycsali';
+import { MytoPage } from '../pages/myto/myto';
+import { CsalireszletekPage } from '../pages/csalireszletek/csalireszletek';
 import { CsalilistazasPage } from '../pages/csalilistazas/csalilistazas';
 import { ToreszletekPage } from '../pages/toreszletek/toreszletek';
 import { TolistazasPage } from '../pages/tolistazas/tolistazas';
@@ -71,7 +78,14 @@ var config = {
     ToreszletekPage,
     IdomeroPage,
     CsalifeltoltesPage,
-    CsalilistazasPage
+    CsalilistazasPage,
+    CsalireszletekPage,
+    MytoPage,
+    MycsaliPage,
+    MyetetoPage,
+    LadaPage,
+    EtetoanyaglistazasPage,
+    EtetoanyagreszletekPage
 
 
   ],
@@ -108,7 +122,14 @@ var config = {
     ToreszletekPage,
     IdomeroPage,
     CsalifeltoltesPage,
-    CsalilistazasPage
+    CsalilistazasPage,
+    CsalireszletekPage,
+    MytoPage,
+    MycsaliPage,
+    MyetetoPage,
+    LadaPage,
+    EtetoanyaglistazasPage,
+    EtetoanyagreszletekPage
     
   
   ],

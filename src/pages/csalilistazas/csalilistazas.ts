@@ -1,3 +1,4 @@
+import { CsalireszletekPage } from '../csalireszletek/csalireszletek';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -20,6 +21,7 @@ export class CsalilistazasPage {
   elocsalik=[]
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase) {
+    
     this.firebasedb.list("/csalik/").subscribe(_data => {
       this.bojlicsalik = _data.filter(item =>
         item.approved == "1" && item.tipus == "Bojli"
@@ -38,7 +40,12 @@ export class CsalilistazasPage {
   }
 
   ionViewDidLoad() {
-
+    
+  }
+  openCsalireszletek(item){
+    this.navCtrl.push(CsalireszletekPage, {
+      csalireszletek: item,facebookadatok: this.navParams.data
+    });
   }
 
 }

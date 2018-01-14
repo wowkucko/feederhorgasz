@@ -32,33 +32,59 @@
     <ion-list *ngSwitchCase="'Bojli'">
         
         <ng-container *ngFor="let item of bojlicsalik; let i = index">
-            <ion-item-sliding>
-      <ion-item>
+            
+      <ion-item (click)="openCsalireszletek(item)">
         <ion-thumbnail item-start>
           <img src="{{item.keplink}}">
         </ion-thumbnail>
         <h2>{{item.nev}}</h2>
       </ion-item>
-      <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="briefcase"></ion-icon>
-            Dobozba
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
+   
       </ng-container>
       
     </ion-list>
   
     <ion-list *ngSwitchCase="'Pellet'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="img/thumbnail-kitten-1.jpg">
-        </ion-thumbnail>
-        <h2>Luna</h2>
-      </ion-item>
-      ...
       
-    </ion-list>
+      <ng-container *ngFor="let item of pelletcsalik; let i = index">
+          
+    <ion-item (click)="openCsalireszletek(item)">
+      <ion-thumbnail item-start>
+        <img src="{{item.keplink}}">
+      </ion-thumbnail>
+      <h2>{{item.nev}}</h2>
+    </ion-item>
+ 
+    </ng-container>
+    
+  </ion-list>
+  <ion-list *ngSwitchCase="'Mu'">
+    
+    <ng-container *ngFor="let item of mucsalik; let i = index">
+        
+  <ion-item (click)="openCsalireszletek(item)">
+    <ion-thumbnail item-start>
+      <img src="{{item.keplink}}">
+    </ion-thumbnail>
+    <h2>{{item.nev}}</h2>
+  </ion-item>
+
+  </ng-container>
+  
+</ion-list>
+<ion-list *ngSwitchCase="'Elo'">
+  
+  <ng-container *ngFor="let item of elocsalik; let i = index">
+      
+<ion-item (click)="openCsalireszletek(item)">
+  <ion-thumbnail item-start>
+    <img src="{{item.keplink}}">
+  </ion-thumbnail>
+  <h2>{{item.nev}}</h2>
+</ion-item>
+
+</ng-container>
+
+</ion-list>
   </div>
 </ion-content>

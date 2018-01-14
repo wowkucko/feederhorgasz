@@ -1,3 +1,4 @@
+import { EtetoanyaglistazasPage } from '../etetoanyaglistazas/etetoanyaglistazas';
 import { CsalilistazasPage } from '../csalilistazas/csalilistazas';
 import { TolistazasPage } from '../tolistazas/tolistazas';
 import { Component } from '@angular/core';
@@ -24,10 +25,12 @@ export class TudastarPage {
     console.log('ionViewDidLoad TudastarPage');
   }
   openTolistazas(){
-    this.navCtrl.push(TolistazasPage);
+    this.navCtrl.push(TolistazasPage,this.navParams.data);
   }
   openCsalik(){
-    this.navCtrl.push(CsalilistazasPage);
+    this.navCtrl.push(CsalilistazasPage,this.navParams.data);
   }
-
+openEtetoanyagok(){
+  this.navCtrl.push(EtetoanyaglistazasPage,this.navParams.data);
+}
 }

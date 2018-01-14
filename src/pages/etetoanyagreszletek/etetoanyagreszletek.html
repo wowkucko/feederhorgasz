@@ -1,0 +1,27 @@
+<!--
+  Generated template for the EtetoanyagreszletekPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>etetoanyagreszletek</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <ng-container *ngIf="ladabol;else nemlada">
+    <div *ngFor="let etetoanyagreszletek of etetoanyagreszletek; let i = index">
+    <h2>{{etetoanyagreszletek.nev}}</h2>
+    <h3>{{etetoanyagreszletek.$key}} </h3>
+    
+    </div>
+  </ng-container>
+  <ng-template #nemlada>
+    <h2>{{etetoanyagreszletek.nev}}</h2>
+    <h3>{{etetoanyagreszletek.$key}} </h3>
+  </ng-template>
+  <button ion-fab (click)="PushTolada()">Ládába</button>
+</ion-content>
