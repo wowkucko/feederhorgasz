@@ -19,7 +19,7 @@ export class ToreszletekPage {
   ladabol:boolean
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
-    if(this.navParams.get("mycsalireszletek")!=null)
+    if(this.navParams.get("mytoreszletek")!=null)
     {
       
       
@@ -29,6 +29,17 @@ export class ToreszletekPage {
         this.ladabol=true;
   
       })
+    }
+    else if(this.navParams.get("terkepreszletek")!=null){
+      this.firebasedb.list("/tavak/").subscribe(_data => {
+        
+        this.toreszletek=_data.filter(item=>item.nev==this.navParams.get("terkepreszletek").title);
+        this.ladabol=true;
+        console.log("olga",this.toreszletek)        
+  
+      })
+
+
     }
     else{
       this.toreszletek=this.navParams.get("toreszletek");

@@ -27,7 +27,7 @@ export class FogasfeltoltesPage {
   picurl: any
   mypicref: any
   fogasDatuma
-  fogasHalfaj   
+  fogasHalfaj
   fogasCsali
   fogasHelyszin
   fogasEtetoanyag1
@@ -41,9 +41,7 @@ export class FogasfeltoltesPage {
     this.fogasEtetoanyag1=data.etetoanyagneve;
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
-    console.log('Passed params', navParams.data);
-    
+  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {    
     this.mypicref = firebase.storage().ref('/');
  
   }
@@ -102,13 +100,14 @@ valasztasLadaboletetoanyag(){
 
 
   async adatfeltolt() {
+    
     const savedPic = await  this.mypicref.child(this.uid()).child('pic.jpg')
       .putString(this.picdata, 'base64', { contentType: 'image/jpg' });
   
       this.firebasedb.list("/fogasok/")
       .push({
         datum:this.fogasDatuma,
-        //halfaj:this.fogasHalfaj,
+        halfaj:this.fogasHalfaj,
         suly:this.fogasSuly,
         egyeb:this.fogasEgyeb,
         hasznaltcsali:this.fogasCsali,

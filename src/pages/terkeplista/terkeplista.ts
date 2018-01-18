@@ -1,3 +1,4 @@
+import { ToreszletekPage } from '../toreszletek/toreszletek';
 import { HelyekProvider } from '../../providers/helyek/helyek';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -14,11 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'terkeplista.html',
 })
 export class TerkeplistaPage {
+  constructor(public navCtrl: NavController, public locations: HelyekProvider) {
 
-  constructor(public navCtrl: NavController, public locations: HelyekProvider) {}
+  }
   
    ionViewDidLoad() {
      
+   }
+   openReszletek(location){
+    this.navCtrl.push(ToreszletekPage, {
+      terkepreszletek: location
+    });
    }
   
  }

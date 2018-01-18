@@ -20,9 +20,7 @@ export class GoogleMapsProvider {
   mapLoaded: any;
   mapLoadedObserver: any;
   markers: any = [];
-  // add your apiKey for GoogleMaps
-  // example: apiKey: string = 'ARfdaDE..';
-  apiKey: string;
+  apiKey: string = 'AIzaSyC83eOcJ0QxNToP7RaBsrTX3PpOB1bLOKw';
 
   constructor(public connectivityService: GoogleCsatlakozasProvider,
     public geolocation: Geolocation) {

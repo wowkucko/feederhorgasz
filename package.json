@@ -30,6 +30,7 @@
         "@types/angular": "^1.6.39",
         "angularfire2": "^4.0.0-rc.2",
         "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-browsertab": "^0.2.0",
         "cordova-plugin-buildinfo": "^2.0.1",
         "cordova-plugin-camera": "^2.4.1",
