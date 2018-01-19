@@ -1,3 +1,4 @@
+import { FogasreszletekPage } from '../fogasreszletek/fogasreszletek';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Events} from 'ionic-angular';
 import { FogasfeltoltesPage } from '../fogasfeltoltes/fogasfeltoltes';
@@ -46,6 +47,12 @@ export class FogasinaploPage {
   }
   deleteNaplobol(item){
     this.firebasedb.list("/fogasok/").remove(item.$key);
+  }
+  openFogasReszletek(item){
+    this.navCtrl.push(FogasreszletekPage, {
+      fogasreszletek: item
+    });
+
   }
 
 
