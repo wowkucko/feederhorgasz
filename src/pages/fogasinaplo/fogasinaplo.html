@@ -29,7 +29,9 @@
           <p>
 
             <button ion-button>Részletek</button> {{item.helyszin}}
-
+            <button  ion-button clear item-end (click)="deleteNaplobol(item)">
+                <ion-icon name="trash"></ion-icon>
+              </button>
           </p>
           
         </ion-card-content>

@@ -44,6 +44,9 @@ export class FogasinaploPage {
     const feltolt=this.modal.create(FogasfeltoltesPage,this.navParams.data);
     feltolt.present();
   }
+  deleteNaplobol(item){
+    this.firebasedb.list("/fogasok/").remove(item.$key);
+  }
 
 
 }

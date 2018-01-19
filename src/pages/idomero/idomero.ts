@@ -15,7 +15,6 @@ import { Vibration } from '@ionic-native/vibration';
   templateUrl: 'idomero.html',
 })
 export class IdomeroPage {
-  idopercben: number;
   constructor(public navCtrl: NavController, public navParams: NavParams,private vibration: Vibration) {
   }
 
@@ -38,7 +37,7 @@ export class IdomeroPage {
   }
   
   initTimer() {
-    if (!this.timeInSeconds) { this.timeInSeconds = this.idopercben*60; }
+    if (!this.timeInSeconds) { this.timeInSeconds = 20; }
   
     this.time = this.timeInSeconds;
      this.runTimer = false;
@@ -74,6 +73,7 @@ export class IdomeroPage {
       }
       else {
         this.hasFinished = true;
+        this.vibration.vibrate(1000);
         this.vibration.vibrate(1000);
         
       }

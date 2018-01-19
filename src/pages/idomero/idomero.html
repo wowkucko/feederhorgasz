@@ -9,22 +9,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Pomodoro Timer</ion-title>
+    <ion-title>Időmérő</ion-title>
   </ion-navbar>
  </ion-header>
   
  <ion-content padding>
   
-  <ion-item>
-    <ion-label>Gender</ion-label>
-    <ion-select [(ngModel)]="idopercben">
-      <ion-option value=10 selected="true">10</ion-option>
-      <ion-option value=15>15</ion-option>
-    </ion-select>
-  </ion-item>
+
  <div>
   <ion-item>
-    <h1 text-center *ngIf="idopercben">{{displayTime}}</h1>
+    <h1 text-center>{{displayTime}}</h1>
   </ion-item>
   <ion-fab bottom right *ngIf="runTimer && hasStarted && !hasFinished">
     <button ion-fab (click)="pauseTimer()">
