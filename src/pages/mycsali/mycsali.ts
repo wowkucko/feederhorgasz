@@ -49,9 +49,11 @@ export class MycsaliPage {
 
   addFogashoz(item){
     
-    this.navCtrl.pop().then(() => {
-      this.navParams.get('callback')(item);
-    });
+    
+    this.navCtrl.getPrevious().data.valasztottCsali = item;
+    this.navCtrl.pop();
+
+
   }
   deleteLadabol(item){
     this.firebasedb.list("/mycsali/").remove(item.$key);

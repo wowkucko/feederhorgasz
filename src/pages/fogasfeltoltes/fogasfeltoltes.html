@@ -31,69 +31,70 @@
   </ion-list>
 
 
-  <ion-list>
-    <ion-item>
-      <ion-label fixed>Súly</ion-label>
-      <ion-input [(ngModel)]="fogasSuly" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-    </ion-item>
-    <ion-item>
+
+  <ion-item>
+    <ion-label fixed>Súly</ion-label>
+    <ion-input [(ngModel)]="fogasSuly" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+  </ion-item>
+  <ion-item>
 
 
-      <ion-label fixed>Helyszín</ion-label>
-      <ion-input [(ngModel)]="fogasHelyszin" type="text"></ion-input>
-      <button ion-button clear item-end (click)="valasztasLadabolhelyszin()">
+    <ion-label fixed>Helyszín</ion-label>
+    <ion-input [(ngModel)]="fogasHelyszin" type="text"></ion-input>
+    <button ion-button clear item-end (click)="valasztasLadabolhelyszin()">
                 <ion-icon name="add-circle">Választás ládából</ion-icon>
               </button>
-    </ion-item>
+  </ion-item>
+
+
+  <ion-list>
     <ion-item>
+      <ion-label>Halfaj</ion-label>
+      <ion-select [(ngModel)]="fogasHalfaj">
+        <ion-option value="Nincs megadva" selected="true">Választás...</ion-option>
+        <ion-option value="Ponty">Ponty</ion-option>
+        <ion-option value="Amur">Amúr</ion-option>
+        <ion-option value="Keszeg">Keszeg</ion-option>
+        <ion-option value="Kárász">Kárász</ion-option>
+        <ion-option value="Törpeharcsa">Törpeharcsa</ion-option>
+        <ion-option value="Compó">Compó</ion-option>
+        <ion-option value="Csuka">Csuka</ion-option>
+        <ion-option value="Tokhal">Tokhal</ion-option>
+        <ion-option value="Egyéb">Egyéb</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-        <ion-list>
-            <ion-item>
-              <ion-label>Gaming</ion-label>
-              <ion-select [(ngModel)]="fogasHalfaj">
-                <ion-option value="Nincs megadva" selected="true">Választás...</ion-option>
-                <ion-option value="Ponty">Ponty</ion-option>
-                <ion-option value="Amur">Amúr</ion-option>
-                <ion-option value="Keszeg">Keszeg</ion-option>
-                <ion-option value="Kárász">Kárász</ion-option>
-                <ion-option value="Törpeharcsa">Törpeharcsa</ion-option>
-                <ion-option value="Compó">Compó</ion-option>
-                <ion-option value="Csuka">Csuka</ion-option>
-                <ion-option value="Tokhal">Tokhal</ion-option>
-                <ion-option value="Egyéb">Egyéb</ion-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-          
-
-
+    <ion-item>
       <ion-label fixed>Használt csali</ion-label>
-      <ion-input [(ngModel)]="fogasCsali" type="text" ng-init="fogasCsali"></ion-input>
+      <ion-input [(ngModel)]="fogasCsali" type="text"></ion-input>
       <button ion-button clear item-end (click)="valasztasLadabolcsali()">
         <ion-icon name="add-circle">Választás ládából</ion-icon>
       </button>
     </ion-item>
-    <ion-item>
+
+  <ion-item>
 
 
-      <ion-label fixed>Etetőanyag 1</ion-label>
-      <ion-input [(ngModel)]="fogasEtetoanyag1" type="text"></ion-input>
-      <button ion-button clear item-end (click)="valasztasLadaboletetoanyag()">
+
+    <ion-label fixed>Etetőanyag 1</ion-label>
+    <ion-input [(ngModel)]="fogasEtetoanyag1" type="text"></ion-input>
+    <button ion-button clear item-end (click)="valasztasLadaboletetoanyag()">
               <ion-icon name="add-circle">Választás ládából</ion-icon>
             </button>
-    </ion-item>
+  </ion-item>
 
-    <ion-item>
-
-
+  <ion-item>
 
 
-      <ion-label fixed>Egyéb megjegyzés</ion-label>
-      <ion-input [(ngModel)]="fogasEgyeb" type="text"></ion-input>
-    </ion-item>
-  </ion-list>
+
+
+    <ion-label fixed>Egyéb megjegyzés</ion-label>
+    <ion-input [(ngModel)]="fogasEgyeb" type="text"></ion-input>
+  </ion-item>
+
 
 
 

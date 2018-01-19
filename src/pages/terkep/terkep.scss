@@ -1,4 +1,5 @@
 page-terkep {
+    background-color: transparent !important;
     #please-connect {
       position: absolute;
       background-color: #000;
@@ -23,6 +24,9 @@ page-terkep {
    
     #map {
         width: 100%;
+        height: 100%;
+    }
+    #map_canvas {
         height: 100%;
     }
   

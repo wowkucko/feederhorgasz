@@ -48,9 +48,8 @@ export class MyetetoPage {
 
   addFogashoz(item){
     
-    this.navCtrl.pop().then(() => {
-      this.navParams.get('callback')(item);
-    });
+    this.navCtrl.getPrevious().data.valasztottEtetoanyag = item;
+    this.navCtrl.pop();
   }
   deleteLadabol(item){
     this.firebasedb.list("/myetetoanyag/").remove(item.$key);

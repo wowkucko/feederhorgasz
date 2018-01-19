@@ -41,6 +41,7 @@ import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { HelyekProvider } from '../providers/helyek/helyek';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
+import { Vibration } from '@ionic-native/vibration'
 import { IdojarasProvider } from '../providers/idojaras/idojaras';
 import { IonicStorageModule } from '@ionic/storage';
 import { IdomeroPage } from '../pages/idomero/idomero';
@@ -143,7 +144,8 @@ var config = {
     Geolocation,
     Network,
     Camera,
-    IdojarasProvider
+    IdojarasProvider,
+    Vibration
   ]
 })
 export class AppModule {

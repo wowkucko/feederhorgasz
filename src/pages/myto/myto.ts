@@ -47,9 +47,8 @@ export class MytoPage {
 
   addFogashoz(item){
     
-    this.navCtrl.pop().then(() => {
-      this.navParams.get('callback')(item);
-    });
+    this.navCtrl.getPrevious().data.valasztottTo = item;
+    this.navCtrl.pop();
   }
   deleteLadabol(item){
     this.firebasedb.list("/mytavak/").remove(item.$key);

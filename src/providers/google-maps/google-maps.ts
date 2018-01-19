@@ -20,7 +20,7 @@ export class GoogleMapsProvider {
   mapLoaded: any;
   mapLoadedObserver: any;
   markers: any = [];
-  apiKey: string = 'AIzaSyC83eOcJ0QxNToP7RaBsrTX3PpOB1bLOKw';
+  apiKey: string = 'AIzaSyCmP3-YRG_mV0RtwQr2z3g__mCvB57K-JY';
 
   constructor(public connectivityService: GoogleCsatlakozasProvider,
     public geolocation: Geolocation) {

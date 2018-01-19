@@ -28,27 +28,37 @@ export class FogasfeltoltesPage {
   mypicref: any
   fogasDatuma
   fogasHalfaj
-  fogasCsali
-  fogasHelyszin
-  fogasEtetoanyag1
+  fogasCsali: string
+  fogasHelyszin: string
+  fogasEtetoanyag1: string
   fogasSuly: number
   fogasEgyeb
   kepmegjelenit
   useremail
-  callback = data => {
-    this.fogasCsali = data.csalineve;
-    this.fogasHelyszin=data.toneve;
-    this.fogasEtetoanyag1=data.etetoanyagneve;
-  };
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {    
-    this.mypicref = firebase.storage().ref('/');
- 
+    this.mypicref = firebase.storage().ref('/');    
   }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FogasfeltoltesPage');
   }
+  public ionViewWillEnter() {
+    if(this.navParams.get('valasztottCsali')!=null){
+      this.fogasCsali = this.navParams.get('valasztottCsali').csalineve|| null;
+    }
+    if(this.navParams.get('valasztottTo')!=null){
+      this.fogasHelyszin = this.navParams.get('valasztottTo').toneve|| null;
+    }
+    if(this.navParams.get('valasztottEtetoanyag')!=null){
+      this.fogasEtetoanyag1 = this.navParams.get('valasztottEtetoanyag').etetoanyagneve|| null;
+    }
+    
+    
+    
+}
   bezarFeltolt() {
     this.view.dismiss();
   }
@@ -80,19 +90,19 @@ export class FogasfeltoltesPage {
   }
   valasztasLadabolcsali(){
     this.navCtrl.push(MycsaliPage, {
-      callback: this.callback,facebookadatok:this.navParams.data
+      facebookadatok:this.navParams.data
     }
   );
 }
 valasztasLadabolhelyszin(){
   this.navCtrl.push(MytoPage, {
-    callback: this.callback,facebookadatok:this.navParams.data
+    facebookadatok:this.navParams.data
   }
 );
 }
 valasztasLadaboletetoanyag(){
   this.navCtrl.push(MyetetoPage, {
-    callback: this.callback,facebookadatok:this.navParams.data
+    facebookadatok:this.navParams.data
   }
 );
 }
@@ -100,7 +110,7 @@ valasztasLadaboletetoanyag(){
 
 
   async adatfeltolt() {
-    
+    console.log("na",this.fogasCsali)
     const savedPic = await  this.mypicref.child(this.uid()).child('pic.jpg')
       .putString(this.picdata, 'base64', { contentType: 'image/jpg' });
   
