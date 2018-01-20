@@ -1,6 +1,8 @@
+import { IdomerobeallitasokPage } from '../idomerobeallitasok/idomerobeallitasok';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the IdomeroPage page.
@@ -15,12 +17,6 @@ import { Vibration } from '@ionic-native/vibration';
   templateUrl: 'idomero.html',
 })
 export class IdomeroPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams,private vibration: Vibration) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IdomeroPage');
-  }
   timeInSeconds: number;
   
   time: number;
@@ -29,15 +25,40 @@ export class IdomeroPage {
   hasStarted: boolean;
   hasFinished: boolean;
   displayTime: string;
-  
+  userido:number;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private vibration: Vibration,private storage: Storage) {
+    
+  }
+
+  ionViewDidEnter() {
+  }
+
+  ionViewDidLoad(){
+    this.storage.get('idomerouserido').then((val)=>{
+      if(val!=null){
+        this.userido=parseInt(val);
+        console.log("if ág eleje",this.userido);
+        this.initTimer();
+      } else{
+        console.log("else ág",this.userido)
+        this.userido=10;
+        this.initTimer();
+      }});
+      
+    }
+
+
 
   
-  ngOnInit() {
-    this.initTimer();
+  idomeroBeallitasok(){
+    this.navCtrl.push(IdomerobeallitasokPage);
   }
+
+
   
   initTimer() {
-    if (!this.timeInSeconds) { this.timeInSeconds = 20; }
+    console.log("inittimer ág",this.userido)
+    if (!this.timeInSeconds) { this.timeInSeconds = this.userido*60 }
   
     this.time = this.timeInSeconds;
      this.runTimer = false;
@@ -72,10 +93,9 @@ export class IdomeroPage {
         this.timerTick();
       }
       else {
+        console.log("vége");
         this.hasFinished = true;
-        this.vibration.vibrate(1000);
-        this.vibration.vibrate(1000);
-        
+        this.vibration.vibrate(1000);        
       }
     }, 1000);
   }

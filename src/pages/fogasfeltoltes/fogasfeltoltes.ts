@@ -31,10 +31,14 @@ export class FogasfeltoltesPage {
   fogasCsali: string
   fogasHelyszin: string
   fogasEtetoanyag1: string
+  fogasEtetoanyag2: string
+  fogasEtetoanyag3: string
+  fogasEtetoanyag4: string
   fogasSuly: number
   fogasEgyeb
   kepmegjelenit
   useremail
+  fogasPublikus: boolean
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {    
@@ -110,7 +114,6 @@ valasztasLadaboletetoanyag(){
 
 
   async adatfeltolt() {
-    console.log("na",this.fogasCsali)
     const savedPic = await  this.mypicref.child(this.uid()).child('pic.jpg')
       .putString(this.picdata, 'base64', { contentType: 'image/jpg' });
   
@@ -124,7 +127,11 @@ valasztasLadaboletetoanyag(){
         keplink: savedPic.downloadURL,
         useremail:this.navParams.get("facebookemail"),
         helyszin:this.fogasHelyszin,
-        etetoanyag1:this.fogasEtetoanyag1
+        etetoanyag1:this.fogasEtetoanyag1,
+        etetoanyag2:this.fogasEtetoanyag2,
+        etetoanyag3:this.fogasEtetoanyag3,
+        etetoanyag4:this.fogasEtetoanyag4,
+        publikus:this.fogasPublikus
       });
   }
   uid() {

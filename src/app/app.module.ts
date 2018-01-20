@@ -1,3 +1,4 @@
+import { IdomerobeallitasokPage } from '../pages/idomerobeallitasok/idomerobeallitasok';
 import { FogasreszletekPage } from '../pages/fogasreszletek/fogasreszletek';
 import { EtetoanyagreszletekPage } from '../pages/etetoanyagreszletek/etetoanyagreszletek';
 import { EtetoanyaglistazasPage } from '../pages/etetoanyaglistazas/etetoanyaglistazas';
@@ -88,7 +89,8 @@ var config = {
     LadaPage,
     EtetoanyaglistazasPage,
     EtetoanyagreszletekPage,
-    FogasreszletekPage
+    FogasreszletekPage,
+    IdomerobeallitasokPage
 
 
   ],
@@ -133,7 +135,9 @@ var config = {
     LadaPage,
     EtetoanyaglistazasPage,
     EtetoanyagreszletekPage,
-    FogasreszletekPage
+    FogasreszletekPage,
+    IdomerobeallitasokPage
+    
     
   
   ],
