@@ -7,7 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Fogási napló</ion-title>
+    <ion-segment [(ngModel)]="displayfogasok" color="primary">
+      <ion-segment-button value="sajat" (ionSelect)="sajatchange()">
+        Saját fogások
+      </ion-segment-button>
+      <ion-segment-button value="osszes" (ionSelect)="osszeschange()">
+        Összes fogás
+      </ion-segment-button>
+    </ion-segment>
   </ion-navbar>
 
 </ion-header>
@@ -18,13 +25,15 @@
     <ion-fab top right edge>
         <button ion-fab (click)="openFeltoltes()"><ion-icon name="add"></ion-icon></button>
       </ion-fab>
-      <ng-container *ngFor="let item of fogasadatok; let i = index">
+      <div [ngSwitch]="displayfogasok" >
+        <ion-list *ngSwitchCase="'sajat'">
+      <ng-container *ngFor="let item of sajatfogasadatok; let i = index">
     <ion-card >
       
         <img [src]="item.keplink"/>
         <ion-card-content>
           <ion-card-title>
-              {{item.datum}} - {{item.halfaj}}
+              {{item.datum | date: "yyyy/MM/dd HH:MM"}} - {{item.halfaj}}
             </ion-card-title>
           <p>
 
@@ -37,4 +46,29 @@
         </ion-card-content>
       </ion-card>
     </ng-container>
+  </ion-list>
+
+
+  <ion-list *ngSwitchCase="'osszes'">
+      <ng-container *ngFor="let item of osszesfogasadatok; let i = index">
+    <ion-card >
+      
+        <img [src]="item.keplink"/>
+        <ion-card-content>
+          <ion-card-title>
+              {{item.datum | date: "yyyy/MM/dd HH:MM"}} - {{item.halfaj}}
+            </ion-card-title>
+          <p>
+
+            <button ion-button (click)="openFogasReszletek(item)">Részletek</button> {{item.helyszin}}
+          </p>
+          
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ion-list>
+
+
+
+  </div>
 </ion-content>

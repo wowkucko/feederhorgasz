@@ -26,15 +26,16 @@ export class FogasfeltoltesPage {
   picdata: any
   picurl: any
   mypicref: any
-  fogasDatuma
+  fogasDatuma: string=new Date().toISOString();
   fogasHalfaj
+  fogasKepe:string;
   fogasCsali: string
   fogasHelyszin: string
   fogasEtetoanyag1: string
   fogasEtetoanyag2: string
   fogasEtetoanyag3: string
   fogasEtetoanyag4: string
-  fogasSuly: number
+  fogasSuly: string
   fogasEgyeb
   kepmegjelenit
   useremail
@@ -114,8 +115,20 @@ valasztasLadaboletetoanyag(){
 
 
   async adatfeltolt() {
+    if(this.picdata){
     const savedPic = await  this.mypicref.child(this.uid()).child('pic.jpg')
-      .putString(this.picdata, 'base64', { contentType: 'image/jpg' });
+    .putString(this.picdata, 'base64', { contentType: 'image/jpg' });
+    this.fogasKepe=savedPic.downloadURL;
+  }
+
+    if(!this.fogasEtetoanyag2){this.fogasEtetoanyag2="-"};  
+    if(!this.fogasEtetoanyag3){this.fogasEtetoanyag3="-"};   
+    if(!this.fogasEtetoanyag4){this.fogasEtetoanyag4="-"};   
+    if(!this.picdata){this.fogasKepe="http://babakunyho.eu/img/default-no-image.png"};
+    if(!this.fogasSuly){this.fogasSuly="Nincs mérve"};
+    if(!this.fogasEgyeb){this.fogasEgyeb=""};
+
+
   
       this.firebasedb.list("/fogasok/")
       .push({
@@ -124,7 +137,7 @@ valasztasLadaboletetoanyag(){
         suly:this.fogasSuly,
         egyeb:this.fogasEgyeb,
         hasznaltcsali:this.fogasCsali,
-        keplink: savedPic.downloadURL,
+        keplink: this.fogasKepe,
         useremail:this.navParams.get("facebookemail"),
         helyszin:this.fogasHelyszin,
         etetoanyag1:this.fogasEtetoanyag1,

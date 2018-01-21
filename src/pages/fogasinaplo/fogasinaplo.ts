@@ -19,25 +19,27 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'fogasinaplo.html',
 })
 export class FogasinaploPage {
-  fogasadatok = []
+  sajatfogasadatok = []
+  osszesfogasadatok=[]
+  displayfogasok:string
   
  
 
 
 
   constructor(private event:Events,private modal: ModalController, public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
-    console.log('Passed params', navParams.data);
-    
-    this.firebasedb.list("/fogasok/").subscribe(_data => {
-      
-      this.fogasadatok = _data.filter(item => item.useremail == this.navParams.get("facebookemail"));
-      
-
-    })
+    this.displayfogasok="sajat";
+    this.sajatchange();
   }
 
   ionViewDidLoad() {
     
+  }
+  osszeschange(){
+    this.osszesfogasok();
+  }
+  sajatchange(){
+    this.sajatfogasok();
   }
   openFeltoltes(){
     ;
@@ -53,6 +55,19 @@ export class FogasinaploPage {
       fogasreszletek: item
     });
 
+  }
+
+  sajatfogasok(){
+    this.firebasedb.list("/fogasok/").subscribe(_data => {
+      
+      this.sajatfogasadatok = _data.filter(item => item.useremail == this.navParams.get("facebookemail"));
+    })
+  }
+  osszesfogasok(){
+    this.firebasedb.list("/fogasok/").subscribe(_data => {
+      
+      this.osszesfogasadatok = _data.filter(item => item.publikus == true);
+    })
   }
 
 

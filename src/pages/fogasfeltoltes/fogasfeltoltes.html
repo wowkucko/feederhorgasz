@@ -17,41 +17,30 @@
 
 
 <ion-content padding>
-  Kép csatolása
+  Kép feltöltése
   <button ion-button (click)="fotoKeszit()">Fotózás</button>
-  <button ion-button (click)="fotoValaszt()">Választ</button>
+  <button ion-button (click)="fotoValaszt()">Galéria</button>
   <img src="{{ kepmegjelenit }}" />
-
-  <ion-list>
-
     <ion-item>
-      <ion-label>Fogás dátuma</ion-label>
+      <ion-label>Fogás dátuma*</ion-label>
       <ion-datetime displayFormat="YYYY-MM-DD HH:mm" pickerFormat="YYYY-MM-DDTHH:mm" [(ngModel)]="fogasDatuma"></ion-datetime>
     </ion-item>
-  </ion-list>
-
-
-
   <ion-item>
-    <ion-label fixed>Súly</ion-label>
+    <ion-label fixed>Hal súlya</ion-label>
     <ion-input [(ngModel)]="fogasSuly" type="text"></ion-input>
   </ion-item>
   <ion-item>
-  </ion-item>
-  <ion-item>
-
-
-    <ion-label fixed>Helyszín</ion-label>
-    <ion-input [(ngModel)]="fogasHelyszin" type="text"></ion-input>
+    <ion-label fixed>Fogás helyszíne*</ion-label>
+    <ion-input [(ngModel)]="fogasHelyszin" type="text" clearOnEdit="true"></ion-input>
     <button ion-button clear item-end (click)="valasztasLadabolhelyszin()">
-                <ion-icon name="add-circle">Választás ládából</ion-icon>
+                <ion-icon name="add-circle">Kiválasztom</ion-icon>
               </button>
   </ion-item>
 
 
   <ion-list>
     <ion-item>
-      <ion-label>Halfaj</ion-label>
+      <ion-label>Halfaj*</ion-label>
       <ion-select [(ngModel)]="fogasHalfaj">
         <ion-option value="Nincs megadva" selected="true">Választás...</ion-option>
         <ion-option value="Ponty">Ponty</ion-option>
@@ -69,34 +58,48 @@
 
     <ion-item>
       <ion-label fixed>Használt csali</ion-label>
-      <ion-input [(ngModel)]="fogasCsali" type="text"></ion-input>
+      <ion-input [(ngModel)]="fogasCsali" type="text" clearOnEdit="true"></ion-input>
       <button ion-button clear item-end (click)="valasztasLadabolcsali()">
-        <ion-icon name="add-circle">Választás ládából</ion-icon>
+        <ion-icon name="add-circle">Kiválasztom</ion-icon>
       </button>
     </ion-item>
 
   <ion-item>
-
-
-
     <ion-label fixed>Etetőanyag 1</ion-label>
-    <ion-input [(ngModel)]="fogasEtetoanyag1" type="text"></ion-input>
+    <ion-input [(ngModel)]="fogasEtetoanyag1" type="text" clearOnEdit="true"></ion-input>
     <button ion-button clear item-end (click)="valasztasLadaboletetoanyag()">
-              <ion-icon name="add-circle">Választás ládából</ion-icon>
+              <ion-icon name="add-circle">Kiválasztom</ion-icon>
             </button>
   </ion-item>
+  <ion-item>
+      <ion-label fixed>Etetőanyag 2</ion-label>
+      <ion-input [(ngModel)]="fogasEtetoanyag2" type="text" clearOnEdit="true"></ion-input>
+      <button ion-button clear item-end (click)="valasztasLadaboletetoanyag()">
+                <ion-icon name="add-circle">Kiválasztom</ion-icon>
+              </button>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>Etetőanyag 3</ion-label>
+        <ion-input [(ngModel)]="fogasEtetoanyag3" type="text" clearOnEdit="true"></ion-input>
+        <button ion-button clear item-end (click)="valasztasLadaboletetoanyag()">
+                  <ion-icon name="add-circle">Kiválasztom</ion-icon>
+                </button>
+      </ion-item>
+      <ion-item>
+          <ion-label fixed>Etetőanyag 4</ion-label>
+          <ion-input [(ngModel)]="fogasEtetoanyag4" type="text" clearOnEdit="true"></ion-input>
+          <button ion-button clear item-end (click)="valasztasLadaboletetoanyag()">
+                    <ion-icon name="add-circle">Kiválasztom</ion-icon>
+                  </button>
+        </ion-item>
 
   <ion-item>
-
-
-
-
     <ion-label fixed>Egyéb megjegyzés</ion-label>
-    <ion-input [(ngModel)]="fogasEgyeb" type="text"></ion-input>
+    <ion-textarea [(ngModel)]="fogasEgyeb" type="text"></ion-textarea>
   </ion-item>
   <ion-item>
       <ion-label>Publikus</ion-label>
-      <ion-checkbox checked="true" [(ngModel)]="fogasPublikus"></ion-checkbox>
+      <ion-checkbox checked [(ngModel)]="fogasPublikus"></ion-checkbox>
     </ion-item>
 
 
