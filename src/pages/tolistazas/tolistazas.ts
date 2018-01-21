@@ -1,6 +1,7 @@
+import { TofeltoltesPage } from '../tofeltoltes/tofeltoltes';
 import { ToreszletekPage } from '../toreszletek/toreszletek';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
@@ -20,7 +21,7 @@ export class TolistazasPage {
   megyevalasztas: string
   loadedtolista = []
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase, private modal: ModalController) {
 
   }
 
@@ -61,6 +62,10 @@ export class TolistazasPage {
     this.navCtrl.push(ToreszletekPage, {
       toreszletek: item,facebookadatok: this.navParams.data
     });
+  }
+  opentoFeltoltes(){
+    const tofeltolt=this.modal.create(TofeltoltesPage);
+    tofeltolt.present();
   }
 
   initializeItems() {

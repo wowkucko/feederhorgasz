@@ -1,6 +1,7 @@
+import { EtetoanyagfeltoltesPage } from '../etetoanyagfeltoltes/etetoanyagfeltoltes';
 import { EtetoanyagreszletekPage } from '../etetoanyagreszletek/etetoanyagreszletek';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 /**
  * Generated class for the EtetoanyaglistazasPage page.
@@ -19,32 +20,46 @@ export class EtetoanyaglistazasPage {
   methodpellet=[]
   aroma=[]
   adalek=[]
+  etetoanyagdisplay:string
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
-    this.firebasedb.list("/etetoanyagok/").subscribe(_data => {
-      this.methodmix = _data.filter(item =>
-        item.approved == "1" && item.tipus == "mix"
-      );
-
-      this.methodpellet = _data.filter(item =>
-        item.approved == "1" && item.tipus == "pellet"
-      );
-      this.aroma = _data.filter(item =>
-        item.approved == "1" && item.tipus == "aroma"
-      );
-      this.adalek = _data.filter(item =>
-        item.approved == "1" && item.tipus == "adalek"
-      );
-    })
+  constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase, private modal: ModalController) {
+    this.etetoanyagdisplay="Methodmix";
+    this.methodmixchange();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EtetoanyaglistazasPage');
   }
+  methodmixchange(){
+    this.firebasedb.list("/etetoanyagok/").subscribe(_data => {
+    this.methodmix = _data.filter(item =>
+      item.approved == "1" && item.tipus == "mix");})
+  }
+  methodpelletchange(){
+    this.firebasedb.list("/etetoanyagok/").subscribe(_data => {
+      this.methodpellet = _data.filter(item =>
+        item.approved == "1" && item.tipus == "pellet");})
+  }
+  aromachange(){
+    this.firebasedb.list("/etetoanyagok/").subscribe(_data => {
+      this.aroma = _data.filter(item =>
+        item.approved == "1" && item.tipus == "aroma");})
+  }
+  adalekchange(){
+    this.firebasedb.list("/etetoanyagok/").subscribe(_data => {
+      this.adalek = _data.filter(item =>
+        item.approved == "1" && item.tipus == "adalek");})
+  }
   openEtetoanyagreszletek(item){
     this.navCtrl.push(EtetoanyagreszletekPage, {
       etetoanyagreszletek: item,facebookadatok: this.navParams.data
     });
+  }
+
+  openetetoanyagFeltoltes(){
+
+    const etetoanyagfeltolt=this.modal.create(EtetoanyagfeltoltesPage);
+    etetoanyagfeltolt.present();
   }
 
 }

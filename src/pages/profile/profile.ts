@@ -27,10 +27,6 @@ export class ProfilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }
-  openToFeltoltes(){
-    const tofeltolt=this.modal.create(TofeltoltesPage);
-    tofeltolt.present();
-  }
   openBeallitasok(){
     this.navCtrl.push(BeallitasokPage);
   }
@@ -39,9 +35,6 @@ export class ProfilePage {
     this.navCtrl.push(LadaPage,this.navParams.data);
   }
 
-  openEtetoanyagFeltoltes(){
-    const etetoanyagfeltolt=this.modal.create(EtetoanyagfeltoltesPage);
-    etetoanyagfeltolt.present();
-  }
+
 
 }

@@ -36,19 +36,19 @@ export class CsalilistazasPage {
   pelletchange(){
     this.firebasedb.list("/csalik/").subscribe(_data => {
       
-      this.bojlicsalik = _data.filter(item =>
+      this.pelletcsalik = _data.filter(item =>
         item.approved == "1" && item.tipus == "Pellet");})
   }
   muchange(){
     this.firebasedb.list("/csalik/").subscribe(_data => {
       
-      this.bojlicsalik = _data.filter(item =>
+      this.mucsalik = _data.filter(item =>
         item.approved == "1" && item.tipus == "Mű");})
   }
   elochange(){
     this.firebasedb.list("/csalik/").subscribe(_data => {
       
-      this.bojlicsalik = _data.filter(item =>
+      this.elocsalik = _data.filter(item =>
         item.approved == "1" && item.tipus == "Élő");})
   }
   openCsalireszletek(item){
