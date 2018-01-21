@@ -35,10 +35,6 @@ export class ProfilePage {
     this.navCtrl.push(BeallitasokPage);
   }
 
-  openCsaliFeltoltes(){
-    const csalifeltolt=this.modal.create(CsalifeltoltesPage);
-    csalifeltolt.present();
-  }
   openLada(){
     this.navCtrl.push(LadaPage,this.navParams.data);
   }

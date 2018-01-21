@@ -6,17 +6,17 @@
 -->
 <ion-header>
     <ion-toolbar>
-        <ion-segment [(ngModel)]="csalik">
-            <ion-segment-button value="Bojli">
+        <ion-segment [(ngModel)]="csalidisplay">
+            <ion-segment-button value="Bojli" (ionSelect)="bojlichange()">
               Bojli
             </ion-segment-button>
-            <ion-segment-button value="Pellet">
+            <ion-segment-button value="Pellet" (ionSelect)="pelletchange()">
               Pellet
             </ion-segment-button>
-            <ion-segment-button value="Mu">
+            <ion-segment-button value="Mu" (ionSelect)="muchange()">
                 Mű
               </ion-segment-button>
-              <ion-segment-button value="Elo">
+              <ion-segment-button value="Elo" (ionSelect)="elochange()">
                   Élő
                 </ion-segment-button>
           </ion-segment>
@@ -25,10 +25,12 @@
 
 
 <ion-content padding>
-
+    <ion-fab top right edge>
+        <button ion-fab (click)="opencsaliFeltoltes()"><ion-icon name="add"></ion-icon></button>
+      </ion-fab>
   
   
-  <div [ngSwitch]="csalik">
+  <div [ngSwitch]="csalidisplay">
     <ion-list *ngSwitchCase="'Bojli'">
         
         <ng-container *ngFor="let item of bojlicsalik; let i = index">
