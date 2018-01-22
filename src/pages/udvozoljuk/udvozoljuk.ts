@@ -66,6 +66,41 @@ export class UdvozoljukPage {
       
     
   }
+  loginWithGoogle(){
+    
+     /*this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+     .then( res=> {
+       
+       let facebookadatok={
+         nev: res.user.displayName,
+         email: res.user.email,
+         profilkep: res.user.photoURL
+       }
+       
+       this.navCtrl.push(TabsPage,facebookadatok);*/
+       const provider = new firebase.auth.GoogleAuthProvider();
+       
+         firebase.auth().signInWithRedirect(provider).then( () => {
+           firebase.auth().getRedirectResult().then( res => {
+
+             let facebookadatok={
+               nev: res.user.displayName,
+               email: res.user.email,
+               profilkep: res.user.photoURL
+             }
+             this.navCtrl.push(TabsPage,facebookadatok);
+ 
+             //var token = result.credential.accessToken;
+             // The signed-in user info.
+            // var user = result.user;
+            // console.log(token, user);
+           }).catch(function(error) {
+             console.log(error.message);
+           });
+         });
+       
+     
+   }
   IonViewDidLeave(){
     
   }

@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar [hideBackButton]="true">
     <ion-title>udvozoljuk</ion-title>
   </ion-navbar>
 
@@ -15,5 +15,7 @@
 
 <ion-content padding>
   <button ion-button (click)="loginWithFacebook()">Login With Facebook</button>
+  <button ion-button (click)="loginWithGoogle()">Login With Google</button>
+  
 
 </ion-content>
