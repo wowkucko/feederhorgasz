@@ -1,8 +1,10 @@
 import { IdomerobeallitasokPage } from '../idomerobeallitasok/idomerobeallitasok';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, AlertController} from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { Storage } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 /**
  * Generated class for the IdomeroPage page.
@@ -26,8 +28,17 @@ export class IdomeroPage {
   hasFinished: boolean;
   displayTime: string;
   userido:number;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private vibration: Vibration,private storage: Storage) {
-    
+  constructor(private backgroundMode: BackgroundMode,public alertCtrl: AlertController,private plt: Platform, public navCtrl: NavController, public navParams: NavParams,private vibration: Vibration,private storage: Storage,private localNotifications: LocalNotifications) {
+    this.plt.ready().then((rdy)=>{
+      this.localNotifications.on('click',(notification, state)=>{
+        let json=JSON.parse(notification.data);
+        let alert=this.alertCtrl.create({
+          title: notification.title,
+          subTitle: json.mydata
+        });
+        alert.present();
+      });
+      });
   }
 
   ionViewDidEnter() {
@@ -70,9 +81,20 @@ export class IdomeroPage {
   }
   
   startTimer() {
+    this.backgroundMode.enable();
      this.runTimer = true;
     this.hasStarted = true;
     this.timerTick();
+  }
+  sendNotification(){
+    this.localNotifications.schedule({
+      id: 1,
+      title: 'Lejárt az idő!',
+      text: 'Érdemes lenne újra dobni! :)',
+      
+      //sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
+      data: { mydata:'teszt' }
+    });
   }
   
   pauseTimer() {
@@ -95,7 +117,10 @@ export class IdomeroPage {
       else {
         console.log("vége");
         this.hasFinished = true;
-        this.vibration.vibrate(1000);        
+        //this.vibration.vibrate(1000);    
+        this.sendNotification();   
+        this.backgroundMode.disable();
+        
       }
     }, 1000);
   }

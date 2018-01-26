@@ -47,7 +47,8 @@ import { Vibration } from '@ionic-native/vibration'
 import { IdojarasProvider } from '../providers/idojaras/idojaras';
 import { IonicStorageModule } from '@ionic/storage';
 import { IdomeroPage } from '../pages/idomero/idomero';
-
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { BackgroundMode } from '@ionic-native/background-mode';
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",
   authDomain: "feeder-horgasz.firebaseapp.com",
@@ -152,7 +153,9 @@ var config = {
     Network,
     Camera,
     IdojarasProvider,
-    Vibration
+    Vibration,
+    LocalNotifications,
+    BackgroundMode
   ]
 })
 export class AppModule {
