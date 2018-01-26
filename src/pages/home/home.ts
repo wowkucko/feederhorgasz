@@ -1,6 +1,6 @@
 import { IdojarasPage } from './../idojaras/idojaras';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController,LoadingController } from 'ionic-angular';
 import { TerkepPage } from './../terkep/terkep';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -17,11 +17,17 @@ export class HomePage {
   items:any;
   
   
-  constructor(public navParams: NavParams,public navCtrl: NavController, private http:Http, public actionSheetCtrl: ActionSheetController) {
+  constructor(public loadingCtrl: LoadingController,public navParams: NavParams,public navCtrl: NavController, private http:Http, public actionSheetCtrl: ActionSheetController) {
    
     console.log('Passed params', navParams.data);
   }
   ionViewDidEnter() { 
+    
+        
+   } 
+
+   hirfolyambetolt(){
+    return new Promise((resolve) => {
     this.http.get( this.url ) 
     .map(res => res.json()) 
     .subscribe(data => 
@@ -30,11 +36,18 @@ export class HomePage {
          console.log("átadott wp api",data);
          
         }); 
-        
-   } 
+        resolve(true);
+      });
+   }
   ionViewDidLoad() {
-    
-    
+    this.hirfolyamLoading();
+  }
+  hirfolyamLoading(){
+    let loader = this.loadingCtrl.create({content: "Hírfolyam betöltése..."});
+    loader.present();
+    this.hirfolyambetolt().then((x) => {
+        if (x) loader.dismiss();
+    });
   }
 
   terkepnyit(){

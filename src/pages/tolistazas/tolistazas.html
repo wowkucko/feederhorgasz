@@ -20,7 +20,7 @@
   <ion-list>
     <ion-item>
       <ion-label>Megye kiválasztása</ion-label>
-      <ion-select [(ngModel)]="megyevalasztas" (ionChange)="tavakbetolt()">
+      <ion-select [(ngModel)]="megyevalasztas" (ionChange)="tavakLoading()">
         <ion-option value="osszes" selected="true">Minden</ion-option>
         <ion-option value="Baranya">Baranya</ion-option>
         <ion-option value="Békés">Békés</ion-option>

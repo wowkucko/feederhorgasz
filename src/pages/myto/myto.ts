@@ -1,6 +1,6 @@
 import { ToreszletekPage } from './../toreszletek/toreszletek';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
@@ -20,7 +20,13 @@ export class MytoPage {
   facebookadatok=[]
   hozzaadas:boolean
   torles:boolean
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
+  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
+    this.mytoLoading();
+    
+  }
+
+  mytoFetch(){
+    return new Promise((resolve) => {
     this.firebasedb.list("/mytavak/").subscribe(_data => {
       this.mytavak = _data.filter(item =>
         item.useremail == this.navParams.get("facebookadatok").facebookemail
@@ -34,6 +40,16 @@ export class MytoPage {
       this.hozzaadas=true;
       this.torles=false;
     }
+    resolve(true);
+  })
+  }
+
+  mytoLoading(){
+    let loader = this.loadingCtrl.create({content: "Tavak betöltése..."});
+    loader.present();
+    this.mytoFetch().then((x) => {
+        if (x) loader.dismiss();
+    });
   }
 
   ionViewDidLoad() {

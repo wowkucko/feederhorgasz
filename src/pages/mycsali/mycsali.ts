@@ -1,6 +1,6 @@
 import { CsalireszletekPage } from '../csalireszletek/csalireszletek';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController} from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
@@ -20,7 +20,12 @@ export class MycsaliPage {
   facebookadatok=[]
   hozzaadas:boolean
   torles:boolean
-  constructor(public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase) {
+  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase) {
+    this.mycsaliLoading();
+  }
+
+  mycsaliFetch(){
+    return new Promise((resolve) => {
     this.firebasedb.list("/mycsali/").subscribe(_data => {
       this.mycsalik = _data.filter(item =>
         item.useremail == this.navParams.get("facebookadatok").facebookemail
@@ -35,7 +40,18 @@ export class MycsaliPage {
       this.hozzaadas=true;
       this.torles=false;
     }
+    resolve(true);
+  })
   }
+
+  mycsaliLoading(){
+    let loader = this.loadingCtrl.create({content: "Csalik betöltése..."});
+    loader.present();
+    this.mycsaliFetch().then((x) => {
+        if (x) loader.dismiss();
+    });
+  }
+
 
   ionViewDidLoad() {
     console.log("hali",this.navParams.get("oldalnev"))

@@ -1,7 +1,7 @@
 import { TofeltoltesPage } from '../tofeltoltes/tofeltoltes';
 import { ToreszletekPage } from '../toreszletek/toreszletek';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController,LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
@@ -21,11 +21,17 @@ export class TolistazasPage {
   megyevalasztas: string
   loadedtolista = []
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase, private modal: ModalController) {
+  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase, private modal: ModalController) {
 
   }
 
   ionViewDidEnter() {
+   this.tavakLoading();
+
+  }
+
+  tavakFetch(){
+    return new Promise((resolve) => {
     if (this.megyevalasztas == "osszes") {
       this.firebasedb.list("/tavak/").subscribe(_data => {
         this.toadatok = _data.filter(item =>
@@ -45,7 +51,15 @@ export class TolistazasPage {
       })
 
     }
-
+    resolve(true);
+  })
+  }
+  tavakLoading(){
+    let loader = this.loadingCtrl.create({content: "Tavak betöltése..."});
+    loader.present();
+    this.tavakFetch().then((x) => {
+        if (x) loader.dismiss();
+    });
   }
 
 
@@ -53,11 +67,6 @@ export class TolistazasPage {
     this.megyevalasztas = "osszes";
   }
 
-  tavakbetolt() {
-    this.ionViewDidEnter();
-
-
-  }
   toreszletNyit(item) {
     this.navCtrl.push(ToreszletekPage, {
       toreszletek: item,facebookadatok: this.navParams.data

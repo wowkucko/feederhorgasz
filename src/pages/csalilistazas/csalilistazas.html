@@ -7,16 +7,16 @@
 <ion-header>
     <ion-toolbar>
         <ion-segment [(ngModel)]="csalidisplay">
-            <ion-segment-button value="Bojli" (ionSelect)="bojlichange()">
+            <ion-segment-button value="Bojli" (ionSelect)="bojliLoading()">
               Bojli
             </ion-segment-button>
-            <ion-segment-button value="Pellet" (ionSelect)="pelletchange()">
+            <ion-segment-button value="Pellet" (ionSelect)="pelletLoading()">
               Pellet
             </ion-segment-button>
-            <ion-segment-button value="Mu" (ionSelect)="muchange()">
+            <ion-segment-button value="Mu" (ionSelect)="muLoading()">
                 Mű
               </ion-segment-button>
-              <ion-segment-button value="Elo" (ionSelect)="elochange()">
+              <ion-segment-button value="Elo" (ionSelect)="eloLoading()">
                   Élő
                 </ion-segment-button>
           </ion-segment>

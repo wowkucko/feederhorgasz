@@ -1,6 +1,6 @@
 import { EtetoanyagreszletekPage } from '../etetoanyagreszletek/etetoanyagreszletek';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
@@ -21,7 +21,12 @@ export class MyetetoPage {
   hozzaadas:boolean
   torles:boolean
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
+  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
+    this.myetetoLoading();
+  }
+
+  myetetoFetch(){
+    return new Promise((resolve) => {
     this.firebasedb.list("/myetetoanyag/").subscribe(_data => {
       this.myetetoanyagok = _data.filter(item =>
         item.useremail == this.navParams.get("facebookadatok").facebookemail
@@ -35,6 +40,16 @@ export class MyetetoPage {
       this.hozzaadas=true;
       this.torles=false;
     }
+    resolve(true);
+  })
+  }
+
+  myetetoLoading(){
+    let loader = this.loadingCtrl.create({content: "Etetőanyagok betöltése..."});
+    loader.present();
+    this.myetetoFetch().then((x) => {
+        if (x) loader.dismiss();
+    });
   }
 
   ionViewDidLoad() {
