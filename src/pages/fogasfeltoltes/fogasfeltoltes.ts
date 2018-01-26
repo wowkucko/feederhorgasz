@@ -5,8 +5,6 @@ import { dateSortValue } from 'ionic-angular/umd/util/datetime-util';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController} from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
-import { storage } from 'firebase';
-import firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**

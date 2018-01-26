@@ -1,6 +1,6 @@
 import { FogasreszletekPage } from '../fogasreszletek/fogasreszletek';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, Events} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
 import { FogasfeltoltesPage } from '../fogasfeltoltes/fogasfeltoltes';
 import { AngularFireDatabase } from 'angularfire2/database';
 
@@ -27,7 +27,7 @@ export class FogasinaploPage {
 
 
 
-  constructor(private event:Events,private modal: ModalController, public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
+  constructor(private modal: ModalController, public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
     this.displayfogasok="sajat";
     this.sajatchange();
   }

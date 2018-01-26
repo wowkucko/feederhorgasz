@@ -1,7 +1,5 @@
-import { Loading } from 'ionic-angular/es2015';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import firebase from 'firebase';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 
@@ -33,7 +31,7 @@ export class TofeltoltesPage {
   megye:string
   tel:string
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private view: ViewController, private firebasedb: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
     
   }
 
@@ -42,7 +40,6 @@ export class TofeltoltesPage {
   }
   adatfeltolt() {
       
-      var megyemappa=this.megye;
       this.firebasedb.list("/tavak/")
       .push({
         cim:this.cim,
