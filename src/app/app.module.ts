@@ -1,3 +1,4 @@
+import { TosnapPage } from '../pages/tosnap/tosnap';
 import { IdomerobeallitasokPage } from '../pages/idomerobeallitasok/idomerobeallitasok';
 import { FogasreszletekPage } from '../pages/fogasreszletek/fogasreszletek';
 import { EtetoanyagreszletekPage } from '../pages/etetoanyagreszletek/etetoanyagreszletek';
@@ -49,6 +50,15 @@ import { IonicStorageModule } from '@ionic/storage';
 import { IdomeroPage } from '../pages/idomero/idomero';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  GoogleMapOptions,
+  CameraPosition,
+  MarkerOptions,
+  Marker
+ } from '@ionic-native/google-maps';
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",
   authDomain: "feeder-horgasz.firebaseapp.com",
@@ -91,7 +101,8 @@ var config = {
     EtetoanyaglistazasPage,
     EtetoanyagreszletekPage,
     FogasreszletekPage,
-    IdomerobeallitasokPage
+    IdomerobeallitasokPage,
+    TosnapPage
 
 
   ],
@@ -137,7 +148,8 @@ var config = {
     EtetoanyaglistazasPage,
     EtetoanyagreszletekPage,
     FogasreszletekPage,
-    IdomerobeallitasokPage
+    IdomerobeallitasokPage,
+    TosnapPage
     
     
   
@@ -155,7 +167,8 @@ var config = {
     IdojarasProvider,
     Vibration,
     LocalNotifications,
-    BackgroundMode
+    BackgroundMode,
+    GoogleMaps
   ]
 })
 export class AppModule {
