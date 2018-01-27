@@ -28,7 +28,6 @@ export class CsalireszletekPage {
         
         this.csalireszletek = _data.filter(item => item.$key == this.navParams.get("mycsalireszletek").id);
         this.ladabol=true;
-        console.log("szeress",this.csalireszletek)
   
       })
     }
@@ -41,9 +40,7 @@ export class CsalireszletekPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CsalireszletekPage');
-  }
+
   PushTolada(){
     this.firebasedb.list("/mycsali/")
     .push({

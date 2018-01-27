@@ -18,13 +18,8 @@ export class HomePage {
   
   
   constructor(public loadingCtrl: LoadingController,public navParams: NavParams,public navCtrl: NavController, private http:Http, public actionSheetCtrl: ActionSheetController) {
-   
-    console.log('Passed params', navParams.data);
+ 
   }
-  ionViewDidEnter() { 
-    
-        
-   } 
 
    hirfolyambetolt(){
     return new Promise((resolve) => {
@@ -33,13 +28,13 @@ export class HomePage {
     .subscribe(data => 
         {  
           this.items = data;
-         console.log("átadott wp api",data);
+         
          
         }); 
         resolve(true);
       });
    }
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.hirfolyamLoading();
   }
   hirfolyamLoading(){
@@ -77,12 +72,12 @@ export class HomePage {
         },{
           text: 'Horgászboltokat',
           handler: () => {
-            console.log('Archive clicked');
+            
           }
         },{
           text: 'Szervízeket',
           handler: () => {
-            console.log('Cancel clicked');
+            
           }
         }
       ]

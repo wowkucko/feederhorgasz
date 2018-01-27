@@ -32,10 +32,6 @@ export class BeallitasokPage {
         }
       });
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BeallitasokPage');
-  }
   mentesForm(){
     let hely={
       city: this.city

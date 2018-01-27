@@ -20,8 +20,6 @@ export class FogasreszletekPage {
     
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FogasreszletekPage');
-  }
+
 
 }

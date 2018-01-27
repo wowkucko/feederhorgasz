@@ -25,9 +25,6 @@ export class EtetoanyagfeltoltesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EtetoanyagfeltoltesPage');
-  }
   etetoanyagfeltolt() {
     
     this.firebasedb.list("/etetoanyagok/")

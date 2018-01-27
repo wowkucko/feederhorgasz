@@ -27,9 +27,6 @@ export class EtetoanyaglistazasPage {
     this.methodmixLoading();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EtetoanyaglistazasPage');
-  }
   methodmixchange(){
     return new Promise((resolve) => {
     this.firebasedb.list("/etetoanyagok/").subscribe(_data => {

@@ -28,9 +28,6 @@ export class CsalifeltoltesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CsalifeltoltesPage');
-  }
   csalifeltolt() {
     
     this.firebasedb.list("/csalik/")

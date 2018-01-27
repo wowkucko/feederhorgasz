@@ -41,17 +41,13 @@ export class IdomeroPage {
       });
   }
 
-  ionViewDidEnter() {
-  }
 
-  ionViewDidLoad(){
+  ionViewWillEnter(){
     this.storage.get('idomerouserido').then((val)=>{
       if(val!=null){
         this.userido=parseInt(val);
-        console.log("if ág eleje",this.userido);
         this.initTimer();
       } else{
-        console.log("else ág",this.userido)
         this.userido=10;
         this.initTimer();
       }});
@@ -68,7 +64,6 @@ export class IdomeroPage {
 
   
   initTimer() {
-    console.log("inittimer ág",this.userido)
     if (!this.timeInSeconds) { this.timeInSeconds = this.userido*60 }
   
     this.time = this.timeInSeconds;

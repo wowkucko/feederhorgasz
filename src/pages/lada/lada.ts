@@ -21,9 +21,7 @@ export class LadaPage {
   constructor(private modal: ModalController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LadaPage');
-  }
+
 
   openMycsali(){
     const mycsalipanel=this.modal.create(MycsaliPage,{facebookadatok:this.navParams.data,oldalnev:"lada"});

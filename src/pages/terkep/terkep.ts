@@ -26,6 +26,7 @@ import {
   MarkerOptions,
   Marker
 } from '@ionic-native/google-maps';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 /**
  * Generated class for the TerkepPage page.
@@ -43,9 +44,11 @@ export class TerkepPage {
   map: GoogleMap;
   lat: number;
   lang: number;
-  constructor(public loadingCtrl: LoadingController,public modal: ModalController,public locations: HelyekProvider, private toastCtrl: ToastController, private plt: Platform, private geolocation: Geolocation, public navCtrl: NavController) {
+  constructor(private locationAccuracy: LocationAccuracy,public loadingCtrl: LoadingController,public modal: ModalController,public locations: HelyekProvider, private toastCtrl: ToastController, private plt: Platform, private geolocation: Geolocation, public navCtrl: NavController) {
 
     this.plt.ready().then(() => {
+      let loader = this.loadingCtrl.create({content: "Helyadatok lekérdezése..."});
+      loader.present();
       var options = {
         timeout: 15000
       };
@@ -53,19 +56,30 @@ export class TerkepPage {
       this.geolocation.getCurrentPosition(options).then(resp => {
         this.lat = resp.coords.latitude;
         this.lang = resp.coords.longitude;
+        loader.dismiss();
         this.mapLoadingPresent();
       }).catch(() => {
         console.log("sikertelen location");
         this.lat = 47.49801;
         this.lang = 19.03991;
+        loader.dismiss();
         this.mapLoadingPresent();
         this.presentToast();
       });
 
     });
   }
-  ionViewDidLoad() {
-
+  ionViewWillEnter() {
+    this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+      
+        if(canRequest) {
+          this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+            () => console.log('Request successful'),
+            error => console.log('Error requesting location permissions', error)
+          );
+        }
+      
+      });
   }
   presentToast() {
     let toast = this.toastCtrl.create({

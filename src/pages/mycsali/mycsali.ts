@@ -53,9 +53,6 @@ export class MycsaliPage {
   }
 
 
-  ionViewDidLoad() {
-    console.log("hali",this.navParams.get("oldalnev"))
-  }
 
   openMycsalireszletek(item){
     this.navCtrl.push(CsalireszletekPage, {

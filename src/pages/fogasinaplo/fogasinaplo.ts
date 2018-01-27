@@ -32,7 +32,7 @@ export class FogasinaploPage {
     this.sajatchange();
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.sajatfogasokLoading();
   }
   osszeschange(){

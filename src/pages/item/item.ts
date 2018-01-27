@@ -34,9 +34,6 @@ export class ItemPage {
     })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ItemPage');
-  }
 
   kommentelkuld(){
     this.firebasedb.list("/cikkmegjegyzesek/")

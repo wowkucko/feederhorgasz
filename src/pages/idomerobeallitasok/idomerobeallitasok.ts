@@ -30,9 +30,6 @@ export class IdomerobeallitasokPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IdomerobeallitasokPage');
-  }
 
   
   mentesForm(){

@@ -52,9 +52,6 @@ export class MytoPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MytoPage');
-  }
   openMytoreszletek(item){
     this.navCtrl.push(ToreszletekPage, {
       mytoreszletek: item

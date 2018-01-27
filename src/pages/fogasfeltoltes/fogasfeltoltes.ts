@@ -45,9 +45,6 @@ export class FogasfeltoltesPage {
   }
   
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FogasfeltoltesPage');
-  }
   public ionViewWillEnter() {
     if(this.navParams.get('valasztottCsali')!=null){
       this.fogasCsali = this.navParams.get('valasztottCsali').csalineve|| null;

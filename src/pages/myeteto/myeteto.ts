@@ -52,9 +52,6 @@ export class MyetetoPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyetetoPage');
-  }
   openMyetetoanyagreszletek(item){
     this.navCtrl.push(EtetoanyagreszletekPage, {
       myetetoanyagreszletek: item

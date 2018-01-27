@@ -35,9 +35,7 @@ export class TofeltoltesPage {
     
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TofeltoltesPage');
-  }
+
   adatfeltolt() {
       
       this.firebasedb.list("/tavak/")

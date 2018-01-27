@@ -21,9 +21,7 @@ export class TudastarPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TudastarPage');
-  }
+
   openTolistazas(){
     this.navCtrl.push(TolistazasPage,this.navParams.data);
   }

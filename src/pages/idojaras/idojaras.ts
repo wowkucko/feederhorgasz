@@ -48,7 +48,7 @@ export class IdojarasPage {
 
       this.idojarasProvider.getIdojaraselorejelzes(this.hely.city,this.hely.country).subscribe(idojaraselorejelzes=>{
         this.elorejelzes=idojaraselorejelzes.forecast.simpleforecast.forecastday;
-        console.log(this.elorejelzes)
+        
         
       });
 

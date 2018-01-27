@@ -25,28 +25,15 @@ export class UdvozoljukPage {
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UdvozoljukPage');
-  }
+
 
   loginWithFacebook(){
    
-    /*this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    .then( res=> {
-      
-      let facebookadatok={
-        nev: res.user.displayName,
-        email: res.user.email,
-        profilkep: res.user.photoURL
-      }
-      
-      this.navCtrl.push(TabsPage,facebookadatok);*/
       const provider = new firebase.auth.FacebookAuthProvider();
       
         firebase.auth().signInWithRedirect(provider).then( () => {
           firebase.auth().getRedirectResult().then( res => {
-            // This gives you a Google Access Token.
-            // You can use it to access the Google API.
+
             let facebookadatok={
               nev: res.user.displayName,
               email: res.user.email,
@@ -54,12 +41,8 @@ export class UdvozoljukPage {
             }
             this.navCtrl.push(TabsPage,facebookadatok);
 
-            //var token = result.credential.accessToken;
-            // The signed-in user info.
-           // var user = result.user;
-           // console.log(token, user);
           }).catch(function(error) {
-            // Handle Errors here.
+
             console.log(error.message);
           });
         });
@@ -68,16 +51,6 @@ export class UdvozoljukPage {
   }
   loginWithGoogle(){
     
-     /*this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-     .then( res=> {
-       
-       let facebookadatok={
-         nev: res.user.displayName,
-         email: res.user.email,
-         profilkep: res.user.photoURL
-       }
-       
-       this.navCtrl.push(TabsPage,facebookadatok);*/
        const provider = new firebase.auth.GoogleAuthProvider();
        
          firebase.auth().signInWithRedirect(provider).then( () => {
@@ -89,11 +62,7 @@ export class UdvozoljukPage {
                profilkep: res.user.photoURL
              }
              this.navCtrl.push(TabsPage,facebookadatok);
- 
-             //var token = result.credential.accessToken;
-             // The signed-in user info.
-            // var user = result.user;
-            // console.log(token, user);
+
            }).catch(function(error) {
              console.log(error.message);
            });
@@ -101,12 +70,4 @@ export class UdvozoljukPage {
        
      
    }
-  IonViewDidLeave(){
-    
-  }
-
-
-  /*logoutWithFacebook(){
-    this.fire.auth.signOut();
-  }*/
 }

@@ -22,9 +22,7 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private app: App) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-  }
+
   openBeallitasok(){
     this.navCtrl.push(BeallitasokPage);
   }
@@ -35,7 +33,7 @@ export class ProfilePage {
  logout(){
   firebase.auth().signOut().then((result)=>{
     this.app.getRootNav().setRoot(UdvozoljukPage);
-    console.log("logged out");}
+    }
 
   )
  }

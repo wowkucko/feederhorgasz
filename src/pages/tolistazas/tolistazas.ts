@@ -25,7 +25,8 @@ export class TolistazasPage {
 
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
+  this.megyevalasztas = "osszes";
    this.tavakLoading();
 
   }
@@ -60,11 +61,6 @@ export class TolistazasPage {
     this.tavakFetch().then((x) => {
         if (x) loader.dismiss();
     });
-  }
-
-
-  ionViewWillEnter() {
-    this.megyevalasztas = "osszes";
   }
 
   toreszletNyit(item) {

@@ -40,9 +40,6 @@ export class EtetoanyagreszletekPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EtetoanyagreszletekPage');
-  }
   PushTolada(){
     console.log("pusholok")
     this.firebasedb.list("/myetetoanyag/")

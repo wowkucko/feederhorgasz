@@ -49,9 +49,6 @@ export class ToreszletekPage {
     }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ToreszletekPage');
-  }
 
   PushTolada(){
     this.firebasedb.list("/mytavak/")

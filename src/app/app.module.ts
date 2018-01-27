@@ -27,20 +27,15 @@ import { TudastarPage } from '../pages/tudastar/tudastar';
 import { FogasinaploPage } from '../pages/fogasinaplo/fogasinaplo';
 import { TerkepPage } from '../pages/terkep/terkep';
 import { ItemPage } from '../pages/item/item';
-import { TerkeplistaPage } from '../pages/terkeplista/terkeplista';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { UdvozoljukPage } from './../pages/udvozoljuk/udvozoljuk';
-import { SignupPage } from './../pages/signup/signup';
-import { LoginPage } from '../pages/login/login';
 import { FogasfeltoltesPage } from '../pages/fogasfeltoltes/fogasfeltoltes';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { GoogleCsatlakozasProvider } from '../providers/google-csatlakozas/google-csatlakozas';
-import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { HelyekProvider } from '../providers/helyek/helyek';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
@@ -59,6 +54,7 @@ import {
   MarkerOptions,
   Marker
  } from '@ionic-native/google-maps';
+ import { LocationAccuracy } from '@ionic-native/location-accuracy';
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",
   authDomain: "feeder-horgasz.firebaseapp.com",
@@ -73,13 +69,10 @@ var config = {
     MyApp,
     HomePage,
     TabsPage,
-    LoginPage,
-    SignupPage,
     UdvozoljukPage,
     TudastarPage,
     FogasinaploPage,
     TerkepPage,
-    TerkeplistaPage,
     FogasfeltoltesPage,
     ItemPage,
     BeallitasokPage,
@@ -120,13 +113,10 @@ var config = {
     MyApp,
     HomePage,
     TabsPage,
-    LoginPage,
-    SignupPage,
     UdvozoljukPage,
     TudastarPage,
     FogasinaploPage,
     TerkepPage,
-    TerkeplistaPage,
     FogasfeltoltesPage,
     ItemPage,
     BeallitasokPage,
@@ -158,8 +148,6 @@ var config = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GoogleCsatlakozasProvider,
-    GoogleMapsProvider,
     HelyekProvider,
     Geolocation,
     Network,
@@ -168,7 +156,8 @@ var config = {
     Vibration,
     LocalNotifications,
     BackgroundMode,
-    GoogleMaps
+    GoogleMaps,
+    LocationAccuracy
   ]
 })
 export class AppModule {

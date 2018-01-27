@@ -19,7 +19,7 @@ export class TosnapPage {
     console.log(this.navParams.get("latparams"));
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     this.tosnapLoading();
   }
 
