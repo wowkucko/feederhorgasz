@@ -19,7 +19,7 @@
       <ion-thumbnail item-start>
         <img src="img/thumbnail-totoro.png">
       </ion-thumbnail>
-      <h2 (click)="openMytoreszletek(item)">{{item.id}}</h2>
+      <h2 (click)="openMytoreszletek(item)">{{item.toneve}}</h2>
       <button *ngIf="hozzaadas" ion-button clear item-end (click)="addFogashoz(item)">
         <ion-icon name="add-circle"></ion-icon>
       </button>
