@@ -13,12 +13,12 @@ import { IdomeroPage } from './../idomero/idomero'
   templateUrl: 'home.html'
 })
 export class HomePage {
-  url: string = 'http://feederhorgasz.000webhostapp.com/wp-json/wp/v2/posts?_embed?'; 
+  url: string = 'https://feederhorgasz.000webhostapp.com/wp-json/acf/v3/posts?_embed?'; 
   items:any;
   
   
   constructor(public loadingCtrl: LoadingController,public navParams: NavParams,public navCtrl: NavController, private http:Http, public actionSheetCtrl: ActionSheetController) {
- 
+    
   }
 
    hirfolyambetolt(){
@@ -28,11 +28,14 @@ export class HomePage {
     .subscribe(data => 
         {  
           this.items = data;
+          
          
          
         }); 
+        
         resolve(true);
       });
+      
    }
   ionViewWillEnter() {
     this.hirfolyamLoading();
@@ -60,29 +63,8 @@ export class HomePage {
     this.navCtrl.push(ItemPage,{hiradatok:item,facebookadatok:this.navParams.data});
   }
 
-  presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Mit keresel a közelben?',
-      buttons: [
-        {
-          text: 'Horgásztavakat',
-          handler: () => {
-            this.terkepnyit();
-          }
-        },{
-          text: 'Horgászboltokat',
-          handler: () => {
-            
-          }
-        },{
-          text: 'Szervízeket',
-          handler: () => {
-            
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+  openTerkep() {
+    this.navCtrl.push(TerkepPage);
   }
 
 }

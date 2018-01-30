@@ -25,6 +25,7 @@ export class ItemPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase) {
     this.hiradatok=this.navParams.get("hiradatok");
+    console.log(this.navParams.get("hiradatok"));
     
     this.firebasedb.list("/cikkmegjegyzesek/").subscribe(_data => {
       

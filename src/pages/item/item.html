@@ -14,9 +14,12 @@
 
 
 <ion-content padding>
-  <h2>{{hiradatok.title.rendered}}</h2>
-  <img src="{{hiradatok.better_featured_image.source_url}}" />
-  <div class="text" [innerHTML]="hiradatok.content.rendered"></div>
+  <h2>{{hiradatok.cim}}</h2>
+  <img src="{{hiradatok.image}}" />
+  <div class="text" [innerHTML]="hiradatok.leiras"></div>
+  {{hiradatok.datum}}
+
+ {{hiradatok.kategoria}}
 
   <h2>Kommentek</h2>
   <ion-list>

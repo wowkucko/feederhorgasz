@@ -16,14 +16,28 @@
   <ng-container *ngIf="ladabol;else nemlada">
     <div *ngFor="let toreszletek of toreszletek; let i = index">
     <h2>{{toreszletek.nev}}</h2>
-    <h3>{{toreszletek.$key}} </h3>
+  
+    {{toreszletek.cim}}
+    {{toreszletek.halfajtak}}
+    {{toreszletek.megye}}
+    {{toreszletek.szolgaltatasleiras}}
+    {{toreszletek.tipus}}
+    {{toreszletek.vizterulet}}
+    {{toreszletek.egyeb}}
     
     </div>
   </ng-container>
   <ng-template #nemlada>
     <h2>{{toreszletek.nev}}</h2>
-    <h3>{{toreszletek.$key}} </h3>
-    <button ion-fab (click)="PushTolada()">Ládába</button>
+    {{toreszletek.cim}}
+    {{toreszletek.halfajtak}}
+    {{toreszletek.megye}}
+    {{toreszletek.szolgaltatasleiras}}
+    {{toreszletek.tipus}}
+    {{toreszletek.vizterulet}}
+    {{toreszletek.egyeb}}
+
+    <button ion-fab (click)="PushTolada()">Mentés kedvencekbe</button>
   </ng-template>
     
 </ion-content>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons start>
-      <button ion-button icon-only (click)="presentActionSheet()">
+      <button ion-button icon-only (click)="openTerkep()">
         <ion-icon name="navigate"></ion-icon>
       </button>
     </ion-buttons>
@@ -22,15 +22,15 @@
   <ion-card ion-item *ngFor="let item of items" (click)="itemKlikk(item)">
     <ion-card-content>
       <ion-item>
-        <h2>{{item.title.rendered}}</h2>
-        <p>November 5, 1955</p>
+        <h2>{{item.acf.cim}}</h2>
+        <p>{{item.acf.datum}}</p>
       </ion-item>
 
-      <img src="{{item.better_featured_image.source_url}}"/>
+      <img src="{{item.acf.image}}"/>
 
       <ion-card-content>
 
-        <div class="text" [innerHTML]="item.excerpt.rendered"></div>
+        <div class="text" [innerHTML]="item.acf.short"></div>
       </ion-card-content>
 
       <ion-row>
