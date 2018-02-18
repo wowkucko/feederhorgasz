@@ -1,6 +1,7 @@
 import {
   MyetetoPage
 } from './../myeteto/myeteto';
+import { Keyboard } from '@ionic-native/keyboard';
 import {
   MycsaliPage
 } from '../mycsali/mycsali';
@@ -19,7 +20,8 @@ import {
   NavParams,
   ViewController,
   LoadingController,
-  ToastController
+  ToastController,
+  Platform
 } from 'ionic-angular';
 import {
   Camera
@@ -33,6 +35,7 @@ import {
   Validators
 } from '@angular/forms';
 import firebase from 'firebase';
+
 
 /**
  * Generated class for the FogasfeltoltesPage page.
@@ -63,15 +66,17 @@ export class FogasfeltoltesPage {
   fogasCsali: string
   fogasHelyszin: string
   fogasEtetoanyag1: string
-  fogasEtetoanyag2: string
   fogasSuly: number
   fogasEgyeb
   kepmegjelenit
   useremail
   fogasPublikus: boolean
+  back:boolean=false;
+  forward:boolean=true;
+  kepbetolt:boolean=false;
 
 
-  constructor(private toastCtrl: ToastController,public loadingCtrl: LoadingController,public formBuilder: FormBuilder, public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
+  constructor(public platform: Platform, private keyboard: Keyboard,private toastCtrl: ToastController,public loadingCtrl: LoadingController,public formBuilder: FormBuilder, public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
     this.mypicref = firebase.storage().ref('/');
     this.fogasPublikus=true;
     this.slideOneForm = formBuilder.group({
@@ -83,7 +88,6 @@ export class FogasfeltoltesPage {
       suly: ['', Validators.compose([Validators.maxLength(3), Validators.pattern('[0-9]*')])],
       csali: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
       etetoanyag1: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
-      etetoanyag2: ['', Validators.maxLength(60)],
       megjegyzes: ['', Validators.maxLength(300)],
       publikus:['']
       });
@@ -92,6 +96,9 @@ export class FogasfeltoltesPage {
 
 
   public ionViewWillEnter() {
+    this.platform.ready().then(() => {
+    //this.keyboard.disableScroll(true);
+  });
     if (this.navParams.get('valasztottCsali') != null) {
       this.fogasCsali = this.navParams.get('valasztottCsali').csalineve || null;
     }
@@ -105,6 +112,11 @@ export class FogasfeltoltesPage {
 
 
   }
+  ionViewWillLeave(){
+    this.platform.ready().then(() => {
+    //this.keyboard.disableScroll(false);
+  });
+  }
   bezarFeltolt() {
     this.view.dismiss();
   }
@@ -113,14 +125,21 @@ export class FogasfeltoltesPage {
       message: 'A feltöltés sikeres!',
       duration: 3000,
       position: 'top'
-    });}
+    });
+    toast.present();
+  }
+
 
   next() {
     this.fogasfeltoltesSlider.slideNext();
+    this.back=true;
+    this.forward=false;
   }
 
   prev() {
     this.fogasfeltoltesSlider.slidePrev();
+    this.back=false;
+    this.forward=true;
   }
 
   fotoKeszit() {
@@ -134,8 +153,10 @@ export class FogasfeltoltesPage {
     }).then(imgdata => {
       this.picdata = imgdata;
       this.kepmegjelenit = "data:image/jpeg;base64," + imgdata;
+      this.kepbetolt=true;
 
     })
+    
   }
   fotoValaszt() {
     this.camera.getPicture({
@@ -146,6 +167,7 @@ export class FogasfeltoltesPage {
     }).then(imgdata => {
       this.picdata = imgdata;
       this.kepmegjelenit = "data:image/jpeg;base64," + imgdata;
+      this.kepbetolt=true;
 
     })
   }
@@ -192,12 +214,10 @@ export class FogasfeltoltesPage {
       this.fogasKepe = savedPic.downloadURL;
     }
 
-    if (!this.fogasEtetoanyag2) {
-      this.fogasEtetoanyag2 = "-"
-    };
+
 
     if (!this.picdata) {
-      this.fogasKepe = "http://babakunyho.eu/img/default-no-image.png"
+      this.fogasKepe = "https://firebasestorage.googleapis.com/v0/b/feeder-horgasz.appspot.com/o/default-no-image.png?alt=media&token=71bcb2d7-acbb-42ef-9ac8-39b9d1132410"
     };
     if (!this.fogasSuly) {
       this.fogasSuly = 0;
@@ -219,7 +239,6 @@ export class FogasfeltoltesPage {
         useremail: this.navParams.get("facebookemail"),
         helyszin: this.fogasHelyszin,
         etetoanyag1: this.fogasEtetoanyag1,
-        etetoanyag2: this.fogasEtetoanyag2,
         publikus: this.fogasPublikus
       });
       loader.dismiss();

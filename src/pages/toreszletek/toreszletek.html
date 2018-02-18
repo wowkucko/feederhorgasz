@@ -1,43 +1,119 @@
-<!--
-  Generated template for the ToreszletekPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{toreszletek.nev}}</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Részletek</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+
 <ion-content padding>
+
+
   <ng-container *ngIf="ladabol;else nemlada">
-    <div *ngFor="let toreszletek of toreszletek; let i = index">
-    <h2>{{toreszletek.nev}}</h2>
-  
-    {{toreszletek.cim}}
-    {{toreszletek.halfajtak}}
-    {{toreszletek.megye}}
-    {{toreszletek.szolgaltatasleiras}}
-    {{toreszletek.tipus}}
-    {{toreszletek.vizterulet}}
-    {{toreszletek.egyeb}}
-    
-    </div>
+    <ion-content class="common-bg" *ngFor="let toreszletek of toreszletek; let i = index">
+      <ion-slides class="to-top" pager>
+        <ion-slide>
+          <img src="{{toreszletek.keplink}}" alt="">
+        </ion-slide>
+      </ion-slides>
+      <ion-grid class="border-bottom dark-bg">
+        <ion-row>
+          <ion-col text-center>
+            <div class="text-sm">
+              <div>
+                <ion-icon name="time" class="text-white"></ion-icon>
+                <span ion-text color="light">{{toreszletek.nev}}</span>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="border-bottom" padding>
+        <span ion-text color="dark" class="bold">{{toreszletek.nev}}, {{toreszletek.cim}}</span>
+        <ul class="highlight">
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Fogható halfajták: {{ toreszletek.halfajtak }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Szolgáltatások: {{ toreszletek.szolgaltatasleiras }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Víz típusa: {{ toreszletek.tipus }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Vízterület: {{ toreszletek.vizterulet }} ha</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Weboldal: {{ toreszletek.weboldal }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Facebook: {{ toreszletek.facebookurl }}</span>
+          </li>
+
+        </ul>
+        <p ion-text [innerHTML]=toreszletek.egyeb></p>
+      </div>
+
+    </ion-content>
   </ng-container>
   <ng-template #nemlada>
-    <h2>{{toreszletek.nev}}</h2>
-    {{toreszletek.cim}}
-    {{toreszletek.halfajtak}}
-    {{toreszletek.megye}}
-    {{toreszletek.szolgaltatasleiras}}
-    {{toreszletek.tipus}}
-    {{toreszletek.vizterulet}}
-    {{toreszletek.egyeb}}
+    <ion-slides class="to-top" pager>
+      <ion-slide>
+        <img src="{{toreszletek.keplink}}" alt="">
+      </ion-slide>
+    </ion-slides>
+    <ion-grid class="border-bottom dark-bg">
+      <ion-row>
+        <ion-col text-center>
+          <div class="text-sm">
+            <div>
+              <ion-icon name="time" class="text-white"></ion-icon>
+              <span ion-text color="light">{{toreszletek.nev}}</span>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="border-bottom" padding>
+      <span ion-text color="dark" class="bold">{{toreszletek.nev}}, {{toreszletek.cim}}</span>
+      <ul class="highlight">
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Fogható halfajták: {{ toreszletek.halfajtak }}</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Szolgáltatások: {{ toreszletek.szolgaltatasleiras }}</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Víz típusa: {{ toreszletek.tipus }}</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Vízterület: {{ toreszletek.vizterulet }} ha</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Weboldal: {{ toreszletek.weboldal }}</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Facebook: {{ toreszletek.facebookurl }}</span>
+        </li>
 
-    <button ion-fab (click)="PushTolada()">Mentés kedvencekbe</button>
+      </ul>
+      <p ion-text [innerHTML]=toreszletek.egyeb></p>
+    </div>
+    <button ion-button full color="primary" (click)="PushTolada()">Mentés kedvencekbe</button>
+
   </ng-template>
-    
+
 </ion-content>

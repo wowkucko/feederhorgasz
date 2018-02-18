@@ -19,8 +19,6 @@ export class TofeltoltesPage {
 
   cim:any
   nev:string
-  topicref:any
-  toimgdata:any
   vizterulet:number
   facebook:any
   weboldal:string
@@ -37,7 +35,6 @@ export class TofeltoltesPage {
 
 
   adatfeltolt() {
-      
       this.firebasedb.list("/tavak/")
       .push({
         cim:this.cim,
@@ -54,7 +51,6 @@ export class TofeltoltesPage {
         keplink2:"",
         keplink3:"",
         keplink4:"",
-        keplink5:"",
         lat:"",
         long:"",
         approved:0,

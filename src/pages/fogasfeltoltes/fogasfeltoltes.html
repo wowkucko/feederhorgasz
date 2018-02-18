@@ -6,15 +6,16 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
+      <ion-buttons start>
+          <button ion-button icon-left (click)="prev()" *ngIf="back"><ion-icon name="arrow-back"></ion-icon>Előző</button>
+        </ion-buttons>
     <ion-title>
       Fogás feltöltése
     </ion-title>
-    <ion-buttons start>
-      <button ion-button icon-left (click)="prev()"><ion-icon name="arrow-back"></ion-icon>Előző</button>
-    </ion-buttons>
+    
     <ion-buttons end>
-      <button ion-button icon-right (click)="next()">Következő <ion-icon name="arrow-forward"></ion-icon></button>
+      <button ion-button icon-right (click)="next()" *ngIf="forward">Következő <ion-icon name="arrow-forward"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 
@@ -30,16 +31,20 @@
       <ion-list no-lines>
         <form [formGroup]="slideOneForm">
 
-          <ion-item>
+          <ion-item >
             <p>Kép feltöltése</p>
             <ion-buttons start>
-              <button ion-button icon-left (click)="fotoKeszit()">Fotózás<ion-icon name="camera"></ion-icon></button>
-              <button ion-button icon-right (click)="fotoValaszt()">Galéria<ion-icon name="images"></ion-icon></button>
+                <button ion-button full color="primary" icon-left (click)="fotoKeszit()">Fotózás<ion-icon name="camera" ></ion-icon></button>
+                <button ion-button full color="primary" icon-left (click)="fotoValaszt()">Galéria<ion-icon name="images"></ion-icon></button>
             </ion-buttons>
-            <ion-card>
-              <img src="{{ kepmegjelenit }}" />
-            </ion-card>
           </ion-item>
+          <ion-grid padding *ngIf="kepbetolt">
+              <ion-row>
+                <ion-col no-padding text-center>
+                <img src="{{ kepmegjelenit }}"/>
+                  </ion-col>
+                </ion-row>
+          </ion-grid>
           <ion-item>
             <ion-label floating>Fogás dátuma</ion-label>
             <ion-datetime [class.invalid]="!slideOneForm.controls.datum.valid && (slideOneForm.controls.datum.dirty|| submitAttempt)"
@@ -110,14 +115,7 @@
                         <ion-icon name="briefcase"> </ion-icon>
                       </button>
           </ion-item>
-          <ion-item>
-            <ion-label floating>Etetőanyag 2</ion-label>
-            <ion-input [class.invalid]="!slideTwoForm.controls.etetoanyag2.valid && (slideTwoForm.controls.etetoanyag2.dirty|| submitAttempt)"
-              formControlName="etetoanyag2" [(ngModel)]="fogasEtetoanyag2" type="text"></ion-input>
-            <button ion-button clear type="button" item-right (click)="valasztasLadaboletetoanyag()">
-                          <ion-icon name="briefcase"> </ion-icon>
-                        </button>
-          </ion-item>
+
           <ion-item>
             <ion-label floating>Egyéb megjegyzés</ion-label>
             <ion-textarea [class.invalid]="!slideTwoForm.controls.megjegyzes.valid && (slideTwoForm.controls.megjegyzes.dirty|| submitAttempt)"

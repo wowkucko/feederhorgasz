@@ -3,6 +3,7 @@ import { BeallitasokPage } from '../beallitasok/beallitasok';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { LadaPage } from '../lada/lada';
+import firebase from 'firebase';
 
 
 /**

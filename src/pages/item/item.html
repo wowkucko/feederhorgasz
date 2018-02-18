@@ -6,40 +6,75 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{hiradatok.title.rendered}}</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h2>{{hiradatok.cim}}</h2>
-  <img src="{{hiradatok.image}}" />
-  <div class="text" [innerHTML]="hiradatok.leiras"></div>
-  {{hiradatok.datum}}
-
- {{hiradatok.kategoria}}
-
-  <h2>Kommentek</h2>
-  <ion-list>
-
-    <ion-item>
-      <ion-label>Bejegyzés</ion-label>
-      <ion-input [(ngModel)]="bejegyzesszovege" type="text" ></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button color="light" (click)="kommentelkuld()">Beküld</button>
-  <ng-container *ngFor="let item of kommentek; let i = index">
-    <ion-list>
+  <ion-content class="common-bg">
+    <!--slides-->
+    <ion-slides class="to-top" pager>
+      <ion-slide>
+        <img src="{{hiradatok.acf.image}}" alt="">
+      </ion-slide>
+    </ion-slides>
+    <!--services-->
+    <ion-grid class="border-bottom dark-bg">
+      <ion-row>
+        <ion-col text-center>
+          <div class="text-sm">
+            <div>
+              <ion-icon name="time" class="text-white"></ion-icon>
+              <span ion-text color="light">{{ hiradatok.acf.datum | date: "yyyy/MM/dd HH:MM" }}</span>
+              <ion-icon name="pricetag" margin-left class="text-white"></ion-icon>
+              <span ion-text color="light">{{ hiradatok.acf.kategoria}}</span>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!--high light-->
+    <div class="border-bottom" padding>
+      <span ion-text color="dark" class="bold">{{hiradatok.acf.cim}}</span>
+      <p ion-text [innerHTML]=hiradatok.acf.leiras></p>
+      <ng-container *ngIf="video">
+        <div *ngFor="let item of videos; let i = index" class="youtube">
+          <p>
+            <span ion-text color="dark" class="bold">{{item.snippet.title}}</span>
+            <img src="{{item.snippet.thumbnails.high.url}}" (click)="openVideo()">
+          </p>
+          <p>A videó tulajdonosa: {{item.snippet.channelTitle}}</p>
+        </div>
+      </ng-container>
+    </div>
+    <span ion-text color="dark" class="bold">Kommentek</span>
+    <form class="list-form" padding [formGroup]="kommentForm">
       <ion-item>
-        <ion-avatar item-start>
-          <img src="{{item.kommenteloavatar}}">
-        </ion-avatar>
-        <h2>{{item.kommenteloneve}}</h2>
-        <h3>{{item.kommentido}}</h3>
-        <p>{{item.bejegyzesszovege}}</p>
+        <ion-label floating>Megjegyzés:</ion-label>
+        <ion-input [(ngModel)]="bejegyzesszovege" type="text" [class.invalid]="!kommentForm.controls.uzenet.valid && (kommentForm.controls.uzenet.dirty|| submitAttempt)"
+          formControlName="uzenet"></ion-input>
       </ion-item>
-    </ion-list>
-  </ng-container>
-</ion-content>
+      <ion-item *ngIf="!kommentForm.controls.uzenet.valid && (kommentForm.controls.uzenet.dirty|| submitAttempt)">
+        <p>Töltsd ki a maximum 60 karakteres mezőt!</p>
+      </ion-item>
+      <button ion-button full color="primary" (click)="kommentelkuld()">Elküldés</button>
+    </form>
+
+
+    <div padding style="height:100%" *ngIf="kommentek">
+      <ion-list [virtualScroll]="kommentek" approxItemHeight="80px">
+        <ion-item *virtualItem="let item">
+          <ion-avatar item-start>
+            <img src="{{item.kommenteloavatar}}">
+          </ion-avatar>
+          <h2>{{item.kommenteloneve}}</h2>
+          <h3>{{item.kommentido | date: "yyyy/MM/dd HH:MM"}}</h3>
+          <p>{{item.bejegyzesszovege}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>

@@ -45,6 +45,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { IdomeroPage } from '../pages/idomero/idomero';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {
   GoogleMaps,
   GoogleMap,
@@ -55,6 +56,8 @@ import {
   Marker
  } from '@ionic-native/google-maps';
  import { LocationAccuracy } from '@ionic-native/location-accuracy';
+ import { Keyboard } from '@ionic-native/keyboard';
+ import { SocialSharing } from '@ionic-native/social-sharing';
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",
   authDomain: "feeder-horgasz.firebaseapp.com",
@@ -101,7 +104,7 @@ var config = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false } ),
     HttpModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
@@ -157,7 +160,10 @@ var config = {
     LocalNotifications,
     BackgroundMode,
     GoogleMaps,
-    LocationAccuracy
+    LocationAccuracy,
+    Keyboard,
+    InAppBrowser,
+    SocialSharing
   ]
 })
 export class AppModule {

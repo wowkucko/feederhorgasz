@@ -6,21 +6,21 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>idojaras</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Időjárás</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-<ion-grid *ngIf="idojaras">
+<ion-content padding class="common-bg">
+    <ion-grid class="card" padding *ngIf="idojaras">
   <ion-row>
      <ion-col width-50 offset-25>
-       <h2 class="hely">{{idojaras.display_location.city}}</h2>
-       <div class="ikon"><img src="{{idojaras.icon_url}}"></div>
-       <h3 class="leiras">{{idojaras.weather}}</h3>
-        <h1 class="homerseklet">{{idojaras.temp_c}}&deg;</h1>
+        <h2 class="location text-dark">{{idojaras.display_location.city}}</h2>
+        <div class="icon"><img src="{{idojaras.icon_url}}"></div>
+        <h3 class="desc">{{idojaras.weather}}</h3>
+        <h1 class="temp">{{idojaras.temp_c}}&deg;</h1>
      </ion-col>
   </ion-row>
   <ion-row>

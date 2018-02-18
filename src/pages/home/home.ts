@@ -39,6 +39,7 @@ export class HomePage {
    }
   ionViewWillEnter() {
     this.hirfolyamLoading();
+    
   }
   hirfolyamLoading(){
     let loader = this.loadingCtrl.create({content: "Hírfolyam betöltése..."});
@@ -48,16 +49,6 @@ export class HomePage {
     });
   }
 
-  terkepnyit(){
-    this.navCtrl.push(TerkepPage);
-   }
-   idojarasMegnyit(){
-     this.navCtrl.push(IdojarasPage);
-   }
-   idomeroMegnyit(){
-     this.navCtrl.push(IdomeroPage);
-   }
-
   itemKlikk(item){
 
     this.navCtrl.push(ItemPage,{hiradatok:item,facebookadatok:this.navParams.data});
@@ -65,6 +56,48 @@ export class HomePage {
 
   openTerkep() {
     this.navCtrl.push(TerkepPage);
+  }
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Mit szeretnél?',
+      buttons: [
+        {
+          text: 'Időmérő',
+          icon: 'timer',
+          handler: () => {
+            this.navCtrl.push(IdomeroPage);
+          }
+        },{
+          text: 'Időjárás',
+          icon: 'sunny',
+          handler: () => {
+            this.navCtrl.push(IdojarasPage);
+          }
+        },{
+          text: 'Tó Térkép',
+          icon: 'map',
+          handler: () => {
+            this.navCtrl.push(TerkepPage);
+          }
+        },
+        {
+          text: 'Peca tervező',
+          icon: 'calendar',
+          handler: () => {
+            //this.navCtrl.push(TerkepPage);
+          }
+ 
+        },
+        {
+          text: 'Statisztikák',
+          icon: 'stats',
+          handler: () => {
+          //  this.navCtrl.push(TerkepPage);
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
 }

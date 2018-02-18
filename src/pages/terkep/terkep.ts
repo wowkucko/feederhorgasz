@@ -70,18 +70,24 @@ export class TerkepPage {
     toast.present();
   }
   async locationReq() {
+    
+    
     const canRequest = await this.locationAccuracy.canRequest();
-
+    console.log(canRequest);
     if (canRequest) {
+      
       const success = await this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then((success) => {
         
         if (success.code==1 || success.code==0){
           this.answer=true;
         }
-        else{
+        else{          
          alert("Hiba történt! Próbáld újra!")
         }
       });
+    }
+    else{
+      console.log("failure");
     }
 
     if (this.answer == true) {

@@ -6,24 +6,120 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>csalireszletek</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Részletek</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+
   <ng-container *ngIf="ladabol;else nemlada">
-    <div *ngFor="let csalireszletek of csalireszletek; let i = index">
-    <h2>{{csalireszletek.nev}}</h2>
-    <h3>{{csalireszletek.$key}} </h3>
-    
-    </div>
+    <ion-content class="common-bg" *ngFor="let csalireszletek of csalireszletek; let i = index">
+      <ion-slides class="to-top" pager>
+        <ion-slide>
+          <img src="{{csalireszletek.keplink}}" alt="">
+        </ion-slide>
+      </ion-slides>
+      <ion-grid class="border-bottom dark-bg">
+        <ion-row>
+          <ion-col text-center>
+            <div class="text-sm">
+              <div>
+                <ion-icon name="time" class="text-white"></ion-icon>
+                <span ion-text color="light">{{csalireszletek.kiszereles}}g kiszerelésben kapható {{csalireszletek.allag}} {{csalireszletek.tipus}}</span>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="border-bottom" padding>
+        <span ion-text color="dark" class="bold">{{csalireszletek.nev}}</span>
+        <ul class="highlight">
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Gyártó: {{ csalireszletek.marka }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Típus: {{ csalireszletek.tipus }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Állag: {{ csalireszletek.allag }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Szín: {{ csalireszletek.szin }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Méret: {{ csalireszletek.meret }}mm</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Kiszerelés: {{ csalireszletek.kiszereles }}g</span>
+          </li>
+
+        </ul>
+        <p ion-text [innerHTML]=csalireszletek.leiras></p>
+      </div>
+
+    </ion-content>
   </ng-container>
   <ng-template #nemlada>
-    <h2>{{csalireszletek.nev}}</h2>
-    <h3>{{csalireszletek.$key}} </h3>
+    <ion-slides class="to-top" pager>
+      <ion-slide>
+        <img src="{{csalireszletek.keplink}}" alt="">
+      </ion-slide>
+    </ion-slides>
+    <ion-grid class="border-bottom dark-bg">
+      <ion-row>
+        <ion-col text-center>
+          <div class="text-sm">
+            <div>
+              <ion-icon name="time" class="text-white"></ion-icon>
+              <span ion-text color="light">{{csalireszletek.kiszereles}}g kiszerelésben kapható {{csalireszletek.allag}} {{csalireszletek.tipus}}</span>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="border-bottom" padding>
+      <span ion-text color="dark" class="bold">{{csalireszletek.nev}}</span>
+      <ul class="highlight">
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Gyártó: {{ csalireszletek.marka }}</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Típus: {{ csalireszletek.tipus }}</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Állag: {{ csalireszletek.allag }}</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Szín: {{ csalireszletek.szin }}</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Méret: {{ csalireszletek.meret }}mm</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark" class="text-green"></ion-icon>
+          <span ion-text color="primary">Kiszerelés: {{ csalireszletek.kiszereles }}g</span>
+        </li>
+
+      </ul>
+      <p ion-text [innerHTML]=csalireszletek.leiras></p>
+    </div>
+    <button ion-button full color="primary" (click)="PushTolada()">Mentés kedvencekbe</button>
+    
   </ng-template>
-    <button ion-fab (click)="PushTolada()">Ládába</button>
+
 </ion-content>

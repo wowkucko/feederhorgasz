@@ -6,16 +6,32 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>lada</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Horgász láda</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-<button (click)="openMycsali()">Ládámban lévő csalik</button>
-<button (click)="openMyetetoanyag()">Ládámban lévő etetőanyagok</button>
-<button (click)="openMyto()">Tavaim</button>
+<ion-content class="card-background-page">
+    
+      <ion-card (click)="openMycsali()">
+        <img src="./assets/img/bait.jpg"/>
+        <div class="card-title">Saját csalik</div>
+      </ion-card>
+    
+      <ion-card (click)="openMyetetoanyag()">
+        <img src="./assets/img/ground.jpg"/>
+        <div class="card-title">Saját etetőanyagok</div>
+      </ion-card>
+    
+      <ion-card (click)="openMyto()">
+        <img src="./assets/img/lake.jpg"/>
+        <div class="card-title">Kedvenc tavak</div>
+      </ion-card>
 
-</ion-content>
+    
+    </ion-content>
+
+
+
