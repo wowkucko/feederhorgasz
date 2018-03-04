@@ -15,10 +15,36 @@
 
 <ion-content padding>
     <ng-container *ngFor="let item of tosnapadat; let i = index">
-tó neve: {{item.nev}}
-{{item.cim}}
-{{item.megye}}
-{{item.vizterulet}}
-{{item.halfajtak}}
+      <ion-slides class="to-top" pager>
+        <ion-slide>
+          <img src="{{item.keplink}}" alt="">
+        </ion-slide>
+        <ion-slide>
+          <img src="{{item.keplink2}}" alt="">
+        </ion-slide>
+        <ion-slide>
+          <img src="{{item.keplink3}}" alt="">
+        </ion-slide>
+        <ion-slide>
+          <img src="{{item.keplink4}}" alt="">
+        </ion-slide>
+      </ion-slides>
+      <div class="border-bottom" padding>
+        <span ion-text color="dark" class="bold">{{item.nev}}</span>
+        <ul class="highlight">
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Halfajták: {{ item.halfajtak }}</span>
+          </li>
+          <li>
+            <ion-icon name="checkmark" class="text-green"></ion-icon>
+            <span ion-text color="primary">Vízterület: {{ item.vizterulet }} ha</span>
+          </li>
+
+        </ul>
+        <p ion-text [innerHTML]=item.szolgaltasleiras></p>
+      </div>
 </ng-container>
+<button ion-button full color="primary" (click)="openToreszletek()">Részletek</button>
+
 </ion-content>

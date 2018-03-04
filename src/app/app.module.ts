@@ -1,3 +1,4 @@
+import { SzervezoPage } from '../pages/szervezo/szervezo';
 import { TosnapPage } from '../pages/tosnap/tosnap';
 import { IdomerobeallitasokPage } from '../pages/idomerobeallitasok/idomerobeallitasok';
 import { FogasreszletekPage } from '../pages/fogasreszletek/fogasreszletek';
@@ -45,6 +46,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { IdomeroPage } from '../pages/idomero/idomero';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import { Calendar } from '@ionic-native/calendar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {
   GoogleMaps,
@@ -98,7 +100,8 @@ var config = {
     EtetoanyagreszletekPage,
     FogasreszletekPage,
     IdomerobeallitasokPage,
-    TosnapPage
+    TosnapPage,
+    SzervezoPage
 
 
   ],
@@ -142,7 +145,8 @@ var config = {
     EtetoanyagreszletekPage,
     FogasreszletekPage,
     IdomerobeallitasokPage,
-    TosnapPage
+    TosnapPage,
+    SzervezoPage
     
     
   
@@ -163,7 +167,8 @@ var config = {
     LocationAccuracy,
     Keyboard,
     InAppBrowser,
-    SocialSharing
+    SocialSharing,
+    Calendar
   ]
 })
 export class AppModule {

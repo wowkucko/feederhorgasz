@@ -72,9 +72,9 @@ export class TerkepPage {
   async locationReq() {
     
     
-    const canRequest = await this.locationAccuracy.canRequest();
-    console.log(canRequest);
-    if (canRequest) {
+    //const canRequest = await this.locationAccuracy.canRequest();
+    //console.log(canRequest);
+   /* if (canRequest) {
       
       const success = await this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then((success) => {
         
@@ -88,10 +88,10 @@ export class TerkepPage {
     }
     else{
       console.log("failure");
-    }
+    }*/
 
-    if (this.answer == true) {
-      console.log('answer is true');
+    //if (this.answer == true) {
+    //  console.log('answer is true');
       await this.plt.ready();
 
       const loader = this.loadingCtrl.create({
@@ -110,14 +110,14 @@ export class TerkepPage {
       } catch (err) {
         this.lat = 47.49801;
         this.lang = 19.03991;
-        this.presentToast(); // Not sure if this must be awaited..
+        this.presentToast(); 
       } finally {
         loader.dismiss();
         this.mapLoadingPresent();
       }
-    } else {
-      console.log('answer is no or undefinied');
-    }
+   // } else {
+   //   console.log('answer is no or undefinied');
+  //  }
 
   }
 

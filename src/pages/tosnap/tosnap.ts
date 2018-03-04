@@ -1,3 +1,4 @@
+import { ToreszletekPage } from '../toreszletek/toreszletek';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -37,6 +38,9 @@ export class TosnapPage {
     this.tosnapFetch().then((x) => {
         if (x) loader.dismiss();
     });
+  }
+  openToreszletek(){
+    this.navCtrl.push(ToreszletekPage,{tosnapreszletek:this.tosnapadat});
   }
 
 }

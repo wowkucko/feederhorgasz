@@ -33,11 +33,12 @@ export class UdvozoljukPage {
       
         firebase.auth().signInWithRedirect(provider).then( () => {
           firebase.auth().getRedirectResult().then( res => {
+            console.log("namost",res)
 
             let facebookadatok={
               nev: res.user.displayName,
               email: res.user.email,
-              profilkep: res.user.photoURL
+              profilkep: res.user.providerData[0].photoURL
             }
             this.navCtrl.push(TabsPage,facebookadatok);
 
@@ -55,11 +56,11 @@ export class UdvozoljukPage {
        
          firebase.auth().signInWithRedirect(provider).then( () => {
            firebase.auth().getRedirectResult().then( res => {
-
+            console.log("namost",res)
              let facebookadatok={
                nev: res.user.displayName,
                email: res.user.email,
-               profilkep: res.user.photoURL
+               profilkep: res.user.providerData[0].photoURL
              }
              this.navCtrl.push(TabsPage,facebookadatok);
 

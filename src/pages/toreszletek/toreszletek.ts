@@ -35,11 +35,18 @@ export class ToreszletekPage {
         
         this.toreszletek=_data.filter(item=>item.nev==this.navParams.get("terkepreszletek").title);
         this.ladabol=true;
-        console.log("olga",this.toreszletek)        
   
       })
 
 
+    }
+    else if(this.navParams.get("tosnapreszletek")!=null){
+      
+        
+        this.toreszletek = this.navParams.get("tosnapreszletek");
+        this.ladabol=true;
+
+      console.log("huha",this.toreszletek);
     }
     else{
       this.toreszletek=this.navParams.get("toreszletek");
