@@ -6,38 +6,24 @@
 <ion-header>
   
     <ion-navbar>
-      <ion-title>Add Event</ion-title>
+      <ion-title>Naptár</ion-title>
     </ion-navbar>
   
   </ion-header>
   
   
   <ion-content padding>
-    <form (ngSubmit)="save()">
-      <ion-list>
-        <ion-item>
-          <ion-label floating>Title</ion-label>
-          <ion-input type="text" [(ngModel)]="event.title" name="event.title"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Location</ion-label>
-          <ion-input type="text" [(ngModel)]="event.location" name="event.location"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Notes</ion-label>
-          <ion-input type="text" [(ngModel)]="event.message" name="event.message"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Start Date</ion-label>
-          <ion-datetime displayFormat="YYYY-MM-DD HH:mm" pickerFormat="YYYY-MM-DDTHH:mm" [(ngModel)]="event.startDate" name="event.startDate"></ion-datetime>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>End Date</ion-label>
-          <ion-datetime displayFormat="YYYY-MM-DD HH:mm" pickerFormat="YYYY-MM-DDTHH:mm" [(ngModel)]="event.endDate" name="event.endDate"></ion-datetime>
-        </ion-item>
-        <ion-item>
-          <button ion-button type="submit" full round>Save</button>
-        </ion-item>
-      </ion-list>
-    </form>
+<p>Válaszd ki, hogy melyik naptárba szeretnéd felvenni vagy megtekinteni az eseményeket!</p>
+   <ion-list>
+     <ion-item *ngFor="let cal of calendars" tappable>
+       <button ion-button icon-only item-start clear (click)="addEvent(cal)">
+         <ion-icon name="add"></ion-icon>
+       </button>
+       {{cal.name}}
+       
+       <button ion-button icon-only item-end clear (click)="openCal(cal)">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+     </ion-item>
+   </ion-list>
   </ion-content>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController, LoadingController } from 'ionic-angular';
+import { Component,Input,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams,ToastController, LoadingController,Content, ActionSheetController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {
   FormBuilder,
@@ -22,6 +22,13 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   templateUrl: 'item.html',
 })
 export class ItemPage {
+  @Input() data: any;
+  @Input() events: any;
+  @ViewChild(Content)
+  content: Content;
+
+  active: boolean;
+  headerImage: any = "";
   kommentForm: FormGroup;
   public hiradatok={};
   myDate: String = new Date().toISOString();
@@ -37,7 +44,7 @@ export class ItemPage {
   videoid:string;
 
 
-  constructor(private iab: InAppBrowser,private http:Http,public loading: LoadingController,private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase,public formBuilder: FormBuilder) {
+  constructor(public actionSheetCtrl: ActionSheetController,private iab: InAppBrowser,private http:Http,public loading: LoadingController,private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase,public formBuilder: FormBuilder) {
     this.kommentForm = formBuilder.group({
       uzenet: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
     });
@@ -107,6 +114,49 @@ export class ItemPage {
       position: 'top'
     });
     toast.present();
+  }
+
+  onEvent(event: string, item: any, e: any) {
+    if (e) {
+      e.stopPropagation();
+    }
+    if (this.events[event]) {
+      this.events[event](item);
+    }
+  }
+
+  onStarClass(items: any, index: number, e: any) {
+    for (var i = 0; i < items.length; i++) {
+      items[i].isActive = i <= index;
+    }
+    this.onEvent("onRates", index, e);
+  }
+
+  ngAfterViewInit() {
+    this.subscribeToIonScroll();
+  }
+
+  isClassActive() {
+    return this.active;
+  }
+
+  ngOnChanges(changes: { [propKey: string]: any }) {
+    if (changes.data && changes.data.currentValue) {
+      this.headerImage = changes.data.currentValue.headerImage;
+    }
+    this.subscribeToIonScroll();
+  }
+
+  subscribeToIonScroll() {
+    if (this.content != null && this.content.ionScroll != null) {
+      this.content.ionScroll.subscribe((d) => {
+        if (d.scrollTop < 200) {
+          this.active = false;
+          return;
+        }
+        this.active = true;
+      });
+    }
   }
     
 

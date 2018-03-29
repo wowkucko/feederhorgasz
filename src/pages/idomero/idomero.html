@@ -19,8 +19,16 @@
       </ion-toolbar>
  </ion-header>
   
- <ion-content padding>
- <div>
+ <ion-content padding class="default-background" text-center> 
+    <ion-list>
+        <span class="compomets">Etap mérés értesítéssel</span>
+        <ion-icon icon-large name="stopwatch">
+            
+        </ion-icon>
+        
+        <p class="example-p">Ne felejts el újradobni, hiszen a method etetőanyagok gyorsan oldódnak! Állítsd be a dobási etap idejét a fenti beállításokban, majd indítsd el a start gombbal! Az idő lejártával értesítést kapsz.</p>
+  <div>
+   
   <ion-item>
     <h1 text-center>{{displayTime}}</h1>
   </ion-item>
@@ -45,4 +53,5 @@
     </button>
   </ion-fab>
  </div>
+</ion-list>
  </ion-content>

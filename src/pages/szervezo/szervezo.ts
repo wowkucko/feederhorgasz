@@ -1,6 +1,8 @@
+import { SzerverzoreszletekPage } from '../szerverzoreszletek/szerverzoreszletek';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -8,48 +10,32 @@ import { Calendar } from '@ionic-native/calendar';
   templateUrl: 'szervezo.html',
 })
 export class SzervezoPage {
+  calendars=[];
+  tonev:string;
 
-  event = { title: "", location: "", message: "", startDate: "", endDate: "" };
-  
     constructor(public alertCtrl: AlertController,
       public navCtrl: NavController,
       public navParams: NavParams,
-      private calendar: Calendar) {
+      private calendar: Calendar, private plt: Platform, private firebasedb: AngularFireDatabase) {
+        this.tonev=this.navParams.get("toadatok").toreszletek.nev;
+
+      this.plt.ready().then(()=>{
+        this.calendar.listCalendars().then(data=>{
+          this.calendars=data;
+        });
+      });
     }
-  
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad AddEventPage');
-    }
-  
-    async save() {
-      const canRequest=await this.calendar.hasReadWritePermission();
-      if (canRequest){
-      this.calendar.createEvent(this.event.title, this.event.location, this.event.message, new Date(this.event.startDate), new Date(this.event.endDate)).then(
-        (msg) => {
-          let alert = this.alertCtrl.create({
-            title: 'Sikeres!',
-            subTitle: 'Esemény elmentve!',
-            buttons: ['OK']
-          });
-          alert.present();
-          this.navCtrl.pop();
-        },
-        (err) => {
-          let alert = this.alertCtrl.create({
-            title: 'Hiba!',
-            subTitle: err,
-            buttons: ['OK']
-          });
-          alert.present();
-        }
-      );
-    }
-    else{
-      const mehet=await this.calendar.requestReadWritePermission();
-      if(mehet){
-      this.save();
-    }
-    }
-    }
-  
+  ionViewWillEnter(){
+   console.log("lol",this.navParams.data);
+  } 
+addEvent(cal){
+  let date=new Date();
+  let options={calendarId: cal.id, calendarName:cal.name,firstReminderMinutes:60};
+  this.calendar.createEventInteractivelyWithOptions('Horgászat',this.tonev,'Felvéve a Feeder Horgász applikáción keresztül.',date,date,options).then(()=>{});
+}
+openCal(cal){
+  this.navCtrl.push(SzerverzoreszletekPage,{name:cal.name});
+}
+
+
   }

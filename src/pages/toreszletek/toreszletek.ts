@@ -1,3 +1,4 @@
+import { SzervezoPage } from '../szervezo/szervezo';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -64,6 +65,10 @@ export class ToreszletekPage {
       useremail:this.navParams.get("facebookadatok").facebookemail,
       toneve:this.navParams.get("toreszletek").nev
     });
+  }
+
+  openSzervezo(){
+    this.navCtrl.push(SzervezoPage, {toadatok:this.navParams.data} )
   }
 
 }

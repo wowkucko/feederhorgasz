@@ -1,3 +1,5 @@
+import { SzerverzoreszletekPage } from '../pages/szerverzoreszletek/szerverzoreszletek';
+import { StatisztikakPage } from '../pages/statisztikak/statisztikak';
 import { SzervezoPage } from '../pages/szervezo/szervezo';
 import { TosnapPage } from '../pages/tosnap/tosnap';
 import { IdomerobeallitasokPage } from '../pages/idomerobeallitasok/idomerobeallitasok';
@@ -60,6 +62,7 @@ import {
  import { LocationAccuracy } from '@ionic-native/location-accuracy';
  import { Keyboard } from '@ionic-native/keyboard';
  import { SocialSharing } from '@ionic-native/social-sharing';
+ import { Chart } from 'chart.js';
 var config = {
   apiKey: "AIzaSyA72jwyN81S3d9YRS5kzINPIZD_92-o1cs",
   authDomain: "feeder-horgasz.firebaseapp.com",
@@ -101,7 +104,9 @@ var config = {
     FogasreszletekPage,
     IdomerobeallitasokPage,
     TosnapPage,
-    SzervezoPage
+    SzervezoPage,
+    StatisztikakPage,
+    SzerverzoreszletekPage
 
 
   ],
@@ -146,7 +151,9 @@ var config = {
     FogasreszletekPage,
     IdomerobeallitasokPage,
     TosnapPage,
-    SzervezoPage
+    SzervezoPage,
+    StatisztikakPage,
+    SzerverzoreszletekPage
     
     
   

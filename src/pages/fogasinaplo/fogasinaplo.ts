@@ -1,6 +1,6 @@
 import { FogasreszletekPage } from '../fogasreszletek/fogasreszletek';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController,LoadingController} from 'ionic-angular';
+import { Component, Input, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController,LoadingController,Content} from 'ionic-angular';
 import { FogasfeltoltesPage } from '../fogasfeltoltes/fogasfeltoltes';
 import { AngularFireDatabase } from 'angularfire2/database';
 
@@ -22,6 +22,13 @@ export class FogasinaploPage {
   sajatfogasadatok = []
   osszesfogasadatok=[]
   displayfogasok:string
+  @Input() data: any;
+  @Input() events: any;
+  @ViewChild(Content)
+  content: Content;
+
+  active: boolean;
+  headerImage:any = "";
   
  
 
@@ -35,6 +42,7 @@ export class FogasinaploPage {
   ionViewWillEnter() {
     this.sajatfogasokLoading();
   }
+
   osszeschange(){
     this.osszesfogasokLoading();
   }
@@ -72,8 +80,10 @@ export class FogasinaploPage {
       
       this.osszesfogasadatok = _data.filter(item => item.publikus == true);
       resolve(true);
+    });    
     });
-    })
+    
+    
   }
 
   sajatfogasokLoading() {
@@ -90,5 +100,44 @@ export class FogasinaploPage {
         if (x) loader.dismiss();
     });
   }
+  onEvent(event: string, item: any, e: any) {
+    if (e) {
+        e.stopPropagation();
+    }
+    if (this.events[event]) {
+        this.events[event](item);
+    }
+}
+
+ngOnChanges(changes: { [propKey: string]: any }) {
+    if (changes.data && changes.data.currentValue) {
+        this.headerImage = changes.data.currentValue.headerImage;
+    } 
+    this.subscribeToIonScroll();
+}
+
+ngAfterViewInit() {
+    this.subscribeToIonScroll();
+}
+
+ngAfterViewChecked() {
+    this.subscribeToIonScroll();
+}
+
+isClassActive() {
+    return this.active;
+}
+
+subscribeToIonScroll() {
+    if (this.content != null && this.content.ionScroll != null) {
+        this.content.ionScroll.subscribe((d) => {
+            if (d.scrollTop < 200 ) {
+                this.active = false;
+                return;
+            }
+            this.active = true;
+        });
+    }
+}
 
 }

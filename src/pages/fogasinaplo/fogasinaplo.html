@@ -4,9 +4,8 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
+<ion-header header-ios>
+  <ion-navbar transparent [ngClass]="{'active':isClassActive()}">
     <ion-segment [(ngModel)]="displayfogasok" color="primary">
       <ion-segment-button value="sajat" (ionSelect)="sajatchange()">
         Saját fogások
@@ -16,79 +15,70 @@
       </ion-segment-button>
     </ion-segment>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding class="trips detail-bg">
-
+<ion-content elastic-header>
     <ion-fab top right edge>
         <button ion-fab (click)="openFeltoltes()"><ion-icon name="add"></ion-icon></button>
       </ion-fab>
-      <div [ngSwitch]="displayfogasok" >
-        <ion-list *ngSwitchCase="'sajat'">
-      <ng-container *ngFor="let item of sajatfogasadatok; let i = index">
-          <div class="trip card" (click)="openFogasReszletek(item)" >
-      
-              <div class="background border-bottom" [ngStyle]="{'background-image': 'url(' + item.keplink + ')'}">  
-                  <div class="background-filter rlt">
-                      <div class="align-bottom" padding-left padding-right>
-                          <h6 class="pull-left text-white" ion-text>{{item.halfaj}}</h6>
-                          <h6 class="pull-right text-white" ion-text>{{item.datum | date: "yyyy/MM/dd HH:MM"}}</h6>
-                          <div class="clear"></div>
-                        </div>
-                        <div class="align-top" padding-left padding-right>
-                          <h6 class="pull-left text-white" ion-text><ion-icon style="zoom:1.4;" name="trash" (click)="deleteNaplobol(item)"></ion-icon></h6>                          
-                      </div>
-                      </div>     
-                </div> 
-                <div class="infopanel primary-bg">
-                    <ion-icon name="information-circle" class="text-white"></ion-icon>
-                    <span ion-text class="text-white">{{item.etetoanyag1}}</span><br>
-                    <ion-icon name="information-circle" class="text-white"></ion-icon>
-                    <span ion-text class="text-white">{{item.hasznaltcsali}}</span>
-                    
-                  </div>
-                  </div>
-            
-          
-          
-        
      
-    </ng-container>
+  <!-- Parallax Big Image -->
+  <div background-size id="elastic-header" [ngStyle]="{'background-image': 'url(./assets/img/lake.jpg)'}">
+    <!--Parallax Header Top-->
+    <div parallax-header>
+      <!--Parallax Subtitle -->
+      <h2 no-margin parallax-subtitle>Fogási napló</h2>
+      <!--Parallax Title -->
+      <h2 no-margin parallax-title>Töltsd fel fogásaid, hogy mássok is láthassák! </h2>
+    </div>
+  </div>
+  <div [ngSwitch]="displayfogasok" >
+      <ion-list *ngSwitchCase="'sajat'">
+  <!--Content-->
+  <ion-grid no-padding>
+    <ion-row >
+      <ion-col col-12>
+        <ion-list no-margin>
+          <ion-item item-bcg border no-lines *ngFor="let item of sajatfogasadatok; let i = index">
+            <!--Content Avatar-->
+            <ion-thumbnail item-start>
+              <img [src]="item.keplink" alt="{{item.halfaj}}">
+            </ion-thumbnail>
+            <!--Content Title-->
+            <h2 no-margin item-title>{{item.halfaj}}</h2>
+            <!--Content Subtitle-->
+            <h3 item-subtitle text-wrap>{{item.datum | date: "yyyy/MM/dd HH:MM"}}</h3>
+            <!--Content Badge-->
+            <ion-badge class="badge-light" item-end (click)="openFogasReszletek(item)">Részletek</ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   </ion-list>
- 
-
   <ion-list *ngSwitchCase="'osszes'">
+  <!--Content-->
+  <ion-grid no-padding>
+      <ion-row >
+        <ion-col col-12>
+          <ion-list no-margin>
+            <ion-item item-bcg border no-lines *ngFor="let item of osszesfogasadatok; let i = index">
+              <!--Content Avatar-->
+              <ion-thumbnail item-start>
+                <img [src]="item.keplink" alt="{{item.halfaj}}">
+              </ion-thumbnail>
+              <!--Content Title-->
+              <h2 no-margin item-title>{{item.halfaj}}</h2>
+              <!--Content Subtitle-->
+              <h3 item-subtitle text-wrap>{{item.datum | date: "yyyy/MM/dd HH:MM"}}</h3>
+              <!--Content Badge-->
+              <ion-badge class="badge-light" item-end (click)="openFogasReszletek(item)">Részletek</ion-badge>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-      <ng-container *ngFor="let item of osszesfogasadatok; let i = index">
-          <div class="trip card" (click)="openFogasReszletek(item)" >
-              
-                      <div class="background border-bottom" [ngStyle]="{'background-image': 'url(' + item.keplink + ')'}">  
-                          <div class="background-filter rlt">
-                              <div class="align-bottom" padding-left padding-right>
-                                  <h6 class="pull-left text-white" ion-text>{{item.halfaj}}</h6>
-                                  <h6 class="pull-right text-white" ion-text>{{item.datum | date: "yyyy/MM/dd HH:MM"}}</h6>
-                                  <div class="clear"></div>
-                                </div>
-                                <div class="align-top" padding-left padding-right>
-                                      <h6 class="pull-left text-white" ion-text><ion-icon style="zoom:1.4;" name="share"></ion-icon></h6>
-                                    
-                                </div>
-                              </div>     
-                        </div> 
-                        <div class="infopanel primary-bg">
-                            <ion-icon name="information-circle" class="text-white"></ion-icon>
-                            <span ion-text class="text-white">{{item.etetoanyag1}}</span><br>
-                            <ion-icon name="information-circle" class="text-white"></ion-icon>
-                            <span ion-text class="text-white">{{item.hasznaltcsali}}</span>
-                            
-                          </div>
-                          </div>
-    </ng-container>
   </ion-list>
-
-
-
   </div>
 </ion-content>

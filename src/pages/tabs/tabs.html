@@ -1,6 +1,6 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Hírek" tabIcon="home" [rootParams]="homeParams"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Tudásbázis" tabIcon="information-circle" [rootParams]="homeParams"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Halszámláló" tabIcon="contacts" [rootParams]="homeParams"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="Profil" tabIcon="contacts" [rootParams]="homeParams"></ion-tab>
+<ion-tabs #tabs tabsPlacement="bottom">
+  <ion-tab [root]="tab1Root"  tabIcon="home" [rootParams]="homeParams"></ion-tab>
+  <ion-tab [root]="tab2Root"  tabIcon="information-circle" [rootParams]="homeParams"></ion-tab>
+  <ion-tab [root]="tab3Root"  tabIcon="trophy" [rootParams]="homeParams"></ion-tab>
+  <ion-tab [root]="tab4Root"  tabIcon="person" [rootParams]="homeParams"></ion-tab>
 </ion-tabs>

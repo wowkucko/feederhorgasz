@@ -1,0 +1,18 @@
+page-tabs {
+    .tab-button,
+    .tab-button-icon {
+      color: theme-colors('mainColors', 'secondary') !important;
+    }
+  
+    .tabbar {
+      background: theme-colors('textColors', 'accent') !important;
+    }
+  
+    .tab-button[aria-selected=true] {
+      color: theme-colors('mainColors', 'secondary') !important;
+  
+      .tab-button-icon {
+        color: theme-colors('mainColors', 'secondary') !important;
+      }
+    }
+  }

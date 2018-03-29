@@ -1,4 +1,4 @@
-import { SzervezoPage } from './../szervezo/szervezo';
+import { StatisztikakPage } from './../statisztikak/statisztikak';
 import { IdojarasPage } from './../idojaras/idojaras';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController,LoadingController } from 'ionic-angular';
@@ -82,18 +82,10 @@ export class HomePage {
           }
         },
         {
-          text: 'Peca tervező',
-          icon: 'calendar',
-          handler: () => {
-            this.navCtrl.push(SzervezoPage);
-          }
- 
-        },
-        {
           text: 'Statisztikák',
           icon: 'stats',
           handler: () => {
-          //  this.navCtrl.push(TerkepPage);
+            this.navCtrl.push(StatisztikakPage);
           }
         }
       ]

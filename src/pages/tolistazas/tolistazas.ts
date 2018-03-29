@@ -1,7 +1,7 @@
 import { TofeltoltesPage } from '../tofeltoltes/tofeltoltes';
 import { ToreszletekPage } from '../toreszletek/toreszletek';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController,LoadingController } from 'ionic-angular';
+import { Component,Input, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController,LoadingController,Content } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
@@ -17,12 +17,19 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'tolistazas.html',
 })
 export class TolistazasPage {
+  @Input() data: any;
+  @Input() events: any;
+
+  @ViewChild(Content)
+  content: Content;
+  animateItems = [];
+  animateClass: any;
   toadatok = []
   megyevalasztas: string
   loadedtolista = []
 
   constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase, private modal: ModalController) {
-
+    this.animateClass = { 'zoom-in': true };
   }
 
   ionViewWillEnter() {

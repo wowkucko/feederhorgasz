@@ -1,3 +1,24 @@
 page-idomero {
-
+    .title-components {
+        color: theme-colors('textColors', 'secondary');
+        font-size: 16px;
+        font-weight: normal;
+        clear: both;
+        display: block;
+        margin: 15px 0;
+        text-transform: uppercase;
+        border-bottom: 1px solid theme-colors('textColors', 'secondary');
+    }
+    span.compomets {
+        display: block;
+        clear: both;
+        color: theme-colors('textColors', 'secondary');
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    .example-p {
+        font-size: font-size-text('p');
+        color: theme-colors('textColors', 'primary');
+        font-weight: 300;
+    }
 }
