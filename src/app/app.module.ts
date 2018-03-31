@@ -1,3 +1,32 @@
+import { SzerverzoreszletekPageModule } from './../pages/szerverzoreszletek/szerverzoreszletek.module';
+import { StatisztikakPageModule } from './../pages/statisztikak/statisztikak.module';
+import { SzervezoPageModule } from './../pages/szervezo/szervezo.module';
+import { TosnapPageModule } from './../pages/tosnap/tosnap.module';
+import { IdomerobeallitasokPageModule } from './../pages/idomerobeallitasok/idomerobeallitasok.module';
+import { FogasreszletekPageModule } from './../pages/fogasreszletek/fogasreszletek.module';
+import { EtetoanyagreszletekPageModule } from './../pages/etetoanyagreszletek/etetoanyagreszletek.module';
+import { EtetoanyaglistazasPageModule } from './../pages/etetoanyaglistazas/etetoanyaglistazas.module';
+import { LadaPageModule } from './../pages/lada/lada.module';
+import { MyetetoPageModule } from './../pages/myeteto/myeteto.module';
+import { MycsaliPageModule } from './../pages/mycsali/mycsali.module';
+import { MytoPageModule } from './../pages/myto/myto.module';
+import { CsalireszletekPageModule } from './../pages/csalireszletek/csalireszletek.module';
+import { CsalilistazasPageModule } from './../pages/csalilistazas/csalilistazas.module';
+import { IdomeroPageModule } from './../pages/idomero/idomero.module';
+import { ToreszletekPageModule } from './../pages/toreszletek/toreszletek.module';
+import { TolistazasPageModule } from './../pages/tolistazas/tolistazas.module';
+import { EtetoanyagfeltoltesPageModule } from './../pages/etetoanyagfeltoltes/etetoanyagfeltoltes.module';
+import { TofeltoltesPageModule } from './../pages/tofeltoltes/tofeltoltes.module';
+import { CsalifeltoltesPageModule } from './../pages/csalifeltoltes/csalifeltoltes.module';
+import { ProfilePageModule } from './../pages/profile/profile.module';
+import { IdojarasPageModule } from './../pages/idojaras/idojaras.module';
+import { ItemPageModule } from './../pages/item/item.module';
+import { FogasfeltoltesPageModule } from './../pages/fogasfeltoltes/fogasfeltoltes.module';
+import { TerkepPageModule } from './../pages/terkep/terkep.module';
+import { FogasinaploPageModule } from './../pages/fogasinaplo/fogasinaplo.module';
+import { TudastarPageModule } from './../pages/tudastar/tudastar.module';
+import { UdvozoljukPageModule } from './../pages/udvozoljuk/udvozoljuk.module';
+import { BeallitasokPageModule } from './../pages/beallitasok/beallitasok.module';
 import { SzerverzoreszletekPage } from '../pages/szerverzoreszletek/szerverzoreszletek';
 import { StatisztikakPage } from '../pages/statisztikak/statisztikak';
 import { SzervezoPage } from '../pages/szervezo/szervezo';
@@ -76,39 +105,7 @@ var config = {
   declarations: [
     MyApp,
     HomePage,
-    TabsPage,
-    UdvozoljukPage,
-    TudastarPage,
-    FogasinaploPage,
-    TerkepPage,
-    FogasfeltoltesPage,
-    ItemPage,
-    BeallitasokPage,
-    IdojarasPage,
-    ProfilePage,
-    CsalifeltoltesPage,
-    TofeltoltesPage,
-    EtetoanyagfeltoltesPage,
-    TolistazasPage,
-    ToreszletekPage,
-    IdomeroPage,
-    CsalifeltoltesPage,
-    CsalilistazasPage,
-    CsalireszletekPage,
-    MytoPage,
-    MycsaliPage,
-    MyetetoPage,
-    LadaPage,
-    EtetoanyaglistazasPage,
-    EtetoanyagreszletekPage,
-    FogasreszletekPage,
-    IdomerobeallitasokPage,
-    TosnapPage,
-    SzervezoPage,
-    StatisztikakPage,
-    SzerverzoreszletekPage
-
-
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -117,7 +114,37 @@ var config = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    BeallitasokPageModule,
+    UdvozoljukPageModule,
+    TudastarPageModule,
+    FogasinaploPageModule,
+    TerkepPageModule,
+    FogasfeltoltesPageModule,
+    ItemPageModule,
+    IdojarasPageModule,
+    ProfilePageModule,
+    CsalifeltoltesPageModule,
+    TofeltoltesPageModule,
+    EtetoanyagfeltoltesPageModule,
+    TolistazasPageModule,
+    ToreszletekPageModule,
+    IdomeroPageModule,
+    CsalilistazasPageModule,
+    CsalireszletekPageModule,
+    MytoPageModule,
+    MycsaliPageModule,
+    MyetetoPageModule,
+    LadaPageModule,
+    EtetoanyaglistazasPageModule,
+    EtetoanyagreszletekPageModule,
+    FogasreszletekPageModule,
+    IdomerobeallitasokPageModule,
+    TosnapPageModule,
+    SzervezoPageModule,
+    StatisztikakPageModule,
+    SzerverzoreszletekPageModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
