@@ -1,3 +1,61 @@
-page-udvozoljuk {
-
+page-udvozoljuk{
+    ion-grid,
+    ion-row {
+      height: 100%;
+    }
+    // Settings Logo
+    img {
+      max-width: 72px;
+      max-height: 72px;
+      margin-bottom: 24px;
+      display: block;
+    }
+  
+    [stacked] {
+      font-size: 10px !important;
+    }
+  
+    p {
+      font-size: font-size-text('h5') !important;
+      line-height: 12px;
+      font-weight: 100;
+    }
+  
+    [button-clear] {
+      padding: 0 5px;
+    }
+    // Settings Button
+    [bottom-form] {
+      button:nth-child(1) {
+        margin: 12px 0;
+      }
+  
+      [default-button] {
+        font-weight: 400 !important;
+      }
+      
+    }
+    [auth-page]{
+      background-color: #fff;
+      &::after {
+        content: "";
+        background: url("../assets/img/bg.jpg") no-repeat;
+        background-size: cover;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: 0;
+    }
+  }
+  [logo]{
+    width: 100px;
+    height: 100px;
+    margin: 20px auto 0;
+    border-radius: 10%;
+    background: url("../assets/img/ionic3-ico.png") no-repeat;
+    background-size: 100%;
+    text-align:center;
+  }
 }

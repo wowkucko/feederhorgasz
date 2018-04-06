@@ -43,8 +43,8 @@ export class ItemPage {
   loader: any;
   videoid:string;
 
-
   constructor(public actionSheetCtrl: ActionSheetController,private iab: InAppBrowser,private http:Http,public loading: LoadingController,private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase,public formBuilder: FormBuilder) {
+    
     this.kommentForm = formBuilder.group({
       uzenet: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
     });

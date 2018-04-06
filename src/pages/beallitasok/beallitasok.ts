@@ -16,6 +16,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'beallitasok.html',
 })
 export class BeallitasokPage {
+ 
   city: string;
 
   constructor(public navCtrl: NavController,
@@ -39,4 +40,5 @@ export class BeallitasokPage {
     this.storage.set('hely', JSON.stringify(hely));
     this.navCtrl.push(TabsPage);
   }
+
 }

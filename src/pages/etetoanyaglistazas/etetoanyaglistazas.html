@@ -4,88 +4,84 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-toolbar>
-      <ion-segment [(ngModel)]="etetoanyagdisplay">
-          <ion-segment-button value="Methodmix" (ionSelect)="methodmixLoading()">
-           Mixek
-          </ion-segment-button>
-          <ion-segment-button value="MethodPellet" (ionSelect)="methodpelletLoading()">
-            Pelletek
-          </ion-segment-button>
-          <ion-segment-button value="Aroma" (ionSelect)="aromaLoading()">
-              Aromák
-            </ion-segment-button>
-            <ion-segment-button value="Adalek" (ionSelect)="adalekLoading()">
-                Adalékok
+<ion-header header-ios>
+    
+      <ion-navbar transparent>
+       <ion-title>Etetőanyagok</ion-title>
+      </ion-navbar>
+      <ion-toolbar>
+          <ion-segment [(ngModel)]="etetoanyagdisplay">
+              <ion-segment-button value="Methodmix" (ionSelect)="methodmixLoading()">
+               Mixek
               </ion-segment-button>
-        </ion-segment>
-    </ion-toolbar>
-</ion-header>
+              <ion-segment-button value="MethodPellet" (ionSelect)="methodpelletLoading()">
+                Pelletek
+              </ion-segment-button>
+              <ion-segment-button value="Aroma" (ionSelect)="aromaLoading()">
+                  Aromák
+                </ion-segment-button>
+                <ion-segment-button value="Adalek" (ionSelect)="adalekLoading()">
+                    Adalékok
+                  </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+    </ion-header>
 
 
-
-<ion-content padding>
-    <ion-fab top right edge>
+<ion-content>
+    <ion-fab right middle>
         <button ion-fab (click)="openetetoanyagFeltoltes()"><ion-icon name="add"></ion-icon></button>
       </ion-fab>
-  <div [ngSwitch]="etetoanyagdisplay">
-    <ion-list *ngSwitchCase="'Methodmix'">
-        
-        <ng-container *ngFor="let item of methodmix; let i = index">
-            
-      <ion-item (click)="openEtetoanyagreszletek(item)">
-        <ion-thumbnail item-start>
-          <img src="{{item.keplink}}">
-        </ion-thumbnail>
-        <h2>{{item.nev}}</h2>
-      </ion-item>
-   
-      </ng-container>
-      
-    </ion-list>
-  
-    <ion-list *ngSwitchCase="'Methodpellet'">
-      
-      <ng-container *ngFor="let item of methodpellet; let i = index">
-          
-    <ion-item (click)="openEtetoanyagreszletek(item)">
-      <ion-thumbnail item-start>
-        <img src="{{item.keplink}}">
-      </ion-thumbnail>
-      <h2>{{item.nev}}</h2>
-    </ion-item>
- 
-    </ng-container>
-    
-  </ion-list>
-  <ion-list *ngSwitchCase="'Aroma'">
-    
-    <ng-container *ngFor="let item of aroma; let i = index">
-        
-  <ion-item (click)="openEtetoanyagreszletek(item)">
-    <ion-thumbnail item-start>
-      <img src="{{item.keplink}}">
-    </ion-thumbnail>
-    <h2>{{item.nev}}</h2>
-  </ion-item>
-  <ion-list *ngSwitchCase="'Adalek'">
-    
-    <ng-container *ngFor="let item of adalek; let i = index">
-        
-  <ion-item (click)="openEtetoanyagreszletek(item)">
-    <ion-thumbnail item-start>
-      <img src="{{item.keplink}}">
-    </ion-thumbnail>
-    <h2>{{item.nev}}</h2>
-  </ion-item>
-
-  </ng-container>
-  
-</ion-list>
-
-  </ng-container>
-  
-</ion-list>
+      <div [ngSwitch]="etetoanyagdisplay">
+  <ion-grid no-padding>
+    <ion-row>
+        <ion-col col-12>
+            <ion-list no-margin *ngSwitchCase="'Methodmix'">
+              
+                <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of methodmix; let i = index" (click)="openEtetoanyagreszletek(item)">
+                    <ion-avatar item-left>
+                        <img [src]="item.keplink" alt="{{item.nev}}" />
+                    </ion-avatar>
+                    <h2 item-title>{{item.nev}}</h2>
+                    
+                </ion-item>
+             
+            </ion-list>
+            <ion-list no-margin *ngSwitchCase="'Methodpellet'">
+                
+                  <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of methodpellet; let i = index" (click)="openEtetoanyagreszletek(item)">
+                      <ion-avatar item-left>
+                          <img [src]="item.keplink" alt="{{item.nev}}" />
+                      </ion-avatar>
+                      <h2 item-title>{{item.nev}}</h2>
+                      
+                  </ion-item>
+               
+              </ion-list>
+              <ion-list no-margin *ngSwitchCase="'Aroma'">
+                  
+                    <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of aroma; let i = index" (click)="openEtetoanyagreszletek(item)">
+                        <ion-avatar item-left>
+                            <img [src]="item.keplink" alt="{{item.nev}}" />
+                        </ion-avatar>
+                        <h2 item-title>{{item.nev}}</h2>
+                        
+                    </ion-item>
+                 
+                </ion-list>
+                <ion-list no-margin *ngSwitchCase="'Adalek'">
+                    
+                      <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of adalek; let i = index" (click)="openEtetoanyagreszletek(item)">
+                          <ion-avatar item-left>
+                              <img [src]="item.keplink" alt="{{item.nev}}" />
+                          </ion-avatar>
+                          <h2 item-title>{{item.nev}}</h2>
+                          
+                      </ion-item>
+                   
+                  </ion-list>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
   </div>
-</ion-content>
+  </ion-content>

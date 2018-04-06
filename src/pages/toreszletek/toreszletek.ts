@@ -1,6 +1,6 @@
 import { SzervezoPage } from '../szervezo/szervezo';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component,Input, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams,Content } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 /**
  * Generated class for the ToreszletekPage page.
@@ -15,9 +15,16 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'toreszletek.html',
 })
 export class ToreszletekPage {
+  @Input() data: any;
+  @Input() events: any;
+  @ViewChild(Content)
+  content: Content;
+
+  active: boolean;
+  headerImage:any = "";
   public toreszletek={};
   public facebookadatok={}
-  ladabol:boolean
+  ladabol:boolean 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
     if(this.navParams.get("mytoreszletek")!=null)
@@ -70,5 +77,40 @@ export class ToreszletekPage {
   openSzervezo(){
     this.navCtrl.push(SzervezoPage, {toadatok:this.navParams.data} )
   }
+  onEvent(event: string, item: any, e: any) {
+    if (e) {
+        e.stopPropagation();
+    }
+    if (this.events[event]) {
+        this.events[event](item);
+    }
+}
+
+ngOnChanges(changes: { [propKey: string]: any }) {
+    if (changes.data && changes.data.currentValue) {
+        this.headerImage = changes.data.currentValue.headerImage;
+    }
+    this.subscribeToIonScroll();
+}
+
+ngAfterViewInit() {
+    this.subscribeToIonScroll();
+}
+
+isClassActive() {
+    return this.active;
+}
+
+subscribeToIonScroll() {
+    if (this.content != null && this.content.ionScroll != null) {
+        this.content.ionScroll.subscribe((d) => {
+            if (d.scrollTop < 200) {
+                this.active = false;
+                return;
+            }
+            this.active = true;
+        });
+    }
+}
 
 }

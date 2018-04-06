@@ -5,7 +5,7 @@ page-tudastar  {
         position: relative;
         height: 215px;
         border-radius: $border-radius;
-        @include darkening-blend-mode;
+        //@include darkening-blend-mode;
         box-shadow: none;
         margin-bottom: 16px;
       }
@@ -22,8 +22,11 @@ page-tudastar  {
         padding: 22px;
         position: absolute;
         bottom: 0;
-        width: 95%;
+        width: 100%;
         color: theme-colors('textColors', 'secondaryBase') !important;
+        background-color:rgba(0, 0, 0, 0.7);
+        padding: 6px 15px !important;
+        text-align:center;
       }
     }
   }

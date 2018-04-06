@@ -31,8 +31,8 @@
           <ion-item no-margin no-lines>
               
               <p parallax-description text-wrap [innerHTML]=hiradatok.acf.leiras></p>
-                <ion-grid no-padding *ngIf="video">
-                    <ion-row>
+                <ion-grid no-padding >
+                    <ion-row *ngIf="video">
                       <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 *ngFor="let item of videos; let i = index" (click)="openVideo()">
                         <!--Header Styled cards-->
                         <ion-item no-lines>
@@ -47,10 +47,43 @@
                         <!-- End Header Styled Cards-->
                         <!-- Card Background -->
                         <ion-card >
-                          <img images-filter [src]="item.snippet.thumbnails.high.url" />
+                          <img [src]="item.snippet.thumbnails.high.url" />
                         </ion-card>
                       </ion-col>
                     </ion-row>
+                
+                    <ion-row>
+                      <ion-col col-12>
+                          <span new-category text-uppercase>Kommentek</span>
+                          <form  padding [formGroup]="kommentForm">
+                              <ion-item>
+>                                  <ion-input [(ngModel)]="bejegyzesszovege"  type="text" [class.invalid]="!kommentForm.controls.uzenet.valid && (kommentForm.controls.uzenet.dirty|| submitAttempt)"
+                                    formControlName="uzenet"></ion-input>
+                                </ion-item>
+                              <ion-item *ngIf="!kommentForm.controls.uzenet.valid && (kommentForm.controls.uzenet.dirty|| submitAttempt)">
+                                <p>Töltsd ki a maximum 60 karakteres mezőt!</p>
+                              </ion-item>
+                              <button ion-button (click)="kommentelkuld()">Elküldés</button>
+                            </form>
+                      </ion-col>
+                      </ion-row>
+                      <ion-row>
+                      <ion-col col-12>
+                          <ion-list no-margin>                            
+                              <ng-container *ngIf="kommentek">
+                              <ion-item  border no-lines *ngFor="let item of kommentek; let i = index">
+                                  <ion-avatar item-left>
+                                      <img [src]="item.kommenteloavatar" />
+                                  </ion-avatar>
+                                  <h2 item-title>{{item.kommenteloneve}} - {{item.kommentido | date: "yyyy/MM/dd HH:MM"}}</h2>
+                                  <h3>{{item.bejegyzesszovege}}</h3>
+                                  
+                              </ion-item>
+                            </ng-container>
+                          </ion-list>
+                      </ion-col>
+                  </ion-row>
+                    
                   </ion-grid>
           </ion-item>
       </ion-item-group>

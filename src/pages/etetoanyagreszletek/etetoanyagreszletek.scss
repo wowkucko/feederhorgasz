@@ -1,41 +1,49 @@
 page-etetoanyagreszletek{
-    ul.highlight {
-      padding-left: 0;
-      font-size: 1.2rem;
-      list-style: none;
-  
-      li {
-        margin-bottom: 1rem;
-      }
+  @include settingAnimationHeader;
+
+  [button-action-shit] {
+    z-index: 99999;
+    right: 16px;
+    top: 56px;
+  }
+
+  .scroll-content {
+    top: -56px;
+  }
+
+  [background-size] {
+    height: 66%;
+    position: relative;
+  }
+
+  ion-item-divider {
+    .label-ios,
+    .label-md {
+      margin: 0 !important;
     }
-  
-    // change text-sm size
-    .text-sm {
-      font-size: 1.2rem;
-      line-height: 2rem;
-    }
-  
-    // booking form style
-    .booking-form {
-  
-      ion-grid {
-  
-        ion-row {
-  
-          ion-col {
-            padding: 0;
-          }
-        }
-      }
-  
-      .form-bottom {
-        display: flex;
-        align-items: center;
-  
-        .pull-right {
-          margin-left: auto;
-        }
-      }
+
+    ion-badge {
+      position: absolute;
+      bottom: -1px;
+      right: 5px;
     }
   }
-  
+  // New Category
+  [new-category] {
+    display: block;
+    font-size: 11px;
+    color: theme-colors('textColors', 'accent') !important;
+    margin-bottom: 5px;
+  }
+  // Parallax Title
+  [parallax-title] {
+    color: theme-colors('textColors', 'accentDark') !important;
+    font-size: font-size-text('h2') !important;
+  }
+  // Parallax Title
+  [parallax-subtitle] {
+    color: theme-colors('textColors', 'secondary') !important;
+    font-size: font-size-text('h3') !important;
+  }
+}
+

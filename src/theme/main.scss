@@ -397,13 +397,15 @@ ion-badge {
     font-weight: bold !important;
     line-height: 34px;
     color: theme-colors('textColors', 'accent');
+    text-align:center;
 
 }
 
 [login-subtitle] {
-    font-size: 17px !important;
+    font-size: 28px !important;
     font-weight: 300;
-    color: theme-colors('textColors', 'accentDark');
+    color: theme-colors('textColors', 'accent');
+    text-align:center;
 }
 
 // Google Cards Settings

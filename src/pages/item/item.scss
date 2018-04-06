@@ -17,6 +17,9 @@ ion-badge {
   right: 5px;
   bottom: -5px;
 }
+ion-input{
+    background-color: rgba(0, 145, 96, 0.3);
+}
 
 ion-card {
   position: relative;
@@ -98,4 +101,7 @@ ion-card {
       color: theme-colors('textColors', 'secondary') !important;
       line-height: 20px;
   }
+  .invalid {
+    border: 1px solid #ea6153;
+}
 }

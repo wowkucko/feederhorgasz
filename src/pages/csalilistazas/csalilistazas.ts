@@ -1,7 +1,7 @@
 import { CsalifeltoltesPage } from '../csalifeltoltes/csalifeltoltes';
 import { CsalireszletekPage } from '../csalireszletek/csalireszletek';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController,LoadingController } from 'ionic-angular';
+import { Component,Input, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController,LoadingController,Content  } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 /**
  * Generated class for the CsalilistazasPage page.
@@ -16,6 +16,13 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'csalilistazas.html',
 })
 export class CsalilistazasPage {
+  @Input() data: any;
+  @Input() events: any;
+
+  @ViewChild(Content)
+  content: Content;
+  animateItems = [];
+  animateClass: any;
   csalidisplay:string
   bojlicsalik= []
   pelletcsalik=[]
@@ -23,6 +30,8 @@ export class CsalilistazasPage {
   elocsalik=[]
 
   constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase, private modal: ModalController) {
+    this.animateClass = { 'zoom-in': true };
+    
     this.csalidisplay="Bojli";
     this.bojliLoading();
   }

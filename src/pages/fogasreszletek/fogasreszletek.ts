@@ -1,11 +1,12 @@
 import {
-  Component
+  Component,Input, ViewChild
 } from '@angular/core';
 import {
   IonicPage,
   NavController,
   NavParams,
-  Platform
+  Platform,
+  Content
 } from 'ionic-angular';
 import {
   AngularFireDatabase
@@ -27,6 +28,10 @@ import {
   templateUrl: 'fogasreszletek.html',
 })
 export class FogasreszletekPage {
+  @Input() data: any;
+  @Input() events: any;
+  @ViewChild(Content)
+  content: Content;
   public fogasreszletek = {}
   csali = [];
   etetoanyag = [];
@@ -83,5 +88,32 @@ export class FogasreszletekPage {
       });
 
   };
+  onEvent(event: string, item: any, e: any) {
+    if (this.events[event]) {
+      this.events[event](item);
+    }
+  }
+
+  togglecsaliGroup(group: any) {
+    group.show = !group.show;
+  }
+
+  iscsaliGroupShown(group: any) {
+    return group.show;
+  }
+  toggleetetoanyagGroup(group: any) {
+    group.show = !group.show;
+  }
+
+  isetetoanyagGroupShown(group: any) {
+    return group.show;
+  }
+  toggletoGroup(group: any) {
+    group.show = !group.show;
+  }
+
+  istoGroupShown(group: any) {
+    return group.show;
+  }
 
 }

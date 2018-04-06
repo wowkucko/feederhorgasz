@@ -5,32 +5,71 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Horgász Láda</ion-title>
+  
+    </ion-toolbar>
+  </ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>Horgász láda</ion-title>
-  </ion-navbar>
 
-</ion-header>
+<ion-content padding>
+      <ion-grid no-padding background-color>
+          <ion-row>
+            <ion-col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 >
+              <ion-card text-center (click)="openMycsali()">
+                <!--Card Image-->
+                <div card-image >
+                  <img src="./assets/img/bait.jpg"/>
+                </div>
+                <!--Card descriptiom-->
+                <ion-card-content>
+                  <ion-card-title>
+                    <!--Card Title-->
+                    <h2 card-title>Saját csalik</h2>
+                    
+                  </ion-card-title>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 >
+                <ion-card text-center (click)="openMyetetoanyag()">
+                  <!--Card Image-->
+                  <div card-image >
+                    <img src="./assets/img/ground.jpg"/>
+                  </div>
+                  <!--Card descriptiom-->
+                  <ion-card-content>
+                    <ion-card-title>
+                      <!--Card Title-->
+                      <h2 card-title>Saját etetőanyagok</h2>
+                      
+                    </ion-card-title>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 >
+                  <ion-card text-center (click)="openMyto()">
+                    <!--Card Image-->
+                    <div card-image >
+                      <img src="./assets/img/lake.jpg"/>
+                    </div>
+                    <!--Card descriptiom-->
+                    <ion-card-content>
+                      <ion-card-title>
+                        <!--Card Title-->
+                        <h2 card-title>Kedvenc tavak</h2>
+                        
+                      </ion-card-title>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+        </ion-grid>
 
-
-<ion-content class="card-background-page">
-    
-      <ion-card (click)="openMycsali()">
-        <img src="./assets/img/bait.jpg"/>
-        <div class="card-title">Saját csalik</div>
-      </ion-card>
-    
-      <ion-card (click)="openMyetetoanyag()">
-        <img src="./assets/img/ground.jpg"/>
-        <div class="card-title">Saját etetőanyagok</div>
-      </ion-card>
-    
-      <ion-card (click)="openMyto()">
-        <img src="./assets/img/lake.jpg"/>
-        <div class="card-title">Kedvenc tavak</div>
-      </ion-card>
-
-    
     </ion-content>
 
 

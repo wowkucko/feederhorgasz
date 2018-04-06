@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component,Input, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams,Content } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
@@ -15,6 +15,13 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'etetoanyagreszletek.html',
 })
 export class EtetoanyagreszletekPage {
+  @Input() data: any;
+  @Input() events: any;
+  @ViewChild(Content)
+  content: Content;
+
+  active: boolean;
+  headerImage:any = "";
   public etetoanyagreszletek={}
   public facebookadatok={}
   ladabol:boolean
@@ -26,7 +33,7 @@ export class EtetoanyagreszletekPage {
       
       this.firebasedb.list("/etetoanyagok/").subscribe(_data => {
         
-        this.etetoanyagreszletek = _data.filter(item => item.$key == this.navParams.get("etetoanyagreszletek").id);
+        this.etetoanyagreszletek = _data.filter(item => item.$key == this.navParams.get("myetetoanyagreszletek").id);
         this.ladabol=true;
   
       })
@@ -49,5 +56,40 @@ export class EtetoanyagreszletekPage {
       etetoanyagneve:this.navParams.get("etetoanyagreszletek").nev
     });
   }
+  onEvent(event: string, item: any, e: any) {
+    if (e) {
+        e.stopPropagation();
+    }
+    if (this.events[event]) {
+        this.events[event](item);
+    }
+}
+
+ngOnChanges(changes: { [propKey: string]: any }) {
+    if (changes.data && changes.data.currentValue) {
+        this.headerImage = changes.data.currentValue.headerImage;
+    }
+    this.subscribeToIonScroll();
+}
+
+ngAfterViewInit() {
+    this.subscribeToIonScroll();
+}
+
+isClassActive() {
+    return this.active;
+}
+
+subscribeToIonScroll() {
+    if (this.content != null && this.content.ionScroll != null) {
+        this.content.ionScroll.subscribe((d) => {
+            if (d.scrollTop < 200) {
+                this.active = false;
+                return;
+            }
+            this.active = true;
+        });
+    }
+}
 
 }

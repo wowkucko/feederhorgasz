@@ -1,7 +1,7 @@
 import { EtetoanyagfeltoltesPage } from '../etetoanyagfeltoltes/etetoanyagfeltoltes';
 import { EtetoanyagreszletekPage } from '../etetoanyagreszletek/etetoanyagreszletek';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController,LoadingController } from 'ionic-angular';
+import { Component,Input, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController,LoadingController,Content } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 /**
  * Generated class for the EtetoanyaglistazasPage page.
@@ -16,6 +16,13 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'etetoanyaglistazas.html',
 })
 export class EtetoanyaglistazasPage {
+  @Input() data: any;
+  @Input() events: any;
+
+  @ViewChild(Content)
+  content: Content;
+  animateItems = [];
+  animateClass: any;
   methodmix= []
   methodpellet=[]
   aroma=[]
@@ -23,6 +30,7 @@ export class EtetoanyaglistazasPage {
   etetoanyagdisplay:string
 
   constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase, private modal: ModalController) {
+    this.animateClass = { 'zoom-in': true };
     this.etetoanyagdisplay="Methodmix";
     this.methodmixLoading();
   }
