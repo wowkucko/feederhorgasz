@@ -125,6 +125,7 @@
     <plugin name="cordova-plugin-buildinfo" spec="^2.0.1" />
     <plugin name="cordova-universal-links-plugin" spec="^1.2.1" />
     <plugin name="cordova-plugin-browsertab" spec="^0.2.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
     <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
         <variable name="URL_SCHEME" value="com.feederhorgasz" />
         <variable name="ANDROID_SCHEME" value=" " />
@@ -135,11 +136,10 @@
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
     <plugin name="cordova-plugin-background-mode" spec="^0.7.2" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
-    <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
     <plugin name="cordova-plugin-request-location-accuracy" spec="^2.2.2" />
     <plugin name="cordova-plugin-calendar" spec="^5.0.0">
         <variable name="CALENDAR_USAGE_DESCRIPTION" value=" " />
     </plugin>
+    <plugin name="com-sarriaroman-photoviewer" spec="^1.1.16" />
     <engine name="android" spec="~7.0.0" />
 </widget>

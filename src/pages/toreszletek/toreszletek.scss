@@ -1,21 +1,7 @@
 page-toreszletek{
   @include settingAnimationHeader;
 
-  [button-action-shit] {
-    z-index: 99999;
-    right: 16px;
-    top: 56px;
-  }
-  [button-action-shit2] {
-    z-index: 99999;
-    right: 16px;
-    top: 106px;
-  }
-  [button-action-shit3] {
-    z-index: 99999;
-    right: 16px;
-    top: 156px;
-  }
+
 
 
   .scroll-content {
@@ -64,5 +50,7 @@ page-toreszletek{
     color: theme-colors('textColors', 'secondary') !important;
     font-size: font-size-text('h3') !important;
   }
+
+
 }
 

@@ -1,7 +1,10 @@
 import { SzervezoPage } from '../szervezo/szervezo';
 import { Component,Input, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Content,Platform } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+
 /**
  * Generated class for the ToreszletekPage page.
  *
@@ -24,9 +27,9 @@ export class ToreszletekPage {
   headerImage:any = "";
   public toreszletek={};
   public facebookadatok={}
-  ladabol:boolean 
+  ladabol:boolean ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
+  constructor(private photoViewer: PhotoViewer,private platform: Platform,public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
     if(this.navParams.get("mytoreszletek")!=null)
     {
       
@@ -45,8 +48,6 @@ export class ToreszletekPage {
         this.ladabol=true;
   
       })
-
-
     }
     else if(this.navParams.get("tosnapreszletek")!=null){
       
@@ -60,7 +61,6 @@ export class ToreszletekPage {
       this.toreszletek=this.navParams.get("toreszletek");
       this.facebookadatok=this.navParams.get("facebookadatok");
       this.ladabol=false;
-      
     }
   }
 
@@ -111,6 +111,28 @@ subscribeToIonScroll() {
             this.active = true;
         });
     }
+}
+openonTerkep(){
+  let destination = this.navParams.get("toreszletek").lat + ',' + this.navParams.get("toreszletek").long;
+  
+  if(this.platform.is('ios')){
+    window.open('maps://?q=' + destination, '_system');
+  } else {
+    let label = encodeURI('Navigálás');
+    window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');
+  }
+}
+kepMegnyit1(){
+  this.photoViewer.show(this.navParams.get("toreszletek").keplink);
+}
+kepMegnyit2(){
+  this.photoViewer.show(this.navParams.get("toreszletek").keplink2);
+}
+kepMegnyit3(){
+  this.photoViewer.show(this.navParams.get("toreszletek").keplink3);
+}
+kepMegnyit4(){
+  this.photoViewer.show(this.navParams.get("toreszletek").keplink4);
 }
 
 }

@@ -189,12 +189,8 @@ $background-color: theme-colors('mainColors', 'primary');
 // Border Radius
 $border-radius: 8px;
 // Black&White Avatar and Image
-ion-avatar,
-ion-thumbnail {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    opacity: 0.7;
-}
+
+
 
 ion-thumbnail img {
     border-radius: $border-radius !important;
@@ -267,7 +263,7 @@ $icon-size:( 'icon-small': 22px, 'icon-medium': 32px, 'icon-large': 60px);
 [header-section] {
     background-color: theme-colors('mainColors', 'primary') !important;
     border-top: none !important;
-    border-bottom: 1px solid theme-colors('mainColors', 'secondaryDark') !important;
+    //border-bottom: 1px solid theme-colors('mainColors', 'secondaryDark') !important;
     margin-bottom: 1px !important;
     .label-md,
     .label-ios {

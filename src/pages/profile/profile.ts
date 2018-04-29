@@ -1,6 +1,6 @@
 import { UdvozoljukPage } from '../udvozoljuk/udvozoljuk';
 import { BeallitasokPage } from '../beallitasok/beallitasok';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
 import { LadaPage } from '../lada/lada';
 import firebase from 'firebase';
 import { Component } from '@angular/core';
@@ -22,7 +22,7 @@ export class ProfilePage {
 
   headerImage:any = "./assets/img/lake.jpg";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private app:App) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private app:App) {
   }
 
 
@@ -41,8 +41,30 @@ export class ProfilePage {
   )
  }
 
+ showConfirm() {
+  let confirm = this.alertCtrl.create({
+    title: 'Kilépés',
+    message: 'Biztos, hogy ki szeretnél jelentkezni?',
+    buttons: [
+      {
+        text: 'Mégsem',
+        handler: () => {
+        }
+      },
+      {
+        text: 'Igen',
+        handler: () => {
+          this.logout();
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
+}
+
  
 
 
 
-}
+

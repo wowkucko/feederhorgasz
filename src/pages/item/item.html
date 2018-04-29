@@ -24,9 +24,6 @@
           <ion-item-divider border no-lines>
               
               <h2 item-subtitle>írta: Haldorádó</h2>
-              <button item-end ion-button color="primary" button-action-shit>
-                    <ion-icon name="more"></ion-icon>
-                  </button>
           </ion-item-divider>
           <ion-item no-margin no-lines>
               
@@ -34,18 +31,12 @@
                 <ion-grid no-padding >
                     <ion-row *ngIf="video">
                       <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 *ngFor="let item of videos; let i = index" (click)="openVideo()">
-                        <!--Header Styled cards-->
                         <ion-item no-lines>
                           <span new-category text-uppercase>Videó bemutató</span>
-                          <!-- Card Title -->
                           <h2 card-title>{{item.snippet.title}}</h2>
-                          <!-- Card Subtitle -->
                           <h3 card-subtitle text-wrap>{{item.snippet.channelTitle}}</h3>
-                          <!-- Card Badge -->
                           <ion-badge item-end class="badge-dark">Megtekintés</ion-badge>
                         </ion-item>
-                        <!-- End Header Styled Cards-->
-                        <!-- Card Background -->
                         <ion-card >
                           <img [src]="item.snippet.thumbnails.high.url" />
                         </ion-card>

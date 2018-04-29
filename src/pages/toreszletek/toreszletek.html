@@ -6,12 +6,6 @@
 <ng-container *ngIf="ladabol;else nemlada">
   <ion-content elastic-header *ngFor="let toreszletek of toreszletek; let i = index">
     <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + toreszletek.keplink + ')'}">
-      <button ion-fixed ion-button color="primary" button-action-shit>
-            <ion-icon name="map"></ion-icon>
-    </button>
-      <button ion-fixed ion-button color="primary" button-action-shit2 (click)="openSzervezo()">
-        <ion-icon name="calendar"></ion-icon>
-</button>
     </ion-item>
     <!--Content-->
     <ion-grid no-padding>
@@ -29,20 +23,14 @@
                 <div span-medium>Szolgáltatások: {{ toreszletek.szolgaltatasleiras }}</div>
                 <div span-medium>Halfajták: {{ toreszletek.halfajtak }}</div>
                 <div span-medium>Weboldal<br><button button-clear-outline outline round ion-button><ion-icon name="open"></ion-icon></button></div>
-                <div span-medium>Facebook:<br><button button-clear-outline outline round ion-button><ion-icon name="logo-facebook"></ion-icon></button></div>
+                <div span-medium>Facebook<br><button button-clear-outline outline round ion-button><ion-icon name="logo-facebook"></ion-icon></button></div>
 
                 <p parallax-description text-wrap [innerHtml]=toreszletek.egyeb></p>
               </ion-item>
-              
+
             </ion-item-group>
           </ion-list>
         </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col no-padding col-4 col-sm-3 col-md-6 col-lg-4 col-xl-3>
-              <ion-card background-size  [ngStyle]="{'background-image': 'url(' + toreszletek.keplink + ')'}">
-              </ion-card>
-          </ion-col>
       </ion-row>
     </ion-grid>
   </ion-content>
@@ -50,15 +38,15 @@
 <ng-template #nemlada>
   <ion-content elastic-header>
     <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + toreszletek.keplink + ')'}">
-      <button ion-fixed ion-button color="primary" button-action-shit>
-                <ion-icon name="map"></ion-icon>
-        </button>
-      <button ion-fixed ion-button color="primary" button-action-shit2 (click)="openSzervezo()">
-            <ion-icon name="calendar"></ion-icon>
-    </button>
-      <button ion-fixed ion-button color="primary" button-action-shit3 (click)="PushTolada()">
-        <ion-icon name="bookmark"></ion-icon>
-</button>
+      <ion-fab left middle>
+        <button ion-fab mini><ion-icon name="menu"></ion-icon></button>
+        <ion-fab-list>
+          <button ion-fab (click)="openonTerkep()"><ion-icon name="map"></ion-icon></button>
+          <button ion-fab (click)="openSzervezo()"><ion-icon name="calendar"></ion-icon></button>
+          <button ion-fab (click)="PushTolada()"><ion-icon name="bookmark"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
+
     </ion-item>
     <!--Content-->
     <ion-grid no-padding>
@@ -76,7 +64,7 @@
                 <div span-medium>Szolgáltatások: {{ toreszletek.szolgaltatasleiras }}</div>
                 <div span-medium>Halfajták: {{ toreszletek.halfajtak }}</div>
                 <div span-medium>Weboldal<br><button button-clear-outline outline round ion-button><ion-icon name="open"></ion-icon></button></div>
-                <div span-medium>Facebook:<br><button button-clear-outline outline round ion-button><ion-icon name="logo-facebook"></ion-icon></button></div>
+                <div span-medium>Facebook<br><button button-clear-outline outline round ion-button><ion-icon name="logo-facebook"></ion-icon></button></div>
 
                 <p parallax-description text-wrap [innerHtml]=toreszletek.egyeb></p>
               </ion-item>
@@ -85,13 +73,32 @@
           </ion-list>
         </ion-col>
       </ion-row>
+    </ion-grid>
+    <ion-grid>
       <ion-row>
-          <ion-col no-padding col-4 col-sm-3 col-md-6 col-lg-4 col-xl-3>
-              <ion-card background-size  [ngStyle]="{'background-image': 'url(' + toreszletek.keplink + ')'}">
-              </ion-card>
-          </ion-col>
-       
+        <ion-col no-padding col-4 col-sm-3 col-md-6 col-lg-4 col-xl-3>
+          <ion-card background-size (click)="kepMegnyit1()">
+            <img [src]="toreszletek.keplink" />
+          </ion-card>
+        </ion-col>
+        <ion-col no-padding col-4 col-sm-3 col-md-6 col-lg-4 col-xl-3>
+          <ion-card background-size (click)="kepMegnyit2()">
+            <img [src]="toreszletek.keplink2" />
+          </ion-card>
+        </ion-col>
+        <ion-col no-padding col-4 col-sm-3 col-md-6 col-lg-4 col-xl-3>
+          <ion-card background-size (click)="kepMegnyit3()">
+            <img [src]="toreszletek.keplink3" />
+          </ion-card>
+        </ion-col>
+        <ion-col no-padding col-4 col-sm-3 col-md-6 col-lg-4 col-xl-3>
+          <ion-card background-size (click)="kepMegnyit4()">
+            <img [src]="toreszletek.keplink4" />
+          </ion-card>
+        </ion-col>
+
       </ion-row>
     </ion-grid>
+
   </ion-content>
 </ng-template>

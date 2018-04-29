@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "381413323256",
+    "firebase_url": "https://feeder-horgasz.firebaseio.com",
+    "project_id": "feeder-horgasz",
+    "storage_bucket": "feeder-horgasz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381413323256:android:8977266a98757589",
+        "android_client_info": {
+          "package_name": "com.feederhorgasz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381413323256-b1o7kj086vltdgk2o95ia3i9nl5covv4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.feederhorgasz",
+            "certificate_hash": "605354d6fc4d3892983e00473b19629ca0838791"
+          }
+        },
+        {
+          "client_id": "381413323256-h5ufdnplvsv1ghpb5o5hqi9p0npig10u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMawW1mv1sJYk0JoMMrM9ReDI-7jYZsas"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381413323256-ib8smkerd2bmfbjkm0ugpdiduo2h6akq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.feederhorgasz"
+              }
+            },
+            {
+              "client_id": "381413323256-h5ufdnplvsv1ghpb5o5hqi9p0npig10u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

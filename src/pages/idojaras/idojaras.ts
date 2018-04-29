@@ -2,6 +2,7 @@ import { IdojarasProvider } from '../../providers/idojaras/idojaras';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the IdojarasPage page.
@@ -27,7 +28,8 @@ export class IdojarasPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private idojarasProvider:IdojarasProvider,
-    private storage:Storage
+    private storage:Storage,
+    private iab: InAppBrowser
   ) {
 
   }
@@ -59,6 +61,10 @@ export class IdojarasPage {
   }
   ionViewDidLoad() {
     
+  }
+  openWeather(){
+    let weatherurl='https://www.wunderground.com/weather/hu/'+this.hely.city;
+    var ref = this.iab.create(weatherurl);
   }
 
 }

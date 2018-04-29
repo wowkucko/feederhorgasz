@@ -1,133 +1,82 @@
-<!--
-  Generated template for the FogasfeltoltesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+  <ion-navbar transparent>
 
-  <ion-navbar color="primary">
-      <ion-buttons start>
-          <button ion-button icon-left (click)="prev()" *ngIf="back"><ion-icon name="arrow-back"></ion-icon>Előző</button>
-        </ion-buttons>
     <ion-title>
       Fogás feltöltése
     </ion-title>
-    
-    <ion-buttons end>
-      <button ion-button icon-right (click)="next()" *ngIf="forward">Következő <ion-icon name="arrow-forward"></ion-icon></button>
-    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
-
-<ion-content padding>
-
-  <ion-slides #fogasfeltoltesSlider>
-
-    <ion-slide>
-      <p *ngIf="submitAttempt" style="color: #ea6153;">Kérlek helyesen tölsd ki a mezőket!</p>
-      <ion-list no-lines>
-        <form [formGroup]="slideOneForm">
-
-          <ion-item >
-            <p>Kép feltöltése</p>
-            <ion-buttons start>
-                <button ion-button full color="primary" icon-left (click)="fotoKeszit()">Fotózás<ion-icon name="camera" ></ion-icon></button>
-                <button ion-button full color="primary" icon-left (click)="fotoValaszt()">Galéria<ion-icon name="images"></ion-icon></button>
-            </ion-buttons>
-          </ion-item>
-          <ion-grid padding *ngIf="kepbetolt">
-              <ion-row>
-                <ion-col no-padding text-center>
-                <img src="{{ kepmegjelenit }}"/>
-                  </ion-col>
-                </ion-row>
-          </ion-grid>
-          <ion-item>
-            <ion-label floating>Fogás dátuma</ion-label>
-            <ion-datetime [class.invalid]="!slideOneForm.controls.datum.valid && (slideOneForm.controls.datum.dirty|| submitAttempt)"
-              formControlName="datum" displayFormat="YYYY-MM-DD HH:mm" pickerFormat="YYYY-MM-DDTHH:mm" [(ngModel)]="fogasDatuma"></ion-datetime>
-          </ion-item>
-          <ion-item *ngIf="!slideOneForm.controls.helyszin.valid && (slideOneForm.controls.helyszin.dirty|| submitAttempt)">
-            <p>Kérlek add meg a fogás helyszínét!!</p>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Fogás helyszíne</ion-label>
-            <ion-input [class.invalid]="!slideOneForm.controls.helyszin.valid && (slideOneForm.controls.helyszin.dirty|| submitAttempt)"
-              formControlName="helyszin" [(ngModel)]="fogasHelyszin" type="text"></ion-input>
-
-            <button ion-button clear type="button" item-right (click)="valasztasLadabolhelyszin()">
-                            <ion-icon name="briefcase"> </ion-icon>
-                          </button>
-          </ion-item>
-          <ion-item *ngIf="!slideOneForm.controls.halfaj.valid && (slideOneForm.controls.halfaj.dirty|| submitAttempt)">
-            <p>Válaszd ki a fogot halat!</p>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Halfaj</ion-label>
-            <ion-select [class.invalid]="!slideOneForm.controls.halfaj.valid && (slideOneForm.controls.halfaj.dirty|| submitAttempt)"
-              formControlName="halfaj" [(ngModel)]="fogasHalfaj">
-              <ion-option value="Nincs megadva" selected="true">Választás...</ion-option>
-              <ion-option value="Ponty">Ponty</ion-option>
-              <ion-option value="Amur">Amúr</ion-option>
-              <ion-option value="Keszeg">Keszeg</ion-option>
-              <ion-option value="Kárász">Kárász</ion-option>
-              <ion-option value="Törpeharcsa">Törpeharcsa</ion-option>
-              <ion-option value="Compó">Compó</ion-option>
-              <ion-option value="Csuka">Csuka</ion-option>
-              <ion-option value="Tokhal">Tokhal</ion-option>
-              <ion-option value="Egyéb">Egyéb</ion-option>
-            </ion-select>
-          </ion-item>
-        </form>
-      </ion-list>
-    </ion-slide>
-    <ion-slide>
-
-      <ion-list no-lines>
-        <form [formGroup]="slideTwoForm">
-          <ion-item>
-            <ion-label floating>Hal súlya</ion-label>
-            <ion-input [class.invalid]="!slideTwoForm.controls.suly.valid && (slideTwoForm.controls.suly.dirty|| submitAttempt)" formControlName="suly"
-              [(ngModel)]="fogasSuly" type="text"></ion-input>
-          </ion-item>
-          <ion-item *ngIf="!slideTwoForm.controls.csali.valid && (slideTwoForm.controls.csali.dirty|| submitAttempt)">
-            <p>Nem választottál csalit!</p>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Használt csali</ion-label>
-            <ion-input [class.invalid]="!slideTwoForm.controls.csali.valid && (slideTwoForm.controls.csali.dirty|| submitAttempt)" formControlName="csali"
-              [(ngModel)]="fogasCsali" type="text"></ion-input>
-            <button ion-button clear type="button" item-right (click)="valasztasLadabolcsali()">
-                      <ion-icon name="briefcase"> </ion-icon>
-                    </button>
-          </ion-item>
-          <ion-item *ngIf="!slideTwoForm.controls.etetoanyag1.valid && (slideTwoForm.controls.etetoanyag1.dirty|| submitAttempt)">
-            <p>Nem választottál etetőanyagot!</p>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Etetőanyag 1</ion-label>
-            <ion-input [class.invalid]="!slideTwoForm.controls.etetoanyag1.valid && (slideTwoForm.controls.etetoanyag1.dirty|| submitAttempt)"
-              formControlName="etetoanyag1" [(ngModel)]="fogasEtetoanyag1" type="text"></ion-input>
-            <button ion-button clear type="button" item-right (click)="valasztasLadaboletetoanyag()">
+<ion-content>
+    <p *ngIf="submitAttempt" style="color: #ea6153;">Kérlek helyesen tölsd ki a mezőket!</p>
+  <ion-grid>
+      <form [formGroup]="fogasfeltoltesForm">
+          <ion-row padding-horizontal align-items-start>
+      <ion-col no-padding col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <ion-item no-padding>
+          <ion-label color="dark" stacked>Fogás dátuma*</ion-label>
+          <ion-datetime placeholder="Válassz időpontot" displayFormat="YYYY-MM-DD HH:mm" pickerFormat="YYYY-MM-DDTHH:mm" [class.invalid]="!fogasfeltoltesForm.controls.fogasdatum.valid && (fogasfeltoltesForm.controls.fogasdatum.dirty|| submitAttempt)" [(ngModel)]="fogasDatuma" formControlName="fogasdatum"></ion-datetime>
+        </ion-item>
+        <ion-item no-padding>
+          <ion-label color="dark" stacked>Fogás helyszíne*</ion-label>
+          <ion-input placeholder="Válassz helyszínt az ikonnal" [class.invalid]="!fogasfeltoltesForm.controls.fogashelyszin.valid && (fogasfeltoltesForm.controls.fogashelyszin.dirty|| submitAttempt)" [(ngModel)]="fogasHelyszin" formControlName="fogashelyszin" type="text"></ion-input>
+          <button ion-button clear type="button" item-right (click)="valasztasLadabolhelyszin()">
                         <ion-icon name="briefcase"> </ion-icon>
                       </button>
-          </ion-item>
-
-          <ion-item>
-            <ion-label floating>Egyéb megjegyzés</ion-label>
-            <ion-textarea [class.invalid]="!slideTwoForm.controls.megjegyzes.valid && (slideTwoForm.controls.megjegyzes.dirty|| submitAttempt)"
-              formControlName="megjegyzes" [(ngModel)]="fogasEgyeb" type="text"></ion-textarea>
-          </ion-item>
-          <ion-item>
-            <ion-label>Publikus</ion-label>
-            <ion-checkbox  checked="true" [(ngModel)]="fogasPublikus" formControlName="publikus"></ion-checkbox>
-          </ion-item>
-        </form>
-      </ion-list>
-      <button ion-button full color="primary" (click)="save()">Feltöltés indítása</button>
-    </ion-slide>
-  </ion-slides>
+        </ion-item>
+        <ion-item no-padding>
+          <ion-label color="dark" stacked>Halfaj</ion-label>
+          <ion-select [(ngModel)]="fogasHalfaj" [class.invalid]="!fogasfeltoltesForm.controls.halfaj.valid && (fogasfeltoltesForm.controls.halfaj.dirty|| submitAttempt)" formControlName="halfaj">
+            <ion-option value="Nincs megadva" selected="true">Választás...</ion-option>
+            <ion-option value="Ponty">Ponty</ion-option>
+            <ion-option value="Amur">Amúr</ion-option>
+            <ion-option value="Keszeg">Keszeg</ion-option>
+            <ion-option value="Kárász">Kárász</ion-option>
+            <ion-option value="Törpeharcsa">Törpeharcsa</ion-option>
+            <ion-option value="Compó">Compó</ion-option>
+            <ion-option value="Csuka">Csuka</ion-option>
+            <ion-option value="Tokhal">Tokhal</ion-option>
+            <ion-option value="Egyéb">Egyéb</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item no-padding>
+          <h2>Kép feltöltése</h2>
+          <ion-buttons start>
+            <button ion-button full color="primary" icon-left (click)="fotoKeszit()">Fotózás<ion-icon name="camera" ></ion-icon></button>
+            <button ion-button full color="primary" icon-left (click)="fotoValaszt()">Galéria<ion-icon name="images"></ion-icon></button>
+          </ion-buttons>
+        </ion-item>
+        <ion-thumbnail *ngIf="kepbetolt">
+          <img [src]="kepmegjelenit">
+        </ion-thumbnail>
+        <!---Input field country-->
+        <ion-item no-padding>
+          <ion-label color="dark" stacked>Hal súlya</ion-label>
+          <ion-input placeholder="Add meg a súlyt kilogrammban!" [class.invalid]="!fogasfeltoltesForm.controls.fogassuly.valid && (fogasfeltoltesForm.controls.fogassuly.dirty|| submitAttempt)" [(ngModel)]="fogasSuly" formControlName="fogassuly" type="number"></ion-input>
+        </ion-item>
+        <!---Input field city-->
+        <ion-item no-padding>
+          <ion-label stacked>Csali*</ion-label>
+          <ion-input placeholder="Válassz csalit az ikonnal!" [class.invalid]="!fogasfeltoltesForm.controls.fogascsali.valid && (fogasfeltoltesForm.controls.fogascsali.dirty|| submitAttempt)" [(ngModel)]="fogasCsali" formControlName="fogascsali" type="text"></ion-input>
+          <button ion-button clear type="button" item-right (click)="valasztasLadabolcsali()">
+                        <ion-icon name="briefcase"> </ion-icon>
+                      </button> </ion-item>
+        <ion-item no-padding>
+          <ion-label stacked>Etetőanyag*</ion-label>
+          <ion-input placeholder="Válassz etetőanyagot az ikonnal!" [class.invalid]="!fogasfeltoltesForm.controls.fogasetetoanyag.valid && (fogasfeltoltesForm.controls.fogasetetoanyag.dirty|| submitAttempt)" [(ngModel)]="fogasEtetoanyag1" formControlName="fogasetetoanyag" type="text"></ion-input>
+          
+          <button ion-button clear type="button" item-right (click)="valasztasLadaboletetoanyag()">
+                              <ion-icon name="briefcase"> </ion-icon>
+                            </button> </ion-item>
+        <ion-item no-padding>
+          <ion-label stacked>Megjegyzés</ion-label>
+          <ion-textarea placeholder="A fogással kapcsolatos megjegyzéseket ide írhatod" [class.invalid]="!fogasfeltoltesForm.controls.megjegyzes.valid && (fogasfeltoltesForm.controls.megjegyzes.dirty|| submitAttempt)" [(ngModel)]="fogasEgyeb" formControlName="megjegyzes" type="text"></ion-textarea>
+        </ion-item>
+        <ion-item no-padding>
+            <ion-label color="dark" stacked>Publikus</ion-label>
+            <ion-checkbox checked="true" [(ngModel)]="fogasPublikus" [class.invalid]="!fogasfeltoltesForm.controls.publikus.valid && (fogasfeltoltesForm.controls.publikus.dirty|| submitAttempt)"  formControlName="publikus"></ion-checkbox>
+        </ion-item>
+        <button ion-button margin-top float-right clear button-clear text-capitalize  (click)="save()">Feltöltés</button>      </ion-col>
+    </ion-row>
+  </form>
+  </ion-grid>
 </ion-content>

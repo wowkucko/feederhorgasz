@@ -11,9 +11,7 @@ import {
 import {
   AngularFireDatabase
 } from 'angularfire2/database';
-import {
-  SocialSharing
-} from '@ionic-native/social-sharing';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 /**
  * Generated class for the FogasreszletekPage page.
@@ -42,10 +40,10 @@ export class FogasreszletekPage {
   public image: string;
   public uri: string;
   public pasteMessageHint: string;
-  constructor(private platform: Platform, private socialSharing: SocialSharing, private firebasedb: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
-    this.message = "teszt<br>teszt";
+  constructor(private photoViewer: PhotoViewer,private platform: Platform, private firebasedb: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+
     this.image = this.navParams.get("fogasreszletek").keplink;
-    this.uri = "http://feederhorgaszapp.com";
+
   }
   ionViewWillEnter() {
     this.fogasreszletek = this.navParams.get("fogasreszletek");
@@ -71,23 +69,7 @@ export class FogasreszletekPage {
 
   }
 
-  facebookShare() {
-    
-    this.platform.ready()
-      .then(() => {
 
-
-        this.socialSharing.shareViaFacebook(null, this.image, null)
-          .then((data) => {
-            console.log('Shared via Facebook');
-          });
-
-      })
-      .catch((err) => {
-        alert("Nem lehet megosztani! Ellenőrizd, hogy a Facebook app megfelelően van-e telepítve!")
-      });
-
-  };
   onEvent(event: string, item: any, e: any) {
     if (this.events[event]) {
       this.events[event](item);
@@ -114,6 +96,10 @@ export class FogasreszletekPage {
 
   istoGroupShown(group: any) {
     return group.show;
+  }
+  kepMegnyit(){
+    this.photoViewer.show(this.image);
+    
   }
 
 }

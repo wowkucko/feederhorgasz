@@ -1,3 +1,19 @@
 page-idojaras {
+ion-grid{
+    text-align:center;
+}
+.block-insert {
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 50px;
+}
+span.compomets {
+    display: block;
+    clear: both;
+    color: theme-colors('textColors', 'secondary');
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
 
 }

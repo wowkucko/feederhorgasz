@@ -1,6 +1,6 @@
 import { EtetoanyagreszletekPage } from '../etetoanyagreszletek/etetoanyagreszletek';
 import { Component,Input, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController,Content} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,Content, AlertController} from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
@@ -29,7 +29,7 @@ export class MyetetoPage {
   hozzaadas:boolean
   torles:boolean
 
-  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
+  constructor(public alertCtrl: AlertController,public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
     this.animateClass = { 'fade-in-left-item': true };
     
     this.myetetoLoading();
@@ -112,5 +112,24 @@ subscribeToIonScroll() {
 ngAfterViewInit() {
   this.subscribeToIonScroll();
 }
-
+showConfirm(item) {
+  let confirm = this.alertCtrl.create({
+    title: 'Törlés',
+    message: 'Biztos, hogy törlöd a tételt a ládából?',
+    buttons: [
+      {
+        text: 'Mégsem',
+        handler: () => {
+        }
+      },
+      {
+        text: 'Igen',
+        handler: () => {
+          this.deleteLadabol(item);
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
 }

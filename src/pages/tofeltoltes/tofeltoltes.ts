@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-
+import {
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 
 /**
  * Generated class for the TofeltoltesPage page.
@@ -28,9 +32,16 @@ export class TofeltoltesPage {
   egyeb:string
   megye:string
   tel:string
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
-    
+  submitAttempt: boolean = false;
+  tofeltoltesForm: FormGroup; 
+  
+  constructor(public formBuilder:FormBuilder,public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase,private toastCtrl: ToastController) {
+    this.tofeltoltesForm = formBuilder.group({
+      toneve: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
+      tocime: ['', Validators.compose([Validators.maxLength(100), Validators.required])],
+      toszama: ['', Validators.compose([Validators.maxLength(18), Validators.required,Validators.pattern('[0-9]*')])],
+      tomegyeje: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
+    });
   }
 
 
@@ -40,13 +51,13 @@ export class TofeltoltesPage {
         cim:this.cim,
         nev:this.nev,
         megye:this.megye,
-        vizterulet:this.vizterulet,
-        facebookurl:this.facebook,
-        weboldal:this.weboldal,
-        tipus:this.tipus,
-        halfajtak:this.halfajtak,
-        szolgaltasleiras:this.szolgaltatasleiras,
-        egyeb:this.egyeb,
+        vizterulet:"",
+        facebookurl:"",
+        weboldal:"",
+        tipus:"",
+        halfajtak:"",
+        szolgaltasleiras:"",
+        egyeb:"",
         keplink:"",
         keplink2:"",
         keplink3:"",
@@ -54,8 +65,29 @@ export class TofeltoltesPage {
         lat:"",
         long:"",
         approved:0,
-        tel:""
+        tel:this.tel
 
       });
+  }
+
+  save(){
+    this.submitAttempt = true;
+    
+       if(!this.tofeltoltesForm.valid){
+           alert("Helytelen kitöltés!");
+       }
+
+       else {
+           this.adatfeltolt();
+           this.presentToast();
+       }
+  }
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'A feltöltés sikeres!',
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
   }
 }

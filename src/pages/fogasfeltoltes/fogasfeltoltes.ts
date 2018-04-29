@@ -29,12 +29,12 @@ import {
 import {
   AngularFireDatabase
 } from 'angularfire2/database';
+import firebase from 'firebase';
 import {
   FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
-import firebase from 'firebase';
 
 
 /**
@@ -50,13 +50,6 @@ import firebase from 'firebase';
   templateUrl: 'fogasfeltoltes.html',
 })
 export class FogasfeltoltesPage {
-  @ViewChild('fogasfeltoltesSlider') fogasfeltoltesSlider: any;
-
-  slideOneForm: FormGroup;
-  slideTwoForm: FormGroup;
-
-  submitAttempt: boolean = false;
-
   picdata: any
   picurl: any
   mypicref: any
@@ -71,34 +64,28 @@ export class FogasfeltoltesPage {
   kepmegjelenit
   useremail
   fogasPublikus: boolean
-  back:boolean=false;
-  forward:boolean=true;
   kepbetolt:boolean=false;
+  submitAttempt: boolean = false;
+  fogasfeltoltesForm: FormGroup;  
 
-
-  constructor(public platform: Platform, private keyboard: Keyboard,private toastCtrl: ToastController,public loadingCtrl: LoadingController,public formBuilder: FormBuilder, public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
+  constructor(public formBuilder:FormBuilder,public platform: Platform, private keyboard: Keyboard,private toastCtrl: ToastController,public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
     this.mypicref = firebase.storage().ref('/');
     this.fogasPublikus=true;
-    this.slideOneForm = formBuilder.group({
-      datum: [''],
-      helyszin: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
-      halfaj: ['', Validators.required]
-    });
-    this.slideTwoForm = formBuilder.group({
-      suly: ['', Validators.compose([Validators.maxLength(3), Validators.pattern('[0-9]*')])],
-      csali: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
-      etetoanyag1: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
+    this.fogasfeltoltesForm = formBuilder.group({
+      fogasdatum: [''],
+      fogashelyszin: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
+      fogascsali: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
+      fogasetetoanyag:['', Validators.compose([Validators.maxLength(60), Validators.required])],
+      fogassuly: ['', Validators.compose([Validators.maxLength(3), Validators.pattern('[0-9]*')])],
       megjegyzes: ['', Validators.maxLength(300)],
-      publikus:['']
-      });
-
+      publikus:[''],
+      halfaj: ['', Validators.required]
+      
+    });
   }
 
 
   public ionViewWillEnter() {
-    this.platform.ready().then(() => {
-    //this.keyboard.disableScroll(true);
-  });
     if (this.navParams.get('valasztottCsali') != null) {
       this.fogasCsali = this.navParams.get('valasztottCsali').csalineve || null;
     }
@@ -113,9 +100,7 @@ export class FogasfeltoltesPage {
 
   }
   ionViewWillLeave(){
-    this.platform.ready().then(() => {
-    //this.keyboard.disableScroll(false);
-  });
+
   }
   bezarFeltolt() {
     this.view.dismiss();
@@ -129,18 +114,6 @@ export class FogasfeltoltesPage {
     toast.present();
   }
 
-
-  next() {
-    this.fogasfeltoltesSlider.slideNext();
-    this.back=true;
-    this.forward=false;
-  }
-
-  prev() {
-    this.fogasfeltoltesSlider.slidePrev();
-    this.back=false;
-    this.forward=true;
-  }
 
   fotoKeszit() {
     this.camera.getPicture({
@@ -188,17 +161,14 @@ export class FogasfeltoltesPage {
   }
 
   save(){
-    this.submitAttempt = true;
-    
-       if(!this.slideOneForm.valid){
-           this.fogasfeltoltesSlider.slideTo(0);
-       }
-       else if(!this.slideTwoForm.valid){
-           this.fogasfeltoltesSlider.slideTo(1);
-       }
-       else {
-           this.adatfeltolt();
-       }
+          this.submitAttempt = true;
+           
+           if(!this.fogasfeltoltesForm.valid){
+            alert("Ellenőrizd a mezőket!");
+        }
+        else{
+          this.adatfeltolt();
+        }
   }
 
 

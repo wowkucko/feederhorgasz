@@ -1,9 +1,4 @@
-<!--
-  Generated template for the FogasreszletekPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header header-ios>
     <ion-navbar color="primary">
         
@@ -12,136 +7,6 @@
         <ion-title>Részletek</ion-title>
     </ion-navbar>
 </ion-header>
-
-
-<!--ion-content class="common-bg">
-    <ion-slides class="to-top" pager="false">
-      <ion-slide>
-        <img src="{{fogasreszletek.keplink}}" alt="">
-      </ion-slide>
-    </ion-slides>
-    <ion-grid class="border-bottom dark-bg">
-      <ion-row>
-        <ion-col text-center>
-          <div class="text-sm">
-            <div>
-              <ion-icon name="time" class="text-white"></ion-icon>
-              <span ion-text color="light">{{fogasreszletek.datum |date: "yyyy/MM/dd HH:MM" }}</span>
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    
-    <div class="border-bottom" padding>        
-        <ion-grid>
-            <ion-row class="centered">
-                <ion-col>
-                  <button ion-button icon-only (click)="regularShare()" color="primary" clear>
-                <ion-icon class="share-icon" name="share"></ion-icon>
-              </button>
-                </ion-col>
-                <ion-col>
-                  <button ion-button icon-only (click)="whatsappShare()" color="primary" clear>
-                <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
-              </button>
-                </ion-col>
-                <ion-col>
-                  <button ion-button icon-only (click)="facebookShare()" color="primary" clear>
-                <ion-icon  class="share-icon" name="logo-facebook"></ion-icon>
-              </button>
-                </ion-col>
-                <ion-col>
-                  <button ion-button icon-only (click)="twitterShare()" color="primary" clear>
-                <ion-icon class="share-icon" name="logo-twitter"></ion-icon>
-              </button>
-                </ion-col>
-              </ion-row>
-          <ion-row class="centered">
-              <ion-col col-12>
-              <h1>{{fogasreszletek.suly}} kg {{fogasreszletek.halfaj}}</h1>  
-              </ion-col>            
-          </ion-row>
-            <ion-card>
-                <ion-card-header>
-                 <h2> Leírás</h2>
-                </ion-card-header>
-            <ion-row>
-                <ion-col col-12>
-                  {{fogasreszletek.egyeb}}
-                </ion-col>
-              </ion-row>
-            </ion-card>
-            
-              <ion-card>
-                  <ion-card-header>
-                      <h2> Használt csali</h2>
-                    </ion-card-header>
-            <ion-row *ngFor="let csali of csali; let i = index">
-                <ion-col col-12>
-                    <h5>{{csali.nev}}</h5>
-                  </ion-col>
-              <ion-col col-6>
-                
-                <img src="{{csali.keplink}}">
-              </ion-col>
-              <ion-col col-6>
-               <p>Márka: {{csali.marka}}</p>
-               <p>Méret: {{csali.meret}}</p>
-               <p>Típus: {{csali.tipus}}</p>
-               <p>Szín: {{csali.szin}}</p>
-              </ion-col>
-            </ion-row>
-          </ion-card>
-          <ion-card>
-              <ion-card-header>
-                  <h2>Használt etetőanyag</h2>
-                </ion-card-header>
-        <ion-row *ngFor="let etetoanyag of etetoanyag; let i = index">
-            <ion-col col-12>
-                <h5>{{etetoanyag.nev}}</h5>
-              </ion-col>
-          <ion-col col-6>
-            
-            <img src="{{etetoanyag.keplink}}">
-          </ion-col>
-          <ion-col col-6>
-           <p>Márka: {{etetoanyag.marka}}</p>
-           <p>Állag: {{etetoanyag.allag}}</p>
-           <p>Típus: {{etetoanyag.tipus}}</p>
-           <p>Szín: {{etetoanyag.szin}}</p>
-          </ion-col>
-        </ion-row>
-      </ion-card>
-      <ion-card>
-          <ion-card-header>
-            <h2>Fogás helyszíne</h2>
-            </ion-card-header>
-    <ion-row *ngFor="let to of to; let i = index">
-        <ion-col col-12>
-            <h5>{{to.nev}}</h5>
-          </ion-col>
-      <ion-col col-6>
-        
-        <img src="{{to.keplink}}">
-      </ion-col>
-      <ion-col col-6>
-       <p>Cím: {{to.cim}}</p>
-       <p>Vízterület: {{to.vizterulet}} ha</p>
-       <p>Típus: {{to.tipus}}</p>
-       <p>Halfajok: {{to.halfajtak}}</p>
-       <p>Szolgáltatások: {{to.szolgaltatasleiras}}</p>
-       <p>Weboldal: {{to.weboldal}}</p>
-      </ion-col>
-    </ion-row>
-  </ion-card>
-          </ion-grid>
-        
-  </div>
-
-  </ion-content>-->
-
-
   <ion-content>
 
      
@@ -149,7 +14,7 @@
           <ion-row *ngIf="fogasreszletek != null">
               <ion-col col-12>
                 <ion-card>
-                  <div card-image>
+                  <div card-image (click)="kepMegnyit()">
                     <img [src]="fogasreszletek.keplink"/>
                   </div>
                 </ion-card>
@@ -200,7 +65,7 @@
                           <h2 subitem-title text-wrap>Szín:</h2>                    
                           <h3 subitem-subtitle text-wrap>{{csali.szin}}</h3>
                           <h2 subitem-title text-wrap>Leírás:</h2>                    
-                          <p parallax-description text-wrap>{{csali.leiras}}</p>          
+                          <p parallax-description [innerHTML]="csali.leiras"></p>          
                         </ion-item>
                       </div>
                     </li>
@@ -229,7 +94,7 @@
                               <h2 subitem-title text-wrap>Szín:</h2>                    
                               <h3 subitem-subtitle text-wrap>{{etetoanyag.szin}}</h3>
                               <h2 subitem-title text-wrap>Leírás:</h2> 
-                              <p parallax-description text-wrap>{{etetoanyag.leiras}}</p>          
+                              <p parallax-description  [innerHTML]="etetoanyag.leiras"></p>          
                               
                             </ion-item>
                           </div>
@@ -261,7 +126,7 @@
                                   <h2 subitem-title text-wrap>Szolgáltatások:</h2> 
                                   <h3 subitem-subtitle text-wrap>{{to.szolgaltasleiras}}</h3> 
                                   <h2 subitem-title text-wrap>Leírás:</h2>                    
-                                  <p parallax-description text-wrap>{{to.egyeb}}</p>          
+                                  <p   [innerHTML]="to.egyeb"></p>          
                                   
                                 </ion-item>
                               </div>

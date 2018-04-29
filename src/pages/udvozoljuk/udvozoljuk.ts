@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
-
 
 /**
  * Generated class for the UdvozoljukPage page.
@@ -22,7 +21,7 @@ export class UdvozoljukPage {
 
   
 
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams,private platform: Platform) {
   }
 
 
@@ -33,7 +32,6 @@ export class UdvozoljukPage {
       
         firebase.auth().signInWithRedirect(provider).then( () => {
           firebase.auth().getRedirectResult().then( res => {
-            console.log("namost",res)
 
             let facebookadatok={
               nev: res.user.displayName,
@@ -48,7 +46,7 @@ export class UdvozoljukPage {
           });
         });
       
-    
+    //this.registerapp();
   }
   loginWithGoogle(){
     
@@ -56,7 +54,6 @@ export class UdvozoljukPage {
        
          firebase.auth().signInWithRedirect(provider).then( () => {
            firebase.auth().getRedirectResult().then( res => {
-            console.log("namost",res)
              let facebookadatok={
                nev: res.user.displayName,
                email: res.user.email,
@@ -71,4 +68,9 @@ export class UdvozoljukPage {
        
      
    }
+
+   registerapp(){
+    
+   }
+
 }

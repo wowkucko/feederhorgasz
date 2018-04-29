@@ -16,22 +16,13 @@
         <ion-row>
             <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 *ngFor="let item of items" >
                 <ion-card text-left (click)="itemKlikk(item)">
-                    <!--Card Image-->
                     <div card-image>
                       <img [src]="item.acf.image" />
                       <ion-badge ion-fixed item-end class="badge-dark">{{item.acf.datum}}</ion-badge>
-                      <button ion-fixed ion-button color="primary" button-action-shit>
-                         <ion-icon name="more"></ion-icon>
-                      </button>
                     </div>
-                    <!--Card descriptiom-->
                     <ion-card-content >
                       <ion-card-title>
-                        <!--Card Title-->
                         <h2 card-title>{{item.acf.cim}}</h2>
-                        <!--Card Subtitle-->
-                        <h1 card-subtitle>Teszt</h1>
-                        <!--Card Body Text-->
                         <p card-body-text>{{item.acf.short}}</p>
                       </ion-card-title>
                     </ion-card-content>
