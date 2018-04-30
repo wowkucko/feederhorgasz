@@ -1,8 +1,21 @@
-import { MyetetoPage } from '../myeteto/myeteto';
-import { MytoPage } from '../myto/myto';
-import { MycsaliPage } from '../mycsali/mycsali';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import {
+  MyetetoPage
+} from '../myeteto/myeteto';
+import {
+  MytoPage
+} from '../myto/myto';
+import {
+  MycsaliPage
+} from '../mycsali/mycsali';
+import {
+  Component
+} from '@angular/core';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ModalController
+} from 'ionic-angular';
 
 /**
  * Generated class for the LadaPage page.
@@ -18,22 +31,30 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 })
 export class LadaPage {
 
-  constructor(private modal: ModalController,public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(private modal: ModalController, public navCtrl: NavController, public navParams: NavParams) {}
 
 
 
-  openMycsali(){
-    const mycsalipanel=this.modal.create(MycsaliPage,{facebookadatok:this.navParams.data,oldalnev:"lada"});
+  openMycsali() {
+    const mycsalipanel = this.modal.create(MycsaliPage, {
+      facebookadatok: this.navParams.data,
+      oldalnev: "lada"
+    });
     mycsalipanel.present();
   }
 
-  openMyto(){
-    const mytopanel=this.modal.create(MytoPage,{facebookadatok:this.navParams.data,oldalnev:"lada"});
+  openMyto() {
+    const mytopanel = this.modal.create(MytoPage, {
+      facebookadatok: this.navParams.data,
+      oldalnev: "lada"
+    });
     mytopanel.present();
   }
-  openMyetetoanyag(){
-    const myetetoanyagpanel=this.modal.create(MyetetoPage,{facebookadatok:this.navParams.data,oldalnev:"lada"});
+  openMyetetoanyag() {
+    const myetetoanyagpanel = this.modal.create(MyetetoPage, {
+      facebookadatok: this.navParams.data,
+      oldalnev: "lada"
+    });
     myetetoanyagpanel.present();
   }
 

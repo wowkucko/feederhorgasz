@@ -3,35 +3,34 @@
     <ion-title>Hírek</ion-title>
 
     <ion-buttons end>
-        <button ion-button icon-only (click)="presentActionSheet()">
+      <button ion-button icon-only (click)="presentActionSheet()">
           <ion-icon name="apps"></ion-icon>
         </button>
-      </ion-buttons>
+    </ion-buttons>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-grid no-padding>
-        <ion-row>
-            <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 *ngFor="let item of items" >
-                <ion-card text-left (click)="itemKlikk(item)">
-                    <div card-image>
-                      <img [src]="item.acf.image" />
-                      <ion-badge ion-fixed item-end class="badge-dark">{{item.acf.datum}}</ion-badge>
-                    </div>
-                    <ion-card-content >
-                      <ion-card-title>
-                        <h2 card-title>{{item.acf.cim}}</h2>
-                        <p card-body-text>{{item.acf.short}}</p>
-                      </ion-card-title>
-                    </ion-card-content>
-                  </ion-card>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 *ngFor="let item of items">
+        <ion-card text-left (click)="itemKlikk(item)">
+          <div card-image>
+            <img [src]="item.acf.image" />
+            <ion-badge ion-fixed item-end class="badge-dark">{{item.acf.datum}}</ion-badge>
+          </div>
+          <ion-card-content>
+            <ion-card-title>
+              <h2 card-title>{{item.acf.cim}}</h2>
+              <p card-body-text>{{item.acf.short}}</p>
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
 
 
-                </ion-col>
-              
-        </ion-row>
-              </ion-grid>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>
-

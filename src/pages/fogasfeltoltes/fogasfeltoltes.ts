@@ -1,7 +1,9 @@
 import {
   MyetetoPage
 } from './../myeteto/myeteto';
-import { Keyboard } from '@ionic-native/keyboard';
+import {
+  Keyboard
+} from '@ionic-native/keyboard';
 import {
   MycsaliPage
 } from '../mycsali/mycsali';
@@ -64,23 +66,23 @@ export class FogasfeltoltesPage {
   kepmegjelenit
   useremail
   fogasPublikus: boolean
-  kepbetolt:boolean=false;
+  kepbetolt: boolean = false;
   submitAttempt: boolean = false;
-  fogasfeltoltesForm: FormGroup;  
+  fogasfeltoltesForm: FormGroup;
 
-  constructor(public formBuilder:FormBuilder,public platform: Platform, private keyboard: Keyboard,private toastCtrl: ToastController,public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
+  constructor(public formBuilder: FormBuilder, public platform: Platform, private keyboard: Keyboard, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private view: ViewController, private firebasedb: AngularFireDatabase) {
     this.mypicref = firebase.storage().ref('/');
-    this.fogasPublikus=true;
+    this.fogasPublikus = true;
     this.fogasfeltoltesForm = formBuilder.group({
       fogasdatum: [''],
       fogashelyszin: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
       fogascsali: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
-      fogasetetoanyag:['', Validators.compose([Validators.maxLength(60), Validators.required])],
+      fogasetetoanyag: ['', Validators.compose([Validators.maxLength(60), Validators.required])],
       fogassuly: ['', Validators.compose([Validators.maxLength(3), Validators.pattern('[0-9]*')])],
       megjegyzes: ['', Validators.maxLength(300)],
-      publikus:[''],
+      publikus: [''],
       halfaj: ['', Validators.required]
-      
+
     });
   }
 
@@ -99,7 +101,7 @@ export class FogasfeltoltesPage {
 
 
   }
-  ionViewWillLeave(){
+  ionViewWillLeave() {
 
   }
   bezarFeltolt() {
@@ -126,10 +128,10 @@ export class FogasfeltoltesPage {
     }).then(imgdata => {
       this.picdata = imgdata;
       this.kepmegjelenit = "data:image/jpeg;base64," + imgdata;
-      this.kepbetolt=true;
+      this.kepbetolt = true;
 
     })
-    
+
   }
   fotoValaszt() {
     this.camera.getPicture({
@@ -140,7 +142,7 @@ export class FogasfeltoltesPage {
     }).then(imgdata => {
       this.picdata = imgdata;
       this.kepmegjelenit = "data:image/jpeg;base64," + imgdata;
-      this.kepbetolt=true;
+      this.kepbetolt = true;
 
     })
   }
@@ -160,21 +162,22 @@ export class FogasfeltoltesPage {
     });
   }
 
-  save(){
-          this.submitAttempt = true;
-           
-           if(!this.fogasfeltoltesForm.valid){
-            alert("Ellenőrizd a mezőket!");
-        }
-        else{
-          this.adatfeltolt();
-        }
+  save() {
+    this.submitAttempt = true;
+
+    if (!this.fogasfeltoltesForm.valid) {
+      alert("Ellenőrizd a mezőket!");
+    } else {
+      this.adatfeltolt();
+    }
   }
 
 
 
   async adatfeltolt() {
-    let loader = this.loadingCtrl.create({content: "Feltöltés folyamatban..."});
+    let loader = this.loadingCtrl.create({
+      content: "Feltöltés folyamatban..."
+    });
     loader.present();
     if (this.picdata) {
       const savedPic = await this.mypicref.child(this.uid()).child('pic.jpg')
@@ -211,9 +214,9 @@ export class FogasfeltoltesPage {
         etetoanyag1: this.fogasEtetoanyag1,
         publikus: this.fogasPublikus
       });
-      loader.dismiss();
-      this.navCtrl.pop();
-      this.presentToast();
+    loader.dismiss();
+    this.navCtrl.pop();
+    this.presentToast();
 
   }
   uid() {

@@ -14,23 +14,23 @@
 
 
 <ion-content padding>
-    <ion-grid>
-      <ion-row>
-        <ion-col width-100>
-          <ion-list>
-            <form (ngSubmit)="mentesForm()">
-              <ion-item>
-                <ion-label fixed>
-                  Dobási etap (perc)
-                </ion-label>
-                <ion-input [(ngModel)]="dobasietap" type="text" name="idomerouserido">
-    
-                </ion-input>
-              </ion-item>
-              <button ion-button type="submit" block>Mentés</button>
-            </form>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    </ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
+          <form (ngSubmit)="mentesForm()">
+            <ion-item>
+              <ion-label fixed>
+                Dobási etap (perc)
+              </ion-label>
+              <ion-input [(ngModel)]="dobasietap" type="text" name="idomerouserido">
+
+              </ion-input>
+            </ion-item>
+            <button ion-button type="submit" block>Mentés</button>
+          </form>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,8 +1,25 @@
-import { FogasreszletekPage } from '../fogasreszletek/fogasreszletek';
-import { Component, Input, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController,LoadingController,Content} from 'ionic-angular';
-import { FogasfeltoltesPage } from '../fogasfeltoltes/fogasfeltoltes';
-import { AngularFireDatabase } from 'angularfire2/database';
+import {
+  FogasreszletekPage
+} from '../fogasreszletek/fogasreszletek';
+import {
+  Component,
+  Input,
+  ViewChild
+} from '@angular/core';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ModalController,
+  LoadingController,
+  Content
+} from 'ionic-angular';
+import {
+  FogasfeltoltesPage
+} from '../fogasfeltoltes/fogasfeltoltes';
+import {
+  AngularFireDatabase
+} from 'angularfire2/database';
 
 
 
@@ -20,22 +37,22 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class FogasinaploPage {
   sajatfogasadatok = []
-  osszesfogasadatok=[]
-  displayfogasok:string
+  osszesfogasadatok = []
+  displayfogasok: string
   @Input() data: any;
   @Input() events: any;
   @ViewChild(Content)
   content: Content;
 
   active: boolean;
-  headerImage:any = "";
-  
- 
+  headerImage: any = "";
 
 
 
-  constructor(public loadingCtrl: LoadingController,private modal: ModalController, public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
-    this.displayfogasok="sajat";
+
+
+  constructor(public loadingCtrl: LoadingController, private modal: ModalController, public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase) {
+    this.displayfogasok = "sajat";
     this.sajatchange();
   }
 
@@ -43,101 +60,106 @@ export class FogasinaploPage {
     this.sajatfogasokLoading();
   }
 
-  osszeschange(){
+  osszeschange() {
     this.osszesfogasokLoading();
   }
-  sajatchange(){
+  sajatchange() {
     this.sajatfogasok();
   }
-  openFeltoltes(){
-    ;
-    
-    const feltolt=this.modal.create(FogasfeltoltesPage,this.navParams.data);
+  openFeltoltes() {;
+
+    const feltolt = this.modal.create(FogasfeltoltesPage, this.navParams.data);
     feltolt.present();
   }
-  deleteNaplobol(item){
+  deleteNaplobol(item) {
     this.firebasedb.list("/fogasok/").remove(item.$key);
   }
-  openFogasReszletek(item){
+  openFogasReszletek(item) {
     this.navCtrl.push(FogasreszletekPage, {
       fogasreszletek: item
     });
 
   }
 
-  sajatfogasok(){
+  sajatfogasok() {
     return new Promise((resolve) => {
-    this.firebasedb.list("/fogasok/").subscribe(_data => {
-      
-      this.sajatfogasadatok = _data.filter(item => item.useremail == this.navParams.get("facebookemail"));
-      resolve(true);
-    });
-  })
+      this.firebasedb.list("/fogasok/").subscribe(_data => {
+
+        this.sajatfogasadatok = _data.filter(item => item.useremail == this.navParams.get("facebookemail"));
+        resolve(true);
+      });
+    })
   }
-  osszesfogasok(){
+  osszesfogasok() {
     return new Promise((resolve) => {
-    this.firebasedb.list("/fogasok/").subscribe(_data => {
-      
-      this.osszesfogasadatok = _data.filter(item => item.publikus == true);
-      resolve(true);
-    });    
+      this.firebasedb.list("/fogasok/").subscribe(_data => {
+
+        this.osszesfogasadatok = _data.filter(item => item.publikus == true);
+        resolve(true);
+      });
     });
-    
-    
+
+
   }
 
   sajatfogasokLoading() {
-    let loader = this.loadingCtrl.create({content: "Kérlek várj..."});
+    let loader = this.loadingCtrl.create({
+      content: "Kérlek várj..."
+    });
     loader.present();
     this.sajatfogasok().then((x) => {
-        if (x) loader.dismiss();
+      if (x) loader.dismiss();
     });
   }
-  osszesfogasokLoading(){
-    let loader = this.loadingCtrl.create({content: "Kérlek várj..."});
+  osszesfogasokLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "Kérlek várj..."
+    });
     loader.present();
     this.osszesfogasok().then((x) => {
-        if (x) loader.dismiss();
+      if (x) loader.dismiss();
     });
   }
   onEvent(event: string, item: any, e: any) {
     if (e) {
-        e.stopPropagation();
+      e.stopPropagation();
     }
     if (this.events[event]) {
-        this.events[event](item);
+      this.events[event](item);
     }
-}
+  }
 
-ngOnChanges(changes: { [propKey: string]: any }) {
+  ngOnChanges(changes: {
+    [propKey: string]: any
+  }) {
     if (changes.data && changes.data.currentValue) {
-        this.headerImage = changes.data.currentValue.headerImage;
-    } 
-    this.subscribeToIonScroll();
-}
-
-ngAfterViewInit() {
-    this.subscribeToIonScroll();
-}
-
-ngAfterViewChecked() {
-    this.subscribeToIonScroll();
-}
-
-isClassActive() {
-    return this.active;
-}
-
-subscribeToIonScroll() {
-    if (this.content != null && this.content.ionScroll != null) {
-        this.content.ionScroll.subscribe((d) => {
-            if (d.scrollTop < 200 ) {
-                this.active = false;
-                return;
-            }
-            this.active = true;
-        });
+      this.headerImage = changes.data.currentValue.headerImage;
     }
-}
+    this.subscribeToIonScroll();
+  }
+
+  ngAfterViewInit() {
+    this.subscribeToIonScroll();
+  }
+
+  ngAfterViewChecked() {
+    this.subscribeToIonScroll();
+  }
+
+  isClassActive() {
+    return this.active;
+  }
+
+  subscribeToIonScroll() {
+    if (this.content != null && this.content.ionScroll != null) {
+      this.content.ionScroll.subscribe((d) => {
+        if (d.scrollTop < 200) {
+          this.active = false;
+          return;
+        }
+        this.active = true;
+      });
+    }
+  }
 
 }

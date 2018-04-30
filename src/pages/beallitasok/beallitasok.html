@@ -8,30 +8,30 @@
   <ion-toolbar color="primary">
     <ion-title>Beállítások</ion-title>
 
-    
+
 
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-<ion-grid>
-  <ion-row>
-    <ion-col width-100>
-      <ion-list>
-        <form (ngSubmit)="mentesForm()">
-          <ion-item>
-            <ion-label fixed>
-              Város
-            </ion-label>
-            <ion-input [(ngModel)]="city" name="varos" type="text">
+  <ion-grid>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
+          <form (ngSubmit)="mentesForm()">
+            <ion-item>
+              <ion-label fixed>
+                Város
+              </ion-label>
+              <ion-input [(ngModel)]="city" name="varos" type="text">
 
-            </ion-input>
-          </ion-item>
-          <button ion-button type="submit" block>Mentés</button>
-        </form>
-      </ion-list>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+              </ion-input>
+            </ion-item>
+            <button ion-button type="submit" block>Mentés</button>
+          </form>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

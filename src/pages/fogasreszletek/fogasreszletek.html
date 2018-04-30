@@ -1,141 +1,140 @@
-
 <ion-header header-ios>
-    <ion-navbar color="primary">
-        
-     
+  <ion-navbar color="primary">
 
-        <ion-title>Részletek</ion-title>
-    </ion-navbar>
+
+
+    <ion-title>Részletek</ion-title>
+  </ion-navbar>
 </ion-header>
-  <ion-content>
-
-     
-      <ion-grid no-padding>
-          <ion-row *ngIf="fogasreszletek != null">
-              <ion-col col-12>
-                <ion-card>
-                  <div card-image (click)="kepMegnyit()">
-                    <img [src]="fogasreszletek.keplink"/>
-                  </div>
-                </ion-card>
-                  <ion-list no-margin kozepre >
-                      <ion-item-group>
-                          <ion-item-divider no-lines>
-                              <span new-category margin-top text-uppercase>{{fogasreszletek.datum |date: "yyyy/MM/dd HH:MM" }}</span>
-                              <h2 parallax-title text-wrap>{{fogasreszletek.suly}} kg {{fogasreszletek.halfaj}}</h2>
-                              <h3 parallax-subtitle text-wrap>Leírás</h3>
-                          </ion-item-divider>
-                          <ion-item border no-lines no-margin>
-                              <p parallax-description text-wrap>{{fogasreszletek.egyeb}}</p>          
-                          </ion-item>
-                      </ion-item-group>
-                  </ion-list>
-              </ion-col>
-          </ion-row>
-          <ion-row>
-              <ion-col col-12>
-              
-                <ion-list-header header-section>
-                  <h1 header-title text-capitalize kozepre>Fogási körülmények</h1>
-                </ion-list-header>
-                <ion-list>
-                  <ul collapsible no-margin no-padding>
-                    <li *ngFor="let csali of csali; let i = index">
-                    
-                      <div collapsible-header (click)="togglecsaliGroup(csali)">
-                        <ion-item border no-lines>
-                          <ion-thumbnail item-start>
-                            <img [src]="csali.keplink" alt="{{csali.nev}}" />
-                          </ion-thumbnail>
-                          <h2 item-title>{{csali.nev}}</h2>
-                          <h3 item-subtitle text-wrap>A kifogott halhoz használt csali részleteinek megjelenítésre érdekében kérlek kattints a blokkra és a lenyíló fülön láthatod a további adatokat!</h3>
-                        </ion-item>
-                      </div>
-                    
-                      <div item-accordion [ngClass]="{'active': iscsaliGroupShown(csali) }" [hidden]="!iscsaliGroupShown(csali)">
-                        <ion-item border no-margin no-lines
-                        (click)="onEvent('onItemClick', csali, $event)">
-                                            
-                          <h2 subitem-title text-wrap>Márka:</h2>                    
-                          <h3 subitem-subtitle text-wrap>{{csali.marka}}</h3>
-                          <h2 subitem-title text-wrap>Méret:</h2>                    
-                          <h3 subitem-subtitle text-wrap>{{csali.meret}} mm</h3>
-                          <h2 subitem-title text-wrap>Típus::</h2>                    
-                          <h3 subitem-subtitle text-wrap>{{csali.tipus}}</h3>
-                          <h2 subitem-title text-wrap>Szín:</h2>                    
-                          <h3 subitem-subtitle text-wrap>{{csali.szin}}</h3>
-                          <h2 subitem-title text-wrap>Leírás:</h2>                    
-                          <p parallax-description [innerHTML]="csali.leiras"></p>          
-                        </ion-item>
-                      </div>
-                    </li>
-                    <li *ngFor="let etetoanyag of etetoanyag; let i = index">
-                        
-                          <div collapsible-header (click)="toggleetetoanyagGroup(etetoanyag)">
-                            <ion-item border no-lines>
-                              <ion-thumbnail item-start>
-                                <img [src]="etetoanyag.keplink" alt="{{etetoanyag.nev}}" />
-                              </ion-thumbnail>
-                              <h2 item-title>{{etetoanyag.nev}}</h2>
-                              <h3 item-subtitle text-wrap>A kifogott halhoz használt etetőanyag részleteinek megjelenítésre érdekében kérlek kattints a blokkra és a lenyíló fülön láthatod a további adatokat!</h3>
-                            </ion-item>
-                          </div>
-                        
-                          <div item-accordion [ngClass]="{'active': isetetoanyagGroupShown(etetoanyag) }" [hidden]="!isetetoanyagGroupShown(etetoanyag)">
-                            <ion-item border no-margin no-lines
-                            (click)="onEvent('onItemClick', etetoanyag, $event)">
-                                                
-                              <h2 subitem-title text-wrap>Márka:</h2>                    
-                              <h3 subitem-subtitle text-wrap>{{etetoanyag.marka}}</h3>
-                              <h2 subitem-title text-wrap>Állag:</h2>                    
-                              <h3 subitem-subtitle text-wrap>{{etetoanyag.allag}}</h3>
-                              <h2 subitem-title text-wrap>Típus:</h2>                    
-                              <h3 subitem-subtitle text-wrap>{{etetoanyag.tipus}}</h3>
-                              <h2 subitem-title text-wrap>Szín:</h2>                    
-                              <h3 subitem-subtitle text-wrap>{{etetoanyag.szin}}</h3>
-                              <h2 subitem-title text-wrap>Leírás:</h2> 
-                              <p parallax-description  [innerHTML]="etetoanyag.leiras"></p>          
-                              
-                            </ion-item>
-                          </div>
-                        </li>
-                        <li *ngFor="let to of to; let i = index">
-                            
-                              <div collapsible-header (click)="toggletoGroup(to)">
-                                <ion-item border no-lines>
-                                  <ion-thumbnail item-start>
-                                    <img [src]="to.keplink" alt="{{to.nev}}" />
-                                  </ion-thumbnail>
-                                  <h2 item-title>{{to.nev}}</h2>
-                                  <h3 item-subtitle text-wrap>A kifogott halhoz használt etetőanyag részleteinek megjelenítésre érdekében kérlek kattints a blokkra és a lenyíló fülön láthatod a további adatokat!</h3>
-                                </ion-item>
-                              </div>
-                            
-                              <div item-accordion [ngClass]="{'active': istoGroupShown(to) }" [hidden]="!istoGroupShown(to)">
-                                <ion-item border no-margin no-lines
-                                (click)="onEvent('onItemClick', to, $event)">
-                                                    
-                                  <h2 subitem-title text-wrap>Vízterület:</h2>                    
-                                  <h3 subitem-subtitle text-wrap>{{to.vizterulet}} ha</h3>
-                                  <h2 subitem-title text-wrap>Weboldal:</h2>                    
-                                  <h3 subitem-subtitle text-wrap>{{to.weboldal}}</h3>
-                                  <h2 subitem-title text-wrap>Típus:</h2>                    
-                                  <h3 subitem-subtitle text-wrap>{{to.tipus}} víz</h3>
-                                  <h2 subitem-title text-wrap>Halfajták:</h2>                    
-                                  <h3 subitem-subtitle text-wrap>{{to.halfajtak}}</h3>
-                                  <h2 subitem-title text-wrap>Szolgáltatások:</h2> 
-                                  <h3 subitem-subtitle text-wrap>{{to.szolgaltasleiras}}</h3> 
-                                  <h2 subitem-title text-wrap>Leírás:</h2>                    
-                                  <p   [innerHTML]="to.egyeb"></p>          
-                                  
-                                </ion-item>
-                              </div>
-                            </li>
-                  </ul>
-                </ion-list>
-              </ion-col>
-            </ion-row>
+<ion-content>
 
 
-      </ion-grid>
-  </ion-content>
+  <ion-grid no-padding>
+    <ion-row *ngIf="fogasreszletek != null">
+      <ion-col col-12>
+        <ion-card>
+          <div card-image (click)="kepMegnyit()">
+            <img [src]="fogasreszletek.keplink" />
+          </div>
+        </ion-card>
+        <ion-list no-margin kozepre>
+          <ion-item-group>
+            <ion-item-divider no-lines>
+              <span new-category margin-top text-uppercase>{{fogasreszletek.datum |date: "yyyy/MM/dd HH:MM" }}</span>
+              <h2 parallax-title text-wrap>{{fogasreszletek.suly}} kg {{fogasreszletek.halfaj}}</h2>
+              <h3 parallax-subtitle text-wrap>Leírás</h3>
+            </ion-item-divider>
+            <ion-item border no-lines no-margin>
+              <p parallax-description text-wrap>{{fogasreszletek.egyeb}}</p>
+            </ion-item>
+          </ion-item-group>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+
+        <ion-list-header header-section>
+          <h1 header-title text-capitalize kozepre>Fogási körülmények</h1>
+        </ion-list-header>
+        <ion-list>
+          <ul collapsible no-margin no-padding>
+            <li *ngFor="let csali of csali; let i = index">
+
+              <div collapsible-header (click)="togglecsaliGroup(csali)">
+                <ion-item border no-lines>
+                  <ion-thumbnail item-start>
+                    <img [src]="csali.keplink" alt="{{csali.nev}}" />
+                  </ion-thumbnail>
+                  <h2 item-title>{{csali.nev}}</h2>
+                  <h3 item-subtitle text-wrap>A kifogott halhoz használt csali részleteinek megjelenítésre érdekében kérlek kattints a blokkra és a lenyíló
+                    fülön láthatod a további adatokat!</h3>
+                </ion-item>
+              </div>
+
+              <div item-accordion [ngClass]="{'active': iscsaliGroupShown(csali) }" [hidden]="!iscsaliGroupShown(csali)">
+                <ion-item border no-margin no-lines (click)="onEvent('onItemClick', csali, $event)">
+
+                  <h2 subitem-title text-wrap>Márka:</h2>
+                  <h3 subitem-subtitle text-wrap>{{csali.marka}}</h3>
+                  <h2 subitem-title text-wrap>Méret:</h2>
+                  <h3 subitem-subtitle text-wrap>{{csali.meret}} mm</h3>
+                  <h2 subitem-title text-wrap>Típus::</h2>
+                  <h3 subitem-subtitle text-wrap>{{csali.tipus}}</h3>
+                  <h2 subitem-title text-wrap>Szín:</h2>
+                  <h3 subitem-subtitle text-wrap>{{csali.szin}}</h3>
+                  <h2 subitem-title text-wrap>Leírás:</h2>
+                  <p parallax-description [innerHTML]="csali.leiras"></p>
+                </ion-item>
+              </div>
+            </li>
+            <li *ngFor="let etetoanyag of etetoanyag; let i = index">
+
+              <div collapsible-header (click)="toggleetetoanyagGroup(etetoanyag)">
+                <ion-item border no-lines>
+                  <ion-thumbnail item-start>
+                    <img [src]="etetoanyag.keplink" alt="{{etetoanyag.nev}}" />
+                  </ion-thumbnail>
+                  <h2 item-title>{{etetoanyag.nev}}</h2>
+                  <h3 item-subtitle text-wrap>A kifogott halhoz használt etetőanyag részleteinek megjelenítésre érdekében kérlek kattints a blokkra és
+                    a lenyíló fülön láthatod a további adatokat!</h3>
+                </ion-item>
+              </div>
+
+              <div item-accordion [ngClass]="{'active': isetetoanyagGroupShown(etetoanyag) }" [hidden]="!isetetoanyagGroupShown(etetoanyag)">
+                <ion-item border no-margin no-lines (click)="onEvent('onItemClick', etetoanyag, $event)">
+
+                  <h2 subitem-title text-wrap>Márka:</h2>
+                  <h3 subitem-subtitle text-wrap>{{etetoanyag.marka}}</h3>
+                  <h2 subitem-title text-wrap>Állag:</h2>
+                  <h3 subitem-subtitle text-wrap>{{etetoanyag.allag}}</h3>
+                  <h2 subitem-title text-wrap>Típus:</h2>
+                  <h3 subitem-subtitle text-wrap>{{etetoanyag.tipus}}</h3>
+                  <h2 subitem-title text-wrap>Szín:</h2>
+                  <h3 subitem-subtitle text-wrap>{{etetoanyag.szin}}</h3>
+                  <h2 subitem-title text-wrap>Leírás:</h2>
+                  <p parallax-description [innerHTML]="etetoanyag.leiras"></p>
+
+                </ion-item>
+              </div>
+            </li>
+            <li *ngFor="let to of to; let i = index">
+
+              <div collapsible-header (click)="toggletoGroup(to)">
+                <ion-item border no-lines>
+                  <ion-thumbnail item-start>
+                    <img [src]="to.keplink" alt="{{to.nev}}" />
+                  </ion-thumbnail>
+                  <h2 item-title>{{to.nev}}</h2>
+                  <h3 item-subtitle text-wrap>A kifogott halhoz használt etetőanyag részleteinek megjelenítésre érdekében kérlek kattints a blokkra és
+                    a lenyíló fülön láthatod a további adatokat!</h3>
+                </ion-item>
+              </div>
+
+              <div item-accordion [ngClass]="{'active': istoGroupShown(to) }" [hidden]="!istoGroupShown(to)">
+                <ion-item border no-margin no-lines (click)="onEvent('onItemClick', to, $event)">
+
+                  <h2 subitem-title text-wrap>Vízterület:</h2>
+                  <h3 subitem-subtitle text-wrap>{{to.vizterulet}} ha</h3>
+                  <h2 subitem-title text-wrap>Weboldal:</h2>
+                  <h3 subitem-subtitle text-wrap>{{to.weboldal}}</h3>
+                  <h2 subitem-title text-wrap>Típus:</h2>
+                  <h3 subitem-subtitle text-wrap>{{to.tipus}} víz</h3>
+                  <h2 subitem-title text-wrap>Halfajták:</h2>
+                  <h3 subitem-subtitle text-wrap>{{to.halfajtak}}</h3>
+                  <h2 subitem-title text-wrap>Szolgáltatások:</h2>
+                  <h3 subitem-subtitle text-wrap>{{to.szolgaltasleiras}}</h3>
+                  <h2 subitem-title text-wrap>Leírás:</h2>
+                  <p [innerHTML]="to.egyeb"></p>
+
+                </ion-item>
+              </div>
+            </li>
+          </ul>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+</ion-content>

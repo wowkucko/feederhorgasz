@@ -9,69 +9,67 @@
 
   </ion-navbar>
 </ion-header>
-<ng-container *ngIf="ladabol;else nemlada">    
-<ion-content elastic-header *ngFor="let csalireszletek of csalireszletek; let i = index">
-  <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + csalireszletek.keplink + ')'}">
-      
-  </ion-item>
-  <!--Content-->
-  <ion-grid no-padding>
-      <ion-row >
-          <ion-col col-12>
-              <ion-list no-margin>
-                  <ion-item-group>
-                      <ion-item-divider no-lines>
-                          <span new-category margin-top text-uppercase>{{csalireszletek.nev}}</span>
-                          <h2 parallax-title text-wrap>{{csalireszletek.marka}}</h2>
-                          <h3 parallax-subtitle text-wrap>{{csalireszletek.tipus}}</h3>
-                          <ion-badge item-end text-uppercase class="badge-dark">{{csalireszletek.kiszereles}} g</ion-badge>
-                      </ion-item-divider>
-                      <ion-item border no-lines no-margin>
-                          <div span-medium>Méret: {{ csalireszletek.meret }} mm</div>
-                          <div span-medium>Szín: {{ csalireszletek.szin }}</div>
-                          <div span-medium>Állag: {{ csalireszletek.allag }}</div>
-                          
-                          <p parallax-description text-wrap [innerHtml]=csalireszletek.leiras></p>
-                      </ion-item>
-                      
-                  </ion-item-group>
-              </ion-list>
-          </ion-col>
+<ng-container *ngIf="ladabol;else nemlada">
+  <ion-content elastic-header *ngFor="let csalireszletek of csalireszletek; let i = index">
+    <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + csalireszletek.keplink + ')'}">
+
+    </ion-item>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-12>
+          <ion-list no-margin>
+            <ion-item-group>
+              <ion-item-divider no-lines>
+                <span new-category margin-top text-uppercase>{{csalireszletek.nev}}</span>
+                <h2 parallax-title text-wrap>{{csalireszletek.marka}}</h2>
+                <h3 parallax-subtitle text-wrap>{{csalireszletek.tipus}}</h3>
+                <ion-badge item-end text-uppercase class="badge-dark">{{csalireszletek.kiszereles}} g</ion-badge>
+              </ion-item-divider>
+              <ion-item border no-lines no-margin>
+                <div span-medium>Méret: {{ csalireszletek.meret }} mm</div>
+                <div span-medium>Szín: {{ csalireszletek.szin }}</div>
+                <div span-medium>Állag: {{ csalireszletek.allag }}</div>
+
+                <p parallax-description text-wrap [innerHtml]=csalireszletek.leiras></p>
+              </ion-item>
+
+            </ion-item-group>
+          </ion-list>
+        </ion-col>
       </ion-row>
-  </ion-grid>
-</ion-content>
+    </ion-grid>
+  </ion-content>
 </ng-container>
 <ng-template #nemlada>
-    <ion-content elastic-header>
-        <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + csalireszletek.keplink + ')'}">
-            <button ion-fixed ion-button color="primary" button-action-shit (click)="PushTolada()">
+  <ion-content elastic-header>
+    <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + csalireszletek.keplink + ')'}">
+      <button ion-fixed ion-button color="primary" button-action-shit (click)="PushTolada()">
                     <ion-icon name="bookmark"></ion-icon>
             </button>
-        </ion-item>
-        <!--Content-->
-        <ion-grid no-padding>
-            <ion-row>
-                <ion-col col-12>
-                    <ion-list no-margin>
-                        <ion-item-group>
-                            <ion-item-divider no-lines>
-                                <span new-category margin-top text-uppercase>{{csalireszletek.nev}}</span>
-                                <h2 parallax-title text-wrap>{{csalireszletek.marka}}</h2>
-                                <h3 parallax-subtitle text-wrap>{{csalireszletek.tipus}}</h3>
-                                <ion-badge item-end text-uppercase class="badge-dark">{{csalireszletek.kiszereles}} g</ion-badge>
-                            </ion-item-divider>
-                            <ion-item border no-lines no-margin>
-                                <div span-medium>Méret: {{ csalireszletek.meret }} mm</div>
-                                <div span-medium>Szín: {{ csalireszletek.szin }}</div>
-                                <div span-medium>Állag: {{ csalireszletek.allag }}</div>
-                                
-                                <p parallax-description text-wrap [innerHtml]=csalireszletek.leiras></p>
-                            </ion-item>
-                            
-                        </ion-item-group>
-                    </ion-list>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-      </ion-content>
+    </ion-item>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-12>
+          <ion-list no-margin>
+            <ion-item-group>
+              <ion-item-divider no-lines>
+                <span new-category margin-top text-uppercase>{{csalireszletek.nev}}</span>
+                <h2 parallax-title text-wrap>{{csalireszletek.marka}}</h2>
+                <h3 parallax-subtitle text-wrap>{{csalireszletek.tipus}}</h3>
+                <ion-badge item-end text-uppercase class="badge-dark">{{csalireszletek.kiszereles}} g</ion-badge>
+              </ion-item-divider>
+              <ion-item border no-lines no-margin>
+                <div span-medium>Méret: {{ csalireszletek.meret }} mm</div>
+                <div span-medium>Szín: {{ csalireszletek.szin }}</div>
+                <div span-medium>Állag: {{ csalireszletek.allag }}</div>
+
+                <p parallax-description text-wrap [innerHtml]=csalireszletek.leiras></p>
+              </ion-item>
+
+            </ion-item-group>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
 </ng-template>

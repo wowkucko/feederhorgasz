@@ -1,5 +1,7 @@
 import {
-  Component,Input, ViewChild
+  Component,
+  Input,
+  ViewChild
 } from '@angular/core';
 import {
   IonicPage,
@@ -11,7 +13,9 @@ import {
 import {
   AngularFireDatabase
 } from 'angularfire2/database';
-import { PhotoViewer } from '@ionic-native/photo-viewer';
+import {
+  PhotoViewer
+} from '@ionic-native/photo-viewer';
 
 /**
  * Generated class for the FogasreszletekPage page.
@@ -40,7 +44,7 @@ export class FogasreszletekPage {
   public image: string;
   public uri: string;
   public pasteMessageHint: string;
-  constructor(private photoViewer: PhotoViewer,private platform: Platform, private firebasedb: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private photoViewer: PhotoViewer, private platform: Platform, private firebasedb: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
 
     this.image = this.navParams.get("fogasreszletek").keplink;
 
@@ -97,9 +101,9 @@ export class FogasreszletekPage {
   istoGroupShown(group: any) {
     return group.show;
   }
-  kepMegnyit(){
+  kepMegnyit() {
     this.photoViewer.show(this.image);
-    
+
   }
 
 }

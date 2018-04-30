@@ -14,38 +14,26 @@
 
 
 <ion-content padding>
-    <ion-grid no-padding>
-        <ion-row card-background-page padding-horizontal>
-            <ion-col no-padding col-12 col-md-12 col-lg-6>
-                <ion-card background-size text-left (click)="openTolistazas()"
-                [ngStyle]="{'background-image': 'url(./assets/img/lake.jpg)'}">
-                    <!-- Card Title-->
-                    <div text-wrap card-title>Horgásztavak</div>
-                    <!-- Card Subtitle-->
-                    <div text-wrap card-subtitle>Keress rá a legjobb feederes horgásztavakra és tudj meg minden hasznos infót!</div>
-                </ion-card>
-                <ion-card background-size text-left (click)="openCsalik()"
-                [ngStyle]="{'background-image': 'url(./assets/img/bait.jpg)'}">
-                    <!-- Card Title-->
-                    <div text-wrap card-title>Csalik</div>
-                    <!-- Card Subtitle-->
-                    <div text-wrap card-subtitle>Tekintsd meg a legjobb feederes csalikat és add hozzá a kedvenceidhez!</div>
-                </ion-card>
-                <ion-card background-size text-left (click)="openEtetoanyagok()"
-                [ngStyle]="{'background-image': 'url(./assets/img/ground.jpg)'}">
-                    <!-- Card Title-->
-                    <div text-wrap card-title>Etetőanyagok</div>
-                    <!-- Card Subtitle-->
-                    <div text-wrap card-subtitle>A csali mellett szükséged lesz egy kiváló etetőanyagra is! Tekintsd meg a választékot!</div>
-                </ion-card>
-                <ion-card background-size text-left (click)="openTolistazas()"
-                [ngStyle]="{'background-image': 'url(./assets/img/lake.jpg)'}">
-                    <!-- Card Title-->
-                    <div text-wrap card-title>Linkek</div>
-                    <!-- Card Subtitle-->
-                    <div text-wrap card-subtitle>Hasznos információkat keresel a technikával kapcsolatban? Tekintsd meg az ajánlott linkgyűjteményt!</div>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-grid no-padding>
+    <ion-row card-background-page padding-horizontal>
+      <ion-col no-padding col-12 col-md-12 col-lg-6>
+        <ion-card background-size text-left (click)="openTolistazas()" [ngStyle]="{'background-image': 'url(./assets/img/lake.jpg)'}">
+          <div text-wrap card-title>Horgásztavak</div>
+          <div text-wrap card-subtitle>Keress rá a legjobb feederes horgásztavakra és tudj meg minden hasznos infót!</div>
+        </ion-card>
+        <ion-card background-size text-left (click)="openCsalik()" [ngStyle]="{'background-image': 'url(./assets/img/bait.jpg)'}">
+          <div text-wrap card-title>Csalik</div>
+          <div text-wrap card-subtitle>Tekintsd meg a legjobb feederes csalikat és add hozzá a kedvenceidhez!</div>
+        </ion-card>
+        <ion-card background-size text-left (click)="openEtetoanyagok()" [ngStyle]="{'background-image': 'url(./assets/img/ground.jpg)'}">
+          <div text-wrap card-title>Etetőanyagok</div>
+          <div text-wrap card-subtitle>A csali mellett szükséged lesz egy kiváló etetőanyagra is! Tekintsd meg a választékot!</div>
+        </ion-card>
+        <ion-card background-size text-left (click)="openTolistazas()" [ngStyle]="{'background-image': 'url(./assets/img/lake.jpg)'}">
+          <div text-wrap card-title>Linkek</div>
+          <div text-wrap card-subtitle>Hasznos információkat keresel a technikával kapcsolatban? Tekintsd meg az ajánlott linkgyűjteményt!</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,62 +1,69 @@
 <ion-header>
-    <ion-navbar transparent>
-  
-      <ion-title>
-        Etetőanyag feltöltése
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  <ion-content>
-      <p *ngIf="submitAttempt" style="color: #ea6153;">Kérlek helyesen tölsd ki a mezőket!</p>
-    <ion-grid>
-        <form [formGroup]="etetoanyagfeltoltesForm">
-            <ion-row padding-horizontal align-items-start>
+  <ion-navbar transparent>
+
+    <ion-title>
+      Etetőanyag feltöltése
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <p *ngIf="submitAttempt" style="color: #ea6153;">Kérlek helyesen tölsd ki a mezőket!</p>
+  <ion-grid>
+    <form [formGroup]="etetoanyagfeltoltesForm">
+      <ion-row padding-horizontal align-items-start>
         <ion-col no-padding col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
           <ion-item no-padding>
             <ion-label color="dark" stacked>Etetőanyag neve*</ion-label>
-            <ion-input placeholder="Töltsd ki az etetőanyag nevét!" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetonev.valid && (etetoanyagfeltoltesForm.controls.etetonev.dirty|| submitAttempt)" [(ngModel)]="nev" formControlName="etetonev"></ion-input>
+            <ion-input placeholder="Töltsd ki az etetőanyag nevét!" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetonev.valid && (etetoanyagfeltoltesForm.controls.etetonev.dirty|| submitAttempt)"
+              [(ngModel)]="nev" formControlName="etetonev"></ion-input>
           </ion-item>
           <ion-item no-padding>
-              <ion-label color="dark" stacked>Kiszerelés*</ion-label>
-              <ion-input placeholder="Menyiség grammban" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetokiszereles.valid && (etetoanyagfeltoltesForm.controls.etetokiszereles.dirty|| submitAttempt)" [(ngModel)]="kiszereles" formControlName="etetokiszereles" type="number"></ion-input>
-            </ion-item>
+            <ion-label color="dark" stacked>Kiszerelés*</ion-label>
+            <ion-input placeholder="Menyiség grammban" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetokiszereles.valid && (etetoanyagfeltoltesForm.controls.etetokiszereles.dirty|| submitAttempt)"
+              [(ngModel)]="kiszereles" formControlName="etetokiszereles" type="number"></ion-input>
+          </ion-item>
           <ion-item no-padding>
             <ion-label color="dark" stacked>Márka*</ion-label>
-            <ion-select [(ngModel)]="marka" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetomarka.valid && (etetoanyagfeltoltesForm.controls.etetomarka.dirty|| submitAttempt)"  formControlName="etetomarka">
-                <ion-option value="Haldorádó">Haldorádó</ion-option>
-                <ion-option value="SBS">SBS</ion-option>
-                <ion-option value="Stég">Stég</ion-option>
-                <ion-option value="Feedermánia">Feedermánia</ion-option>
-              </ion-select>
+            <ion-select [(ngModel)]="marka" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetomarka.valid && (etetoanyagfeltoltesForm.controls.etetomarka.dirty|| submitAttempt)"
+              formControlName="etetomarka">
+              <ion-option value="Haldorádó">Haldorádó</ion-option>
+              <ion-option value="SBS">SBS</ion-option>
+              <ion-option value="Stég">Stég</ion-option>
+              <ion-option value="Feedermánia">Feedermánia</ion-option>
+            </ion-select>
           </ion-item>
           <ion-item no-padding>
             <ion-label color="dark" stacked>Típus*</ion-label>
-            <ion-select [(ngModel)]="tipus" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetotipus.valid && (etetoanyagfeltoltesForm.controls.etetotipus.dirty|| submitAttempt)"  formControlName="etetotipus">
-                <ion-option value="mix">Method mix</ion-option>
-                <ion-option value="pellet">Pellet</ion-option>
-                <ion-option value="aroma">Aroma, Dip</ion-option>
-                <ion-option value="adalek">Adalékanyag</ion-option>
-              </ion-select>
+            <ion-select [(ngModel)]="tipus" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetotipus.valid && (etetoanyagfeltoltesForm.controls.etetotipus.dirty|| submitAttempt)"
+              formControlName="etetotipus">
+              <ion-option value="mix">Method mix</ion-option>
+              <ion-option value="pellet">Pellet</ion-option>
+              <ion-option value="aroma">Aroma, Dip</ion-option>
+              <ion-option value="adalek">Adalékanyag</ion-option>
+            </ion-select>
           </ion-item>
           <ion-item no-padding>
             <ion-label color="dark" stacked>Állag*</ion-label>
-            <ion-select [(ngModel)]="allag" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetoallag.valid && (etetoanyagfeltoltesForm.controls.etetoallag.dirty|| submitAttempt)"  formControlName="etetoallag">
-                <ion-option value="Finomszemcsés">Finomszemcsés</ion-option>
-                <ion-option value="Dúrva">Dúrva</ion-option>
-                <ion-option value="Közepes">Közepes</ion-option>
-              </ion-select>          </ion-item>
- 
+            <ion-select [(ngModel)]="allag" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetoallag.valid && (etetoanyagfeltoltesForm.controls.etetoallag.dirty|| submitAttempt)"
+              formControlName="etetoallag">
+              <ion-option value="Finomszemcsés">Finomszemcsés</ion-option>
+              <ion-option value="Dúrva">Dúrva</ion-option>
+              <ion-option value="Közepes">Közepes</ion-option>
+            </ion-select>
+          </ion-item>
+
           <ion-item no-padding>
             <ion-label stacked>Szín*</ion-label>
-            <ion-select [(ngModel)]="szin" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetoszin.valid && (etetoanyagfeltoltesForm.controls.etetoszin.dirty|| submitAttempt)"  formControlName="etetoszin">
-                <ion-option value="Piros">Piros</ion-option>
-                <ion-option value="Sárga">Sárga</ion-option>
-                <ion-option value="Zöld">Zöld</ion-option>
-                <ion-option value="Barna">Barna</ion-option>
-              </ion-select> </ion-item>
-          <button ion-button margin-top float-right clear button-clear text-capitalize  (click)="save()">Feltöltés</button>      </ion-col>
+            <ion-select [(ngModel)]="szin" [class.invalid]="!etetoanyagfeltoltesForm.controls.etetoszin.valid && (etetoanyagfeltoltesForm.controls.etetoszin.dirty|| submitAttempt)"
+              formControlName="etetoszin">
+              <ion-option value="Piros">Piros</ion-option>
+              <ion-option value="Sárga">Sárga</ion-option>
+              <ion-option value="Zöld">Zöld</ion-option>
+              <ion-option value="Barna">Barna</ion-option>
+            </ion-select>
+          </ion-item>
+          <button ion-button margin-top float-right clear button-clear text-capitalize (click)="save()">Feltöltés</button>          </ion-col>
       </ion-row>
     </form>
-    </ion-grid>
-  </ion-content>
-  
+  </ion-grid>
+</ion-content>

@@ -16,7 +16,6 @@ export class IdojarasProvider {
 
 
   constructor(public http: Http) {
-    console.log('Hello IdojarasProvider Provider');
     this.url='http://api.wunderground.com/api/'+this.apiKey+'/conditions/lang:HU/q';
     this.url2='http://api.wunderground.com/api/'+this.apiKey+'/forecast/lang:HU/q';
   }

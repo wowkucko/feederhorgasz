@@ -1,7 +1,17 @@
-import { TabsPage } from '../tabs/tabs';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import {
+  TabsPage
+} from '../tabs/tabs';
+import {
+  Component
+} from '@angular/core';
+import {
+  IonicPage,
+  NavController,
+  NavParams
+} from 'ionic-angular';
+import {
+  Storage
+} from '@ionic/storage';
 
 /**
  * Generated class for the BeallitasokPage page.
@@ -16,25 +26,25 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'beallitasok.html',
 })
 export class BeallitasokPage {
- 
+
   city: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private storage: Storage) {
-    
-      this.storage.get('hely').then((val)=>{
-        if(val!=null){
-          let hely=JSON.parse(val);
-          this.city=hely.city;
 
-        } else{
-          this.city='Budapest';
-        }
-      });
+    this.storage.get('hely').then((val) => {
+      if (val != null) {
+        let hely = JSON.parse(val);
+        this.city = hely.city;
+
+      } else {
+        this.city = 'Budapest';
+      }
+    });
   }
-  mentesForm(){
-    let hely={
+  mentesForm() {
+    let hely = {
       city: this.city
     }
     this.storage.set('hely', JSON.stringify(hely));

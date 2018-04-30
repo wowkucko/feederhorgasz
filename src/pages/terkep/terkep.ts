@@ -70,54 +70,54 @@ export class TerkepPage {
     toast.present();
   }
   async locationReq() {
-    
-    
+
+
     //const canRequest = await this.locationAccuracy.canRequest();
     //console.log(canRequest);
-   /* if (canRequest) {
-      
-      const success = await this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then((success) => {
-        
-        if (success.code==1 || success.code==0){
-          this.answer=true;
-        }
-        else{          
-         alert("Hiba történt! Próbáld újra!")
-        }
-      });
-    }
-    else{
-      console.log("failure");
-    }*/
+    /* if (canRequest) {
+       
+       const success = await this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then((success) => {
+         
+         if (success.code==1 || success.code==0){
+           this.answer=true;
+         }
+         else{          
+          alert("Hiba történt! Próbáld újra!")
+         }
+       });
+     }
+     else{
+       console.log("failure");
+     }*/
 
     //if (this.answer == true) {
     //  console.log('answer is true');
-      await this.plt.ready();
+    await this.plt.ready();
 
-      const loader = this.loadingCtrl.create({
-        content: 'Helyadatok lekérdezése...'
-      });
-      loader.present();
+    const loader = this.loadingCtrl.create({
+      content: 'Helyadatok lekérdezése...'
+    });
+    loader.present();
 
-      const options = {
-        timeout: 15000
-      };
+    const options = {
+      timeout: 15000
+    };
 
-      try {
-        const resp = await this.geolocation.getCurrentPosition(options);
-        this.lat = resp.coords.latitude;
-        this.lang = resp.coords.longitude;
-      } catch (err) {
-        this.lat = 47.49801;
-        this.lang = 19.03991;
-        this.presentToast(); 
-      } finally {
-        loader.dismiss();
-        this.mapLoadingPresent();
-      }
-   // } else {
-   //   console.log('answer is no or undefinied');
-  //  }
+    try {
+      const resp = await this.geolocation.getCurrentPosition(options);
+      this.lat = resp.coords.latitude;
+      this.lang = resp.coords.longitude;
+    } catch (err) {
+      this.lat = 47.49801;
+      this.lang = 19.03991;
+      this.presentToast();
+    } finally {
+      loader.dismiss();
+      this.mapLoadingPresent();
+    }
+    // } else {
+    //   console.log('answer is no or undefinied');
+    //  }
 
   }
 

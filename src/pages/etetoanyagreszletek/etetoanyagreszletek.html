@@ -5,70 +5,68 @@
   Ionic pages and navigation.
 -->
 
-  <ion-header header-ios>
-      <ion-navbar transparent [ngClass]="{'active':isClassActive()}">
-    
-      </ion-navbar>
-    </ion-header>
-    <ng-container *ngIf="ladabol;else nemlada">    
-    <ion-content elastic-header *ngFor="let etetoanyagreszletek of etetoanyagreszletek; let i = index">
-      <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + etetoanyagreszletek.keplink + ')'}">
-          
-      </ion-item>
-      <!--Content-->
-      <ion-grid no-padding>
-          <ion-row >
-              <ion-col col-12>
-                  <ion-list no-margin>
-                      <ion-item-group>
-                          <ion-item-divider no-lines>
-                              <span new-category margin-top text-uppercase>{{etetoanyagreszletek.nev}}</span>
-                              <h2 parallax-title text-wrap>{{etetoanyagreszletek.marka}}</h2>
-                              <h3 parallax-subtitle text-wrap>{{etetoanyagreszletek.tipus}}</h3>
-                              <ion-badge item-end text-uppercase class="badge-dark">{{etetoanyagreszletek.kiszereles}} g</ion-badge>
-                          </ion-item-divider>
-                          <ion-item border no-lines no-margin>
-                              <div span-medium>Szín: {{ etetoanyagreszletek.szin }}</div>
-                              <div span-medium>Állag: {{ etetoanyagreszletek.allag }}</div>
-                              <p parallax-description text-wrap [innerHtml]=etetoanyagreszletek.leiras></p>
-                          </ion-item>
-                          
-                      </ion-item-group>
-                  </ion-list>
-              </ion-col>
-          </ion-row>
-      </ion-grid>
-    </ion-content>
-    </ng-container>
-    <ng-template #nemlada>
-        <ion-content elastic-header>
-            <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + etetoanyagreszletek.keplink + ')'}">
-                <button ion-fixed ion-button color="primary" button-action-shit (click)="PushTolada()">
+<ion-header header-ios>
+  <ion-navbar transparent [ngClass]="{'active':isClassActive()}">
+
+  </ion-navbar>
+</ion-header>
+<ng-container *ngIf="ladabol;else nemlada">
+  <ion-content elastic-header *ngFor="let etetoanyagreszletek of etetoanyagreszletek; let i = index">
+    <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + etetoanyagreszletek.keplink + ')'}">
+
+    </ion-item>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-12>
+          <ion-list no-margin>
+            <ion-item-group>
+              <ion-item-divider no-lines>
+                <span new-category margin-top text-uppercase>{{etetoanyagreszletek.nev}}</span>
+                <h2 parallax-title text-wrap>{{etetoanyagreszletek.marka}}</h2>
+                <h3 parallax-subtitle text-wrap>{{etetoanyagreszletek.tipus}}</h3>
+                <ion-badge item-end text-uppercase class="badge-dark">{{etetoanyagreszletek.kiszereles}} g</ion-badge>
+              </ion-item-divider>
+              <ion-item border no-lines no-margin>
+                <div span-medium>Szín: {{ etetoanyagreszletek.szin }}</div>
+                <div span-medium>Állag: {{ etetoanyagreszletek.allag }}</div>
+                <p parallax-description text-wrap [innerHtml]=etetoanyagreszletek.leiras></p>
+              </ion-item>
+
+            </ion-item-group>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ng-container>
+<ng-template #nemlada>
+  <ion-content elastic-header>
+    <ion-item no-lines background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + etetoanyagreszletek.keplink + ')'}">
+      <button ion-fixed ion-button color="primary" button-action-shit (click)="PushTolada()">
                         <ion-icon name="bookmark"></ion-icon>
                 </button>
-            </ion-item>
-            <!--Content-->
-            <ion-grid no-padding>
-                <ion-row>
-                    <ion-col col-12>
-                        <ion-list no-margin>
-                            <ion-item-group>
-                                <ion-item-divider no-lines>
-                                    <span new-category margin-top text-uppercase>{{etetoanyagreszletek.nev}}</span>
-                                    <h2 parallax-title text-wrap>{{etetoanyagreszletek.marka}}</h2>
-                                    <h3 parallax-subtitle text-wrap>{{etetoanyagreszletek.tipus}}</h3>
-                                    <ion-badge item-end text-uppercase class="badge-dark">{{etetoanyagreszletek.kiszereles}} g</ion-badge>
-                                </ion-item-divider>
-                                <ion-item border no-lines no-margin>
-                                    <div span-medium>Szín: {{ etetoanyagreszletek.szin }}</div>
-                                    <div span-medium>Állag: {{ etetoanyagreszletek.allag }}</div>
-                                    <p parallax-description text-wrap [innerHtml]=etetoanyagreszletek.leiras></p>
-                                </ion-item>
-                                
-                            </ion-item-group>
-                        </ion-list>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-          </ion-content>
-    </ng-template>
+    </ion-item>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-12>
+          <ion-list no-margin>
+            <ion-item-group>
+              <ion-item-divider no-lines>
+                <span new-category margin-top text-uppercase>{{etetoanyagreszletek.nev}}</span>
+                <h2 parallax-title text-wrap>{{etetoanyagreszletek.marka}}</h2>
+                <h3 parallax-subtitle text-wrap>{{etetoanyagreszletek.tipus}}</h3>
+                <ion-badge item-end text-uppercase class="badge-dark">{{etetoanyagreszletek.kiszereles}} g</ion-badge>
+              </ion-item-divider>
+              <ion-item border no-lines no-margin>
+                <div span-medium>Szín: {{ etetoanyagreszletek.szin }}</div>
+                <div span-medium>Állag: {{ etetoanyagreszletek.allag }}</div>
+                <p parallax-description text-wrap [innerHtml]=etetoanyagreszletek.leiras></p>
+              </ion-item>
+
+            </ion-item-group>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ng-template>

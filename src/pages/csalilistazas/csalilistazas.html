@@ -5,81 +5,81 @@
   Ionic pages and navigation.
 -->
 <ion-header header-ios>
-  
-    <ion-navbar transparent>
-     <ion-title>Csalik</ion-title>
-    </ion-navbar>
-    <ion-toolbar>
-        <ion-segment [(ngModel)]="csalidisplay">
-            <ion-segment-button value="Bojli" (ionSelect)="bojliLoading()">
-              Bojli
-            </ion-segment-button>
-            <ion-segment-button value="Pellet" (ionSelect)="pelletLoading()">
-              Pellet
-            </ion-segment-button>
-            <ion-segment-button value="Mu" (ionSelect)="muLoading()">
-                Mű
-              </ion-segment-button>
-              <ion-segment-button value="Elo" (ionSelect)="eloLoading()">
-                  Élő
-                </ion-segment-button>
-          </ion-segment>
-      </ion-toolbar>
-  </ion-header>
+
+  <ion-navbar transparent>
+    <ion-title>Csalik</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="csalidisplay">
+      <ion-segment-button value="Bojli" (ionSelect)="bojliLoading()">
+        Bojli
+      </ion-segment-button>
+      <ion-segment-button value="Pellet" (ionSelect)="pelletLoading()">
+        Pellet
+      </ion-segment-button>
+      <ion-segment-button value="Mu" (ionSelect)="muLoading()">
+        Mű
+      </ion-segment-button>
+      <ion-segment-button value="Elo" (ionSelect)="eloLoading()">
+        Élő
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <ion-fab right middle>
-      <button ion-fab (click)="opencsaliFeltoltes()"><ion-icon name="add"></ion-icon></button>
-    </ion-fab>
-    <div [ngSwitch]="csalidisplay">
-<ion-grid no-padding>
-  <ion-row>
-      <ion-col col-12>
+    <button ion-fab (click)="opencsaliFeltoltes()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <div [ngSwitch]="csalidisplay">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-12>
           <ion-list no-margin *ngSwitchCase="'Bojli'">
-            
-              <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of bojlicsalik; let i = index" (click)="openCsalireszletek(item)">
-                  <ion-avatar item-left>
-                      <img [src]="item.keplink" alt="{{item.nev}}" />
-                  </ion-avatar>
-                  <h2 item-title>{{item.nev}}</h2>
-                  
-              </ion-item>
-           
+
+            <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of bojlicsalik; let i = index" (click)="openCsalireszletek(item)">
+              <ion-avatar item-left>
+                <img [src]="item.keplink" alt="{{item.nev}}" />
+              </ion-avatar>
+              <h2 item-title>{{item.nev}}</h2>
+
+            </ion-item>
+
           </ion-list>
           <ion-list no-margin *ngSwitchCase="'Pellet'">
-              
-                <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of pelletcsalik; let i = index" (click)="openCsalireszletek(item)">
-                    <ion-avatar item-left>
-                        <img [src]="item.keplink" alt="{{item.nev}}" />
-                    </ion-avatar>
-                    <h2 item-title>{{item.nev}}</h2>
-                    
-                </ion-item>
-             
-            </ion-list>
-            <ion-list no-margin *ngSwitchCase="'Mu'">
-                
-                  <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of mucsalik; let i = index" (click)="openCsalireszletek(item)">
-                      <ion-avatar item-left>
-                          <img [src]="item.keplink" alt="{{item.nev}}" />
-                      </ion-avatar>
-                      <h2 item-title>{{item.nev}}</h2>
-                      
-                  </ion-item>
-               
-              </ion-list>
-              <ion-list no-margin *ngSwitchCase="'Elo'">
-                  
-                    <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of elocsalik; let i = index" (click)="openCsalireszletek(item)">
-                        <ion-avatar item-left>
-                            <img [src]="item.keplink" alt="{{item.nev}}" />
-                        </ion-avatar>
-                        <h2 item-title>{{item.nev}}</h2>
-                        
-                    </ion-item>
-                 
-                </ion-list>
-      </ion-col>
-  </ion-row>
-</ion-grid>
-</div>
+
+            <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of pelletcsalik; let i = index" (click)="openCsalireszletek(item)">
+              <ion-avatar item-left>
+                <img [src]="item.keplink" alt="{{item.nev}}" />
+              </ion-avatar>
+              <h2 item-title>{{item.nev}}</h2>
+
+            </ion-item>
+
+          </ion-list>
+          <ion-list no-margin *ngSwitchCase="'Mu'">
+
+            <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of mucsalik; let i = index" (click)="openCsalireszletek(item)">
+              <ion-avatar item-left>
+                <img [src]="item.keplink" alt="{{item.nev}}" />
+              </ion-avatar>
+              <h2 item-title>{{item.nev}}</h2>
+
+            </ion-item>
+
+          </ion-list>
+          <ion-list no-margin *ngSwitchCase="'Elo'">
+
+            <ion-item border no-lines [ngClass]="animateClass" *ngFor="let item of elocsalik; let i = index" (click)="openCsalireszletek(item)">
+              <ion-avatar item-left>
+                <img [src]="item.keplink" alt="{{item.nev}}" />
+              </ion-avatar>
+              <h2 item-title>{{item.nev}}</h2>
+
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

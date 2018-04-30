@@ -1,6 +1,17 @@
-import { Component,Input, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,Content } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
+import {
+  Component,
+  Input,
+  ViewChild
+} from '@angular/core';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  Content
+} from 'ionic-angular';
+import {
+  AngularFireDatabase
+} from 'angularfire2/database';
 
 /**
  * Generated class for the EtetoanyagreszletekPage page.
@@ -21,75 +32,75 @@ export class EtetoanyagreszletekPage {
   content: Content;
 
   active: boolean;
-  headerImage:any = "";
-  public etetoanyagreszletek={}
-  public facebookadatok={}
-  ladabol:boolean
+  headerImage: any = "";
+  public etetoanyagreszletek = {}
+  public facebookadatok = {}
+  ladabol: boolean
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebasedb: AngularFireDatabase) {
-    if(this.navParams.get("myetetoanyagreszletek")!=null)
-    {
-      
-      
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase) {
+    if (this.navParams.get("myetetoanyagreszletek") != null) {
+
+
       this.firebasedb.list("/etetoanyagok/").subscribe(_data => {
-        
+
         this.etetoanyagreszletek = _data.filter(item => item.$key == this.navParams.get("myetetoanyagreszletek").id);
-        this.ladabol=true;
-  
+        this.ladabol = true;
+
       })
-    }
-    else{
-      this.etetoanyagreszletek=this.navParams.get("etetoanyagreszletek");
-      this.facebookadatok=this.navParams.get("facebookadatok");
-      this.ladabol=false;
-      
+    } else {
+      this.etetoanyagreszletek = this.navParams.get("etetoanyagreszletek");
+      this.facebookadatok = this.navParams.get("facebookadatok");
+      this.ladabol = false;
+
     }
 
   }
 
-  PushTolada(){
+  PushTolada() {
     console.log("pusholok")
     this.firebasedb.list("/myetetoanyag/")
-    .push({
-      id:this.navParams.get("etetoanyagreszletek").$key,
-      useremail:this.navParams.get("facebookadatok").facebookemail,
-      etetoanyagneve:this.navParams.get("etetoanyagreszletek").nev
-    });
+      .push({
+        id: this.navParams.get("etetoanyagreszletek").$key,
+        useremail: this.navParams.get("facebookadatok").facebookemail,
+        etetoanyagneve: this.navParams.get("etetoanyagreszletek").nev
+      });
   }
   onEvent(event: string, item: any, e: any) {
     if (e) {
-        e.stopPropagation();
+      e.stopPropagation();
     }
     if (this.events[event]) {
-        this.events[event](item);
+      this.events[event](item);
     }
-}
+  }
 
-ngOnChanges(changes: { [propKey: string]: any }) {
+  ngOnChanges(changes: {
+    [propKey: string]: any
+  }) {
     if (changes.data && changes.data.currentValue) {
-        this.headerImage = changes.data.currentValue.headerImage;
+      this.headerImage = changes.data.currentValue.headerImage;
     }
     this.subscribeToIonScroll();
-}
+  }
 
-ngAfterViewInit() {
+  ngAfterViewInit() {
     this.subscribeToIonScroll();
-}
+  }
 
-isClassActive() {
+  isClassActive() {
     return this.active;
-}
+  }
 
-subscribeToIonScroll() {
+  subscribeToIonScroll() {
     if (this.content != null && this.content.ionScroll != null) {
-        this.content.ionScroll.subscribe((d) => {
-            if (d.scrollTop < 200) {
-                this.active = false;
-                return;
-            }
-            this.active = true;
-        });
+      this.content.ionScroll.subscribe((d) => {
+        if (d.scrollTop < 200) {
+          this.active = false;
+          return;
+        }
+        this.active = true;
+      });
     }
-}
+  }
 
 }

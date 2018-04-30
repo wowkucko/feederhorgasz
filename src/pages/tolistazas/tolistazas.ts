@@ -1,8 +1,25 @@
-import { TofeltoltesPage } from '../tofeltoltes/tofeltoltes';
-import { ToreszletekPage } from '../toreszletek/toreszletek';
-import { Component,Input, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController,LoadingController,Content } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
+import {
+  TofeltoltesPage
+} from '../tofeltoltes/tofeltoltes';
+import {
+  ToreszletekPage
+} from '../toreszletek/toreszletek';
+import {
+  Component,
+  Input,
+  ViewChild
+} from '@angular/core';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ModalController,
+  LoadingController,
+  Content
+} from 'ionic-angular';
+import {
+  AngularFireDatabase
+} from 'angularfire2/database';
 
 /**
  * Generated class for the TolistazasPage page.
@@ -28,55 +45,59 @@ export class TolistazasPage {
   megyevalasztas: string
   loadedtolista = []
 
-  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase, private modal: ModalController) {
-    this.animateClass = { 'zoom-in': true };
+  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, private firebasedb: AngularFireDatabase, private modal: ModalController) {
+    this.animateClass = {
+      'zoom-in': true
+    };
   }
 
   ionViewWillEnter() {
-  this.megyevalasztas = "osszes";
-   this.tavakLoading();
+    this.megyevalasztas = "osszes";
+    this.tavakLoading();
 
   }
 
-  tavakFetch(){
+  tavakFetch() {
     return new Promise((resolve) => {
-    if (this.megyevalasztas == "osszes") {
-      this.firebasedb.list("/tavak/").subscribe(_data => {
-        this.toadatok = _data.filter(item =>
-          item.approved == "1"
-        );
-        this.loadedtolista = this.toadatok;
+      if (this.megyevalasztas == "osszes") {
+        this.firebasedb.list("/tavak/").subscribe(_data => {
+          this.toadatok = _data.filter(item =>
+            item.approved == "1"
+          );
+          this.loadedtolista = this.toadatok;
 
-      })
+        })
 
 
-    }
-    else {
-      this.firebasedb.list("/tavak/").subscribe(_data => {
-        this.toadatok = _data.filter(item => item.approved == "1" && item.megye == this.megyevalasztas);
-        this.loadedtolista = this.toadatok;
+      } else {
+        this.firebasedb.list("/tavak/").subscribe(_data => {
+          this.toadatok = _data.filter(item => item.approved == "1" && item.megye == this.megyevalasztas);
+          this.loadedtolista = this.toadatok;
 
-      })
+        })
 
-    }
-    resolve(true);
-  })
+      }
+      resolve(true);
+    })
   }
-  tavakLoading(){
-    let loader = this.loadingCtrl.create({content: "Tavak betöltése..."});
+  tavakLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "Tavak betöltése..."
+    });
     loader.present();
     this.tavakFetch().then((x) => {
-        if (x) loader.dismiss();
+      if (x) loader.dismiss();
     });
   }
 
   toreszletNyit(item) {
     this.navCtrl.push(ToreszletekPage, {
-      toreszletek: item,facebookadatok: this.navParams.data
+      toreszletek: item,
+      facebookadatok: this.navParams.data
     });
   }
-  opentoFeltoltes(){
-    const tofeltolt=this.modal.create(TofeltoltesPage);
+  opentoFeltoltes() {
+    const tofeltolt = this.modal.create(TofeltoltesPage);
     tofeltolt.present();
   }
 

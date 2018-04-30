@@ -14,53 +14,54 @@
 
 
 <ion-content padding class="common-bg">
-    <ion-grid class="card" padding *ngIf="idojaras">
-  <ion-row>
-     <ion-col width-50 offset-25>
+  <ion-grid class="card" padding *ngIf="idojaras">
+    <ion-row>
+      <ion-col width-50 offset-25>
         <h2 class="location text-dark">{{idojaras.display_location.city}}</h2>
         <div class="icon"><img src="{{idojaras.icon_url}}"></div>
         <h3 class="desc">{{idojaras.weather}}</h3>
         <h1 class="temp">{{idojaras.temp_c}}&deg;</h1>
-     </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col width-100>
-      <ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
           <ion-item>
-              <strong>UV: </strong> {{idojaras.UV}}
-        </ion-item>
-        <ion-item>
-              <strong>Hőérzet: </strong> {{idojaras.feelslike_c}}&deg;C
-        </ion-item>
-        <ion-item>
-          <strong>Páratartalom: </strong> {{idojaras.relative_humidity}}
-        </ion-item>
-        <ion-item>
-          <strong>Harmatpont: </strong> {{idojaras.dewpoint_c}}&deg;C
-        </ion-item>
-        <ion-item>
-          <strong>Szél: </strong> {{idojaras.wind_kph}} km/h
-        </ion-item>
-        <ion-item>
-          <strong>Légnyomás: </strong> {{idojaras.pressure_mb}} hPa
-        </ion-item>
-      </ion-list>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-<ion-list *ngFor="let nap of elorejelzes">
+            <strong>UV: </strong> {{idojaras.UV}}
+          </ion-item>
+          <ion-item>
+            <strong>Hőérzet: </strong> {{idojaras.feelslike_c}}&deg;C
+          </ion-item>
+          <ion-item>
+            <strong>Páratartalom: </strong> {{idojaras.relative_humidity}}
+          </ion-item>
+          <ion-item>
+            <strong>Harmatpont: </strong> {{idojaras.dewpoint_c}}&deg;C
+          </ion-item>
+          <ion-item>
+            <strong>Szél: </strong> {{idojaras.wind_kph}} km/h
+          </ion-item>
+          <ion-item>
+            <strong>Légnyomás: </strong> {{idojaras.pressure_mb}} hPa
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngFor="let nap of elorejelzes">
     <ion-item>
       <ion-avatar item-start>
-          <img src="{{nap.icon_url}}"/>
+        <img src="{{nap.icon_url}}" />
       </ion-avatar>
       <h1>{{nap.date.weekday}}</h1>
       <h3>{{nap.conditions}}</h3>
-      <p>A hőmérséklet a nap folyamán {{nap.low.celsius}} és {{nap.high.celsius}} °C között alakul, átlagosan {{nap.avewind.kph}} km/h {{nap.avewind.dir}} széllel. </p>
+      <p>A hőmérséklet a nap folyamán {{nap.low.celsius}} és {{nap.high.celsius}} °C között alakul, átlagosan {{nap.avewind.kph}}
+        km/h {{nap.avewind.dir}} széllel. </p>
     </ion-item>
   </ion-list>
 
-<div class="block-insert">
-  <span class="compomets">További részletek</span>
-  <button default-button round ion-button (click)="openWeather()">Weboldal megnyitás</button>
-</div>
+  <div class="block-insert">
+    <span class="compomets">További részletek</span>
+    <button default-button round ion-button (click)="openWeather()">Weboldal megnyitás</button>
+  </div>
 </ion-content>
