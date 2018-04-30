@@ -71,6 +71,7 @@ export class EtetoanyagfeltoltesPage {
       alert("Ellenőrizd a mezőket!");
     } else {
       this.etetoanyagfeltolt();
+      this.navCtrl.pop();
       this.presentToast();
     }
   }

@@ -86,6 +86,7 @@ export class TofeltoltesPage {
       alert("Helytelen kitöltés!");
     } else {
       this.adatfeltolt();
+      this.navCtrl.pop();
       this.presentToast();
     }
   }

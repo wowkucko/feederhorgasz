@@ -77,6 +77,7 @@ export class CsalifeltoltesPage {
       alert("Ellenőrizd a mezőket!");
     } else {
       this.csalifeltolt();
+      this.navCtrl.pop();
       this.presentToast();
     }
   }
